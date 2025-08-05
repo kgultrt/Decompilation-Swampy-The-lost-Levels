@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<Objects>
+  <Object name="Object12">
+    <AbsoluteLocation value="-24.104200 -25.540079"/>
+    <Properties>
+      <Property name="Angle" value="274.508"/>
+      <Property name="Filename" value="/Objects/pipe_straight_long.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Object8">
+    <AbsoluteLocation value="-16.545057 -18.064140"/>
+    <Properties>
+      <Property name="Angle" value="9.02554"/>
+      <Property name="Filename" value="/Objects/pipe_straight_long.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Spout126">
+    <AbsoluteLocation value="-10.304142 -16.515228"/>
+    <Properties>
+      <Property name="Angle" value="-67.0719"/>
+      <Property name="ConnectedSpout0" value="SWAMPY_SPOUT"/>
+      <Property name="ConnectedSpoutProbability0" value="1"/>
+      <Property name="Filename" value="/Objects/broken_pipe.hs"/>
+      <Property name="Type" value="spout"/>
+    </Properties>
+  </Object>
+  <Object name="Object127">
+    <AbsoluteLocation value="-23.327740 28.271526"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/icicle_medium.hs"/>
+      <Property name="Type" value="icyhot"/>
+    </Properties>
+  </Object>
+  <Object name="Object128">
+    <AbsoluteLocation value="-25.577507 36.670673"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/icicle_small.hs"/>
+      <Property name="Type" value="icyhot"/>
+    </Properties>
+  </Object>
+  <Object name="Ducky129">
+    <AbsoluteLocation value="0.046875 4.840626"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/star.hs"/>
+      <Property name="Type" value="star"/>
+    </Properties>
+  </Object>
+  <Object name="Ducky130">
+    <AbsoluteLocation value="13.240623 -2.799999"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/star.hs"/>
+      <Property name="Type" value="star"/>
+    </Properties>
+  </Object>
+  <Object name="Ducky131">
+    <AbsoluteLocation value="0.856251 -9.575000"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/star.hs"/>
+      <Property name="Type" value="star"/>
+    </Properties>
+  </Object>
+  <Object name="Object10">
+    <AbsoluteLocation value="-23.546690 -20.343273"/>
+    <Properties>
+      <Property name="Angle" value="-79.7769"/>
+      <Property name="Filename" value="/Objects/pipe_connector_90.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Object11">
+    <AbsoluteLocation value="-22.986765 -31.446104"/>
+    <Properties>
+      <Property name="Angle" value="-177.79"/>
+      <Property name="Filename" value="/Objects/pipe_elbow_2.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Object13">
+    <AbsoluteLocation value="-16.872875 -31.849354"/>
+    <Properties>
+      <Property name="Angle" value="362.568"/>
+      <Property name="Filename" value="/Objects/pipe_straight_long.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Object14">
+    <AbsoluteLocation value="-19.342197 -33.077927"/>
+    <Properties>
+      <Property name="Angle" value="2.53388"/>
+      <Property name="Filename" value="/Objects/icicle_small.hs"/>
+      <Property name="Type" value="icyhot"/>
+    </Properties>
+  </Object>
+  <Object name="Object15">
+    <AbsoluteLocation value="-12.988815 -31.733154"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/pipe_connector_end.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Object9">
+    <AbsoluteLocation value="-16.579315 -19.538912"/>
+    <Properties>
+      <Property name="Angle" value="8.25379"/>
+      <Property name="Filename" value="/Objects/icicle_medium.hs"/>
+      <Property name="Type" value="icyhot"/>
+    </Properties>
+  </Object>
+  <Object name="Object18">
+    <AbsoluteLocation value="21.665680 31.999996"/>
+    <Properties>
+      <Property name="Angle" value="25"/>
+      <Property name="Filename" value="/Objects/icicle_small.hs"/>
+      <Property name="Type" value="icyhot"/>
+    </Properties>
+  </Object>
+  <Room>
+    <AbsoluteLocation value="1.200003 -34.000000"/>
+  </Room>
+</Objects>

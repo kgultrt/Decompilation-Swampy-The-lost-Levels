@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">110024032444757</string>
+    <string name="app_name">Decompilation Swampy: The Lost levels</string>
+    <string name="app_name_free">"Where's My Water? Free"</string>
+    <!-- <string name="error_title">Connection Error</string> -->
+    <string name="link_japanese_market_help">Help</string>
+    <string name="link_japanese_market_member">Membership</string>
+    <string name="link_japanese_market_top">Top Page</string>
+    <string name="no">No</string>
+    <string name="no_connection_error">Cannot connect to the internet.</string>
+    <string name="ok">OK</string>
+    <string name="want_to_download">Do you want to download?</string>
+    <string name="yes">Yes</string>
+	
+	<string name="have_not_obb">No obb found</string>
+	<string name="have_obb">obb found，Last update time:</string>
+	<string name="start_game">Start Game</string>
+	<string name="load_game_obb">Inject OBB</string>
+	<string name="exit_str">Sure Exit？</string>
+	<string name="exit_str_title">Exit？</string>
+	<string name="tip">This project uses code from the following repositories https://github.com/StArrayJaN/Where-is-My-Water (one says one, I really have not seen Permission.申请(this), plz use another name</string>
+	<string name="cancel">Cancel</string>
+</resources>

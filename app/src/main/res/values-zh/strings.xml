@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="no">否</string>
+	
+	<string name="app_name">反编译的小顽皮：失落的关卡</string>
+	<string name="have_obb">检测到OBB，更新时间:</string>
+	<string name="have_not_obb">未检测到OBB</string>
+	<string name="start_game">开始游戏</string>
+	<string name="load_game_obb">注入 OBB</string>
+	<string name="exit_str">是否退出？</string>
+	<string name="exit_str_title">退出？</string>
+	<string name="tip">此项目使用了以下存储库的代码: https://github.com/StArrayJaN/Where-is-My-Water，有一说一，我是真没有见过 Permission.申请(this)</string>
+	<string name="cancel">取消</string>
+	<string name="ok">确认</string>
+</resources>

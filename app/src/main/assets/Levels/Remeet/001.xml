@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<Objects>
+  <Object name="Obj3">
+    <AbsoluteLocation value="22.157698 -12.008171"/>
+    <Properties>
+      <Property name="Angle" value="-90.3886"/>
+      <Property name="Filename" value="/Objects/pipe_elbow_2.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Obj4">
+    <AbsoluteLocation value="0.716955 0.355021"/>
+    <Properties>
+      <Property name="Angle" value="-177.93"/>
+      <Property name="Filename" value="/Objects/pipe_bend_1.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Obj4">
+    <AbsoluteLocation value="0.716955 0.355021"/>
+    <Properties>
+      <Property name="Angle" value="-177.93"/>
+      <Property name="Filename" value="/Objects/pipe_straight.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Obj5">
+    <AbsoluteLocation value="16.973274 -9.691740"/>
+    <Properties>
+      <Property name="Angle" value="-45.7956"/>
+      <Property name="Filename" value="/Objects/pipe_straight.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Obj6">
+    <AbsoluteLocation value="11.191442 -10.899529"/>
+    <Properties>
+      <Property name="Angle" value="-102.748"/>
+      <Property name="Filename" value="/Objects/pipe_straight.hs"/>
+    </Properties>
+  </Object>
+    <Object name="7">
+    <AbsoluteLocation value="-24.708069 35.749012"/>
+    <Properties>
+      <Property name="Angle" value="270.0000"/>
+      <Property name="ConnectedConverter" value="FluidConverter3"/>
+      <Property name="ExpulsionAngleVariation" value="0"/>
+      <Property name="Filename" value="/Objects/touch_spout.hs"/>
+      <Property name="FluidType" value="Water"/>
+      <Property name="SprinklerSteps" value="0"/>
+      <Property name="Type" value="spout"/>
+    </Properties>
+  </Object>
+  <Object name="FluidConverter3">
+    <AbsoluteLocation value="0.657438 32.098286"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/converter_dynamic_all_horiz.hs"/>
+      <Property name="FluidType0" value="water"/>
+      <Property name="FluidType1" value="contaminatedwater"/>
+      <Property name="FluidType2" value="lava"/>
+      <Property name="FluidType3" value="mud"/>
+      <Property name="FluidType4" value="steam"/>
+      <Property name="StartingFluidType" value="water"/>
+      <Property name="Type" value="fluidconverter"/>
+    </Properties>
+  </Object>
+  <Object name="Obj7">
+    <AbsoluteLocation value="10.626764 -13.377723"/>
+    <Properties>
+      <Property name="Angle" value="-92.327"/>
+      <Property name="Filename" value="/Objects/pipe_connector_end.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Obj8">
+    <AbsoluteLocation value="13.804954 -7.982120"/>
+    <Properties>
+      <Property name="Angle" value="-127.702"/>
+      <Property name="Filename" value="/Objects/pipe_connector_90.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Spout0">
+    <AbsoluteLocation value="-20.866158 0.703176"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="ConnectedSpout0" value="SWAMPY_SPOUT"/>
+      <Property name="ConnectedSpoutProbability0" value="1"/>
+      <Property name="Filename" value="/Objects/broken_pipe.hs"/>
+      <Property name="Type" value="spout"/>
+    </Properties>
+  </Object>
+  <Object name="Spout114514">
+    <AbsoluteLocation value="-5.866158 0.703176"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="ConnectedSpout0" value="SWAMPY_SPOUT"/>
+      <Property name="PathPos0" value="0 0"/>     
+      <Property name="PathPos1" value="-40 0"/>     
+      <Property name="MotorMoveSpeed" value="50"/>
+      <Property name="MotorMoveSpeed0" value="50"/>
+      <Property name="MotorMoveSpeed1" value="50"/>
+      <Property name="ConnectedSpoutProbability0" value="1"/>
+      <Property name="Filename" value="/Objects/broken_pipe.hs"/>
+      <Property name="Type" value="spout"/>
+    </Properties>
+  </Object>
+  <Object name="Switch10">
+    <AbsoluteLocation value="-11.413231 -16.598961"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="ConnectedObject0" value="Switch10"/>
+      <Property name="ConnectedObject1" value="Spout114514"/>
+      <Property name="Filename" value="/Objects/switch.hs"/>
+      <Property name="MotorMoveSpeed" value="4"/>
+      <Property name="MotorMoveSpeed0" value="4"/>
+      <Property name="MotorMoveSpeed1" value="4"/>
+      <Property name="PathPos0" value="16 0"/>
+      <Property name="PathPos1" value="-16 0"/>
+      <Property name="Type" value="switch"/>
+    </Properties>
+  </Object>
+  <Object name="Obj4">
+    <AbsoluteLocation value="5.716955 0.355021"/>
+    <Properties>
+      <Property name="Angle" value="-177.93"/>
+      <Property name="Filename" value="/Objects/pipe_bend_1.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Obj4">
+    <AbsoluteLocation value="10.716955 0.355021"/>
+    <Properties>
+      <Property name="Angle" value="-177.93"/>
+      <Property name="Filename" value="/Objects/pipe_bend_1.hs"/>
+    </Properties>
+  </Object>
+  <Object name="Collectible20">
+    <AbsoluteLocation value="-19.200001 -4.599995"/>
+    <Properties>
+      <Property name="Angle" value="0"/>
+      <Property name="Filename" value="/Objects/z_collectible_02.hs"/>
+      <Property name="PlatinumType" value="normal"/>
+      <Property name="Type" value="collectible"/>
+    </Properties>
+  </Object>
+  <Room>
+    <AbsoluteLocation value="13.200003 -26.800003"/>
+  </Room>
+</Objects>
