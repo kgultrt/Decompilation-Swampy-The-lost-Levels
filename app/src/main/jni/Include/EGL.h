@@ -2,7 +2,7 @@
 #define IMGUIMENU_IMGUIEGL_H
 
 #include "pch.h"
-#include "PatchManager.h"
+#include "HookGame.h"
 
 class EGL {
     std::condition_variable cond;
@@ -53,6 +53,7 @@ class EGL {
     uintptr_t getModuleBaseAddress(const char* moduleName);
     
     PatchManager patchMgr;
+    HookGame hookGame;
     
     struct MemoryRange {
         uintptr_t start;

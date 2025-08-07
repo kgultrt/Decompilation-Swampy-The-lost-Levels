@@ -17,8 +17,9 @@
 	<string name="have_obb">obb found，Last update time:</string>
 	<string name="start_game">Start Game</string>
 	<string name="load_game_obb">Inject OBB</string>
+	<string name="edit_game_save">Edit Game Save</string>
 	<string name="exit_str">Sure Exit？</string>
 	<string name="exit_str_title">Exit？</string>
-	<string name="tip">This project uses code from the following repositories https://github.com/StArrayJaN/Where-is-My-Water (one says one, I really have not seen Permission.申请(this), plz use another name</string>
+	<string name="tip">This project uses code from the following repositories https://github.com/StArrayJaN/Where-is-My-Water (This game is recommended to run at 60fps.)</string>
 	<string name="cancel">Cancel</string>
 </resources>

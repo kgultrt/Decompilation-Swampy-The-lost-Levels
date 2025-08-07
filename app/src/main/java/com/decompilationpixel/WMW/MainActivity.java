@@ -1,18 +1,17 @@
 package com.decompilationpixel.WMW;
 
 import android.app.AlertDialog;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.content.Intent;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,209 +19,217 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.disney.WMW.WMWActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.decompilationpixel.WMW.R;
+import com.decompilationpixel.WMW.editor.EditorSaveActivity;
+import com.disney.WMW.WMWActivity;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-    
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String appDataDir = Environment.getExternalStorageDirectory().toString() + "/WMW-MOD";
+    public static final String APP_DATA_DIR = Environment.getExternalStorageDirectory() + "/WMW-MOD";
     public static boolean isIPadScreen = false;
     private static final int MANAGE_EXTERNAL_STORAGE_REQUEST_CODE = 1002;
+    private static final int STORAGE_PERMISSION_REQUEST_CODE = 1003;
     
+    private ExecutorService executorService = Executors.newSingleThreadExecutor();
+    private Handler mainHandler = new Handler(Looper.getMainLooper());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-		//申请权限
-		//吐槽一下原作者的命名，你这直接上一个中文名，你看看这个，简洁
-		Permission.getPermission(this);
-		
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            // Android 11+ 跳转系统设置页申请 MANAGE_EXTERNAL_STORAGE
-            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-            intent.setData(Uri.parse("package:" + getPackageName()));
-            startActivityForResult(intent, MANAGE_EXTERNAL_STORAGE_REQUEST_CODE);
-        }
-		
-		//添加数据目录的File对象
-		File obbdir = getObbDir();
-		File dataDir = new File(appDataDir);
-		File extraDataFile = new File(appDataDir + "/wmw-extra.zip");
-		
-		//检测是否存在，不存在则创建，存在则用文本显示更新时间
-		if (!obbdir.exists() || !dataDir.exists()) {
-			obbdir.mkdirs();
-			dataDir.mkdirs();
-		} else{
-			TextView checkObb = findViewById(R.id.checkObb);
-			
-			//设置时间格式
-			long lastModifiedTime = extraDataFile.lastModified();
-			Date lastModifiedDate = new Date(lastModifiedTime);
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String formattedDate = dateFormat.format(lastModifiedDate);
-			
-			//显示更新时间
-			checkObb.setText(getString(R.string.have_obb) + formattedDate);
-		}
-		
-		initLayout();
-		extractLibFilesToPrivateDir(this);
+        
+        // 权限处理
+        checkPermissions();
+        initAppDirs();
+        initLayout();
     }
 
-	@Override
-	public void onBackPressed() {
-        Log.e("WMW","返回被按下");
+    private void checkPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // Android 11+ 跳转系统设置页申请 MANAGE_EXTERNAL_STORAGE
+            if (!Environment.isExternalStorageManager()) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, MANAGE_EXTERNAL_STORAGE_REQUEST_CODE);
+            }
+        } else {
+            // 旧版本Android请求存储权限
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) 
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, 
+                    new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 
+                    STORAGE_PERMISSION_REQUEST_CODE);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MANAGE_EXTERNAL_STORAGE_REQUEST_CODE) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && 
+                Environment.isExternalStorageManager()) {
+                // 权限已授予，继续初始化
+            } else {
+                Toast.makeText(this, "请授予存储权限，否则应用无法正常运行", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    // 优化目录初始化
+    private void initAppDirs() {
+        File obbDir = getObbDir();
+        File dataDir = new File(APP_DATA_DIR);
+        File extraDataFile = new File(APP_DATA_DIR, "wmw-extra.zip");
+
+        // 使用更安全的创建方式
+        if (!obbDir.exists()) obbDir.mkdirs();
+        if (!dataDir.exists()) dataDir.mkdirs();
+
+        TextView checkObb = findViewById(R.id.checkObb);
+        if (extraDataFile.exists()) {
+            // 设置时间格式并显示
+            long lastModifiedTime = extraDataFile.lastModified();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = dateFormat.format(new Date(lastModifiedTime));
+            checkObb.setText(getString(R.string.have_obb) + formattedDate);
+        } else {
+            // 当文件不存在时显示默认文本
+            checkObb.setText(R.string.have_not_obb);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("WMW", "Back button pressed");
         showExitDialog();
-	}
-	
+    }
 
     private void showExitDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-        builder.setTitle(getString(R.string.exit_str_title))
-               .setMessage(getString(R.string.exit_str))
-               .setPositiveButton(R.string.ok, (dialog, which) -> finish())
-               .setNegativeButton(R.string.cancel, null)
-               .show();
+        new MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.exit_str_title)
+            .setMessage(R.string.exit_str)
+            .setPositiveButton(R.string.ok, (dialog, which) -> finish())
+            .setNegativeButton(R.string.cancel, null)
+            .show();
     }
-	
-	// 将应用中的 .so 文件解压到私有目录
-    private void extractLibFilesToPrivateDir(Context context) {
-        File libDir = new File(context.getApplicationInfo().nativeLibraryDir);
-        File privateDir = context.getDir("libs", Context.MODE_PRIVATE);
 
-        if (!privateDir.exists()) {
-            privateDir.mkdirs();
+    // 替换危险命令的安全文件复制方法
+    private boolean safeCopyFile(File source, File dest) {
+        try (FileChannel inChannel = new FileInputStream(source).getChannel();
+             FileChannel outChannel = new FileOutputStream(dest).getChannel()) {
+            
+            outChannel.transferFrom(inChannel, 0, inChannel.size());
+            return true;
+            
+        } catch (IOException e) {
+            Log.e("WMW", "File copy failed", e);
+            return false;
         }
+    }
+    
+    // 安全删除文件
+    private boolean safeDeleteFile(File file) {
+        return file.delete();
+    }
 
-        File[] libFiles = libDir.listFiles((dir, name) -> name.endsWith(".so"));
-        if (libFiles != null) {
-            for (File libFile : libFiles) {
-                try {
-                    File destFile = new File(privateDir, libFile.getName());
-                    copyFile(libFile, destFile);
-                } catch (IOException e) {
-                    Log.e("WMW", "Failed to copy " + libFile.getName(), e);
-                }
+    private void initLayout() {
+        final CheckBox ipadScreen = findViewById(R.id.resetSize);
+        final CheckBox loadGameOBB = findViewById(R.id.loadGameOBB);
+        Button startGame = findViewById(R.id.startGame);
+        Button editGameSave = findViewById(R.id.editGameSave);
+
+        ipadScreen.setOnCheckedChangeListener((buttonView, isChecked) -> 
+            isIPadScreen = isChecked);
+
+        startGame.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, WMWActivity.class);
+            startActivity(intent);
+        });
+
+        loadGameOBB.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                loadGameOBB();
+            } else {
+                unloadGameOBB();
+            }
+        });
+        
+        editGameSave.setOnClickListener(v -> {
+            
+            File dbFile = new File(getFilesDir(), "data/water.db");
+        
+            if (!dbFile.exists()) {
+                Toast.makeText(this, "存档不存在！", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                Intent intent = new Intent(MainActivity.this, EditorSaveActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    
+    // 异步处理文件操作
+    private void loadGameOBB() {
+        executorService.execute(() -> {
+            File extraDataFile = new File(APP_DATA_DIR, "wmw-extra.zip");
+            String obbPath = getObbPath();
+            
+            // 确保资源文件存在
+            if (!extraDataFile.exists()) {
+                AppUtils.ExportAssets(this, APP_DATA_DIR, "wmw-extra.zip");
+            }
+            
+            boolean success = false;
+            if (extraDataFile.exists() && obbPath != null) {
+                File dest = new File(obbPath);
+                success = safeCopyFile(extraDataFile, dest);
+            }
+        });
+    }
+    
+    private void unloadGameOBB() {
+        executorService.execute(() -> {
+            String obbPath = getObbPath();
+            boolean success = false;
+            
+            if (obbPath != null) {
+                File obbFile = new File(obbPath);
+                success = safeDeleteFile(obbFile);
+            }
+        });
+    }
+
+    // 优化的OBB路径获取
+    private String getObbPath() {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            try {
+                String pn = getPackageName();
+                PackageInfo pkgInfo = getPackageManager().getPackageInfo(pn, 0);
+                int versionCode = pkgInfo.versionCode;
+                return getObbDir() + File.separator + "main." + versionCode + "." + pn + ".obb";
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.e("WMW", "Package not found", e);
             }
         }
+        return null;
     }
 
-    // 复制文件方法
-    private void copyFile(File src, File dst) throws IOException {
-        try (FileInputStream in = new FileInputStream(src);
-             FileOutputStream out = new FileOutputStream(dst)) {
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = in.read(buffer)) > 0) {
-                out.write(buffer, 0, len);
-            }
-        }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        executorService.shutdownNow();
     }
-	
-	public static String getObbPath(Context context) {
-		PackageManager packageManager = context.getPackageManager();
-		PackageInfo packageInfo = null;
-		try {
-			packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
-		} catch (PackageManager.NameNotFoundException e) {}
-		String pn = context.getPackageName();
-		if (Environment.getExternalStorageState().equals("mounted")) { 
-			File file = new File(context.getObbDir().toString()); 
-			if (packageInfo.versionCode > 0) { 
-				String str = file + File.separator + "main." + packageInfo.versionCode + "." + pn + ".obb";
-				Log.e("WMW", "obbFilePath: " + str);
-				return str;
-			} 
-		}  
-		return null;
-	}
-
-	private void initLayout() {
-		final CheckBox ipadScreen = findViewById(R.id.resetSize);
-		final CheckBox loadGameOBB = findViewById(R.id.loadGameOBB);
-		Button startGame = findViewById(R.id.startGame);
-		
-		ipadScreen.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (ipadScreen.isChecked()) {
-					isIPadScreen = true;
-				} else {
-				    isIPadScreen = false;
-				}
-			}
-		});
-		
-		startGame.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(MainActivity.this, WMWActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-		loadGameOBB.setOnClickListener(new View.OnClickListener() {
-		    @Override
-			public void onClick(View view) {
-				if (loadGameOBB.isChecked()) {
-					loadGameOBB();
-				} else {
-				    unloadGameOBB();
-				}
-			}
-		});
-	}
-	
-	private void loadGameOBB() {
-		File obbdir = getObbDir();
-		File dataDir = new File(appDataDir);
-		File extraDataFile = new File(appDataDir + "/wmw-extra.zip");
-		String obbPath = getObbPath(this);
-		
-		if (!extraDataFile.exists()) {
-			AppUtils.ExportAssets(this, appDataDir, "wmw-extra.zip");
-		}
-		
-		Process process = null;
-		try {
-			process = Runtime.getRuntime().exec("cp " + extraDataFile.toString() + " " + obbPath);
-			if (process.waitFor() != 0)
-			{
-				Toast.makeText(this, "OBB复制失败", 0).show();
-			}
-			//记录日志
-			Runtime.getRuntime().exec("logcat >" + appDataDir + "/wmw.log");
-		} catch (IOException|InterruptedException e) {
-			Log.e("WMW","",e);
-		}
-	}
-	
-	
-	private void unloadGameOBB() {
-		File obbdir = getObbDir();
-		File dataDir = new File(appDataDir);
-		File extraDataFile = new File(appDataDir + "/wmw-extra.zip");
-		String obbPath = getObbPath(this);
-		
-		Process process = null;
-		try {
-			process = Runtime.getRuntime().exec("rm -rf " + obbPath);
-			if (process.waitFor() != 0)
-			{
-				Toast.makeText(this, "OBB删除失败", 0).show();
-			}
-			//记录日志
-			Runtime.getRuntime().exec("logcat >" + appDataDir + "/wmw.log");
-		} catch (IOException|InterruptedException e) {
-			Log.e("WMW","",e);
-		}
-	}
 }

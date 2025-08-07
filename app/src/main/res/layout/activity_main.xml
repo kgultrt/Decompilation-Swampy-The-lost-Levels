@@ -1,39 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
-
-	<CheckBox
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:id="@+id/resetSize"
-		android:text="4:3"/>
-	
-	<CheckBox
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="@string/load_game_obb"
-		android:id="@+id/loadGameOBB"/>
-		
-	<Button
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="@string/start_game"
-		android:id="@+id/startGame"/>
-	
-
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="@string/have_not_obb"
-		android:id="@+id/checkObb"/>
-
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="@string/tip"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+    
+    <CheckBox
+        android:id="@+id/resetSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4:3"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"/>
+    
+    <CheckBox
+        android:id="@+id/loadGameOBB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/load_game_obb"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"/>
+        
+    <Button
+        android:id="@+id/startGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_game"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="12dp"/>
+    
+    <Button
+        android:id="@+id/editGameSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_game_save"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="12dp"/>
+    
+    <TextView
+        android:id="@+id/checkObb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/have_not_obb"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:textSize="12sp"/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tip"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:textSize="10sp"/>
 </LinearLayout>
-

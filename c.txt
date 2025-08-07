@@ -1,0 +1,3489 @@
+// callconv: r0 arm32 (r0, r1);
+int entry.init0 (int r0, int r1) {
+    loc_0x0011e77c:
+        push (r4, r5, r6, r7, r8, sb, sl, fp, lr)
+        fp = var_1ch
+        sp = sp - 4
+        r5 = [0x0011e790] // [0x11e990:4]=0x5c7918
+        r0 = 0xc
+        r6 = 0
+        r2 = 0x7970   // 'py'
+        r5 = pc + r5
+        r1 = [0x0011e7a4] // [0x11e994:4]=0x59dee8
+        r4 = 0xa
+        [r5] = (byte) r0
+        r1 = pc + r1  // 0x6bc698 // "lostlevels" // str.lostlevels
+        [r5 + 8] = r6
+        [r5 + 5] = (half) r2
+        r2 = 0x7773   // 'sw'
+        r2 |= 0x6d61 << 16
+        [r5 + 1] = r2
+        r2 = 0xa
+        [r5 + 7] = (byte) r6
+        [r5 + 0x14] = r6
+        [r5 + 0xc] = (byte) r0
+        r0 = 0x796b   // 'ky'
+        [r5 + 0x11] = (half) r0
+        r0 = 0x7263   // 'cr'
+        r0 |= 0x6e61 << 16
+        [r5 + 0xd] = r0
+        r0 = 0x14
+        [r5 + 0x13] = (byte) r6
+        [r5 + 0x18] = (byte) r0
+        r0 = r5 + 0x19
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e800] // [0x11e998:4]=0x59de9c
+        r0 = 0xe      // str.pper
+        [r5 + 0x23] = (byte) r6
+        r2 = 7
+        [r5 + 0x24] = r6
+        r1 = pc + r1  // 0x6bc6b0 // "mystery" // str.mystery
+        [r5 + 0x24] = (byte) r0
+        r0 = r5 + 0x25
+        [r5 + 0x28] = r6
+        [r5 + 0x2c] = r6
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011e82c] // [0x11e99c:4]=0xfffff940
+        r1 = 0x6c61   // 'al'
+        r2 = [0x0011e834] // [0x11e9a0:4]=0x5c57bc
+        r1 |= 0x696c << 16
+        [r5 + 0x2c] = (byte) r6
+        r0 = pc + r0  // 0x11e180 // "0H-\xe9\b\xb0\x8d\xe2,P\x9f\xe5" // section..text
+        r2 = pc + r2  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        [r5 + 0x30] = r6
+        [r5 + 0x34] = r6
+        [r5 + 0x38] = r6
+        [r5 + 0x3c] = r6
+        [r5 + 0x40] = r6
+        [r5 + 0x44] = r6
+        [r5 + 0x48] = r6
+        [r5 + 0x4c] = r6
+        [r5 + 0x50] = r6
+        [r5 + 0x31] = (byte) r6
+        [r5 + 0x3d] = (byte) r6
+        [r5 + 0x48] = (byte) r4
+        [r5 + 0x49] = r1
+        r1 = 0x65     // 'e'
+        [r5 + 0x4d] = (half) r1
+        r1 = 0
+        sym.imp.__cxa_atexit ()
+        r5 = [0x0011e88c] // [0x11e9a4:4]=0x5c7874
+        r0 = 4
+        sb = 0x614e   // 'Na'
+        sl = 0x6150   // 'Pa'
+        r5 = pc + r5
+        sb |= 0x656d << 16
+        sl |= 0x6b63 << 16
+        r1 = 0x73     // 's'
+        [r5] = (byte) r0
+        r0 = 0x4449   // 'ID'
+        [r5 + 1] = (half) r0
+        r0 = 8
+        [r5 + 3] = (byte) r6
+        r7 = r5
+        [r5 + 4] = r6
+        [r5 + 8] = r6
+        [r5 + 0xc] = r6
+        [r5 + 0x10] = r6
+        [r5 + 0x14] = r6
+        [r5 + 0x18] = r6
+        [r5 + 0x1c] = r6
+        [r5 + 0x20] = r6
+        [r5 + 0xd] = sb
+        [r5 + 0xc] = (byte) r0
+        r0 = 0x616e   // 'na'
+        r0 |= 0x656d << 16
+        [r5 + 0x11] = (byte) r6
+        [r5 + 0x1d] = r0
+        r0 = 0x6946   // 'Fi' // ","
+        r0 |= 0x656c << 16
+        [r5 + 0x19] = r0
+        r0 = 0x10
+        [r5 + 0x18] = (byte) r0
+        [r5 + 0x21] = (byte) r6
+        [r5 + 0x2c] = r6
+        [r5 + 0x28] = r6
+        [r5 + 0x24] = r6
+        [r5 + 0x29] = sb
+        [r5 + 0x25] = sl
+        [r5 + 0x24] = (byte) r0
+        [r5 + 0x2d] = (byte) r6
+        [r5 + 0x30] = r6
+        [r5 + 0x38] = r6
+        [r5 + 0x34] = r6
+        [r5 + 0x30] = (byte) r4
+        [r5 + 0x35] = (byte) r1
+        r1 = 0x7453   // 'St'
+        r1 |= 0x7261 << 16
+        [r5 + 0x31] = r1
+        r1 = 0x6b63   // 'ck'
+        r1 |= 0x6465 << 16
+        // DATA XREFS from WaterConcept::Screen_Popup::handleEvent(int, Walaber::Widget::WidgetActionRet const&, Walaber::Widget*) @ 0x5a21f8(r), 0x5a220c(r), 0x5a2214(r)
+        [r5 + 0x36] = (byte) r6
+        [r5 + 0x44] = r6
+        [r5 + 0x40] = r6
+        // DATA XREF from fcn.005bdaf4 @ 0x5bdb04(r)
+        [r5 + 0x3c] = r6
+        [r5 + 0x41] = r1
+        r1 = 0x6e55   // 'Un' // "l,"
+        r1 |= 0x6f6c << 16
+        [r5 + 0x3d] = r1
+        [r5 + 0x3c] = (byte) r0
+        [r5 + 0x45] = (byte) r6
+        [r7 + 0x48]! = r6
+        [r7 + 4] = r6
+        [r7 + 8] = r6
+        r0 = 0x10
+        rsym._Znwj ()
+        goto 0x11eacc
+        
+    loc_0x0011eacc:
+        // CODE XREF from entry.init0 @ 0x11e98c(x)
+        r1 = [0x0011e9a8] // [0x11e9a8:4]=0x59dbd4
+        r4 = r0
+        r8 = 0x11
+        r0 = 0xb
+        r1 = pc + r1  // 0x6bc6b8 // "TimesPlayed" // str.TimesPlayed
+        [r5 + 0x48] = r8
+        [r5 + 0x4c] = r0
+        r0 = r4
+        r2 = 0xb
+        [r5 + 0x50] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r5       // r14
+        [r4 + 0xb] = (byte) r6
+        [r7 + 0x54]! = r6
+        [r7 + 4] = r6
+        [r7 + 8] = r6
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011e9ac] // [0x11e9ac:4]=0x59db9c
+        r4 = r0
+        r0 = 0xd
+        [r5 + 0x54] = r8
+        r1 = pc + r1  // 0x6bc6c8 // "TimesFinished" // str.TimesFinished
+        [r5 + 0x58] = r0
+        r0 = r4
+        r2 = 0xd
+        [r5 + 0x5c] = r4
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9b0] // [0x11e9b0:4]=0x59db80
+        r6 = 0
+        r0 = 0xe      // str.pper
+        [r5 + 0x60] = r6
+        [r5 + 0x60] = (byte) r0
+        r1 = pc + r1  // 0x6bc6d8 // "ParTime" // str.ParTime
+        r0 = r5 + 0x61
+        r2 = 7
+        [r4 + 0xd] = (byte) r6
+        [r5 + 0x64] = r6
+        [r5 + 0x68] = r6
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9b4] // [0x11e9b4:4]=0x59db58
+        r0 = 0x12     // "("
+        [r5 + 0x68] = (byte) r6
+        r2 = 9
+        [r5 + 0x6c] = r6
+        r1 = pc + r1  // 0x6bc6e0 // "BestScore" // str.BestScore
+        [r5 + 0x6c] = (byte) r0
+        r0 = r5 + 0x6d
+        [r5 + 0x70] = r6
+        [r5 + 0x74] = r6
+        sym.imp.__aeabi_memcpy ()
+        r7 = r5       // r14
+        [r7 + 0x78]! = r6
+        [r7 - 2] = (byte) r6
+        [r7 + 4] = r6
+        [r7 + 8] = r6
+        r0 = 0x20
+        rsym._Znwj ()
+        // DATA XREF from fcn.005bdaf4 @ 0x5bdc48(r)
+        r1 = [0x0011e9b8] // [0x11e9b8:4]=0x59db24
+        r4 = r0
+        r0 = 0x21     // '!' // "Nn"
+        r8 = 0x10
+        r1 = pc + r1  // 0x6bc6f0 // "CollectibleFound" // str.CollectibleFound
+        [r5 + 0x78] = r0
+        r0 = r4
+        r2 = 0x10
+        [r5 + 0x7c] = r8
+        [r5 + 0x80] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r5       // r14
+        r0 = str.LG_  // 0x6954 // "LG,"
+        [r7 + 0x90]! = r6
+        r0 |= 0x656d << 16
+        [r4 + 0x10] = (byte) r6
+        [r7 - 0xc] = r6
+        [r7 - 8] = r6
+        [r7 - 4] = r6
+        [r7 + 4] = r6
+        [r7 + 8] = r6
+        [r7 - 7] = r0
+        r0 = 0x6c50   // 'Pl'
+        r0 |= 0x7961 << 16
+        [r7 - 0xb] = r0
+        [r7 - 0xc] = (byte) r8
+        [r7 - 3] = (byte) r6
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011e9bc] // [0x11e9bc:4]=0x59dac8
+        r6 = r0
+        r8 = 0x11
+        r0 = 0xc
+        r1 = pc + r1  // 0x6bc708 // "TimesRetried" // str.TimesRetried
+        [r5 + 0x90] = r8
+        [r5 + 0x94] = r0
+        r0 = r6
+        r2 = 0xc
+        [r5 + 0x98] = r6
+        sym.imp.__aeabi_memcpy ()
+        r4 = 0
+        r7 = r5       // r14
+        [r7 + 0x9c]! = r4
+        [r6 + 0xc] = (byte) r4
+        [r7 + 4] = r4
+        [r7 + 8] = r4
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011e9c0] // [0x11e9c0:4]=0x59da8c
+        r6 = r0
+        r0 = 0x21     // '!' // "Nn"
+        r2 = 0x11
+        // DATA XREF from void std::__ndk1::vector<WaterConcept::Screen_UpsellWater2::TransitionType, std::__ndk1::allocator<WaterConcept::Screen_UpsellWater2::TransitionType> >::__push_back_slow_path<WaterConcept::Screen_UpsellWater2::TransitionType>(WaterConcept::Screen_UpsellWater2::TransitionType&&) @ 0x5bd7dc(r)
+        r1 = pc + r1  // 0x6bc718 // "IgnoreInStarCount" // str.IgnoreInStarCount
+        [r5 + 0x9c] = r0
+        r0 = r6
+        [r5 + 0xa0] = r8
+        [r5 + 0xa4] = r6
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9c4] // [0x11e9c4:4]=0x59da7c
+        r0 = 8
+        r8 = 0x7954   // 'Ty'
+        [r5 + 0xa8] = r4
+        r1 = pc + r1  // 0x6bc730 // "StartDate" // str.StartDate
+        [r5 + 0xac] = r4
+        [r5 + 0xb0] = r4
+        r8 |= 0x6570 << 16
+        [r5 + 0xb4] = r4
+        r7 = 0x12     // "("
+        [r5 + 0xb8] = r4
+        r2 = 9
+        [r5 + 0xbc] = r4
+        [r5 + 0xa8] = (byte) r0
+        r0 = r5 + 0xb5
+        // DATA XREFS from WaterConcept::Screen_Popup::messageRx(Walaber::Message const&) @ 0x5a4138(r), 0x5a4184(r), 0x5a4190(r), 0x5a4198(r), 0x5a41a4(r)
+        [r5 + 0xa9] = r8
+        [r5 + 0xad] = (byte) r4
+        [r6 + 0x11] = (byte) r4
+        [r5 + 0xb4] = (byte) r7
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9c8] // [0x11e9c8:4]=0x59da3c
+        r0 = r5 + 0xc1
+        r6 = 0xe      // str.pper
+        r2 = 7
+        r1 = pc + r1  // 0x6bc740 // "EndDate" // str.EndDate
+        [r5 + 0xbe] = (byte) r4
+        [r5 + 0xc0] = r4
+        [r5 + 0xc4] = r4
+        [r5 + 0xc8] = r4
+        [r5 + 0xc0] = (byte) r6
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9cc] // [0x11e9cc:4]=0x59da18
+        r0 = r5 + 0xcd
+        r2 = 9
+        [r5 + 0xc8] = (byte) r4
+        r1 = pc + r1  // 0x6bc748 // "Available" // str.Available
+        [r5 + 0xcc] = r4
+        [r5 + 0xd0] = r4
+        [r5 + 0xd4] = r4
+        [r5 + 0xcc] = (byte) r7
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9d0] // [0x11e9d0:4]=0x59da00
+        r0 = r5 + 0xd9
+        r2 = 7
+        [r5 + 0xd6] = (byte) r4
+        r1 = pc + r1  // 0x6bc758 // "IsBonus" // str.IsBonus
+        [r5 + 0xd8] = r4
+        [r5 + 0xdc] = r4
+        [r5 + 0xe0] = r4
+        [r5 + 0xd8] = (byte) r6
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011e9d4] // [0x11e9d4:4]=0xfffff444
+        r1 = 0
+        r2 = [0x0011e9d8] // [0x11e9d8:4]=0x5c527c
+        r0 = pc + r0
+        [r5 + 0xe0] = (byte) r4
+        r2 = pc + r2  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        // DATA XREF from fcn.005bdaf4 @ 0x5be0d4(r)
+        sym.imp.__cxa_atexit ()
+        r6 = [0x0011e9dc] // [0x11e9dc:4]=0x5c745c
+        r0 = 4
+        r1 = [0x0011e9e0] // [0x11e9e0:4]=0x59d9bc
+        r2 = 0x6b63   // 'ck'
+        r6 = pc + r6
+        r2 |= 0x6465 << 16
+        r1 = pc + r1  // 0x6bc760 // "HasPlayed" // str.HasPlayed
+        [r6 + 4] = r4
+        [r6 + 8] = r4
+        [r6 + 0xc] = r4
+        [r6 + 0x10] = r4
+        [r6 + 0x14] = r4
+        [r6 + 0x18] = r4
+        [r6 + 0x1c] = r4
+        [r6 + 0x20] = r4
+        [r6] = (byte) r0
+        r0 = 0x4449   // 'ID'
+        [r6 + 1] = (half) r0
+        r0 = 0x10
+        [r6 + 3] = (byte) r4
+        [r6 + 0x11] = sb
+        // DATA XREF from std::__ndk1::__split_buffer<WaterConcept::Screen_UpsellWater2::TransitionType, std::__ndk1::allocator<WaterConcept::Screen_UpsellWater2::TransitionType>&>::__split_buffer(unsigned int, unsigned int, std::__ndk1::allocator<WaterConcept::Screen_UpsellWater2::TransitionType>&) @ 0x5bd978(r)
+        [r6 + 0xd] = sl
+        // DATA XREF from std::__ndk1::__split_buffer<WaterConcept::Screen_UpsellWater2::TransitionType, std::__ndk1::allocator<WaterConcept::Screen_UpsellWater2::TransitionType>&>::__split_buffer(unsigned int, unsigned int, std::__ndk1::allocator<WaterConcept::Screen_UpsellWater2::TransitionType>&) @ 0x5bd96c(r)
+        [r6 + 0xc] = (byte) r0
+        [r6 + 0x15] = (byte) r4
+        [r6 + 0x1d] = r2
+        r2 = 0x6e55   // 'Un' // "l,"
+        // DATA XREF from std::__ndk1::__split_buffer<WaterConcept::Screen_UpsellWater2::TransitionType, std::__ndk1::allocator<WaterConcept::Screen_UpsellWater2::TransitionType>&>::__split_buffer(unsigned int, unsigned int, std::__ndk1::allocator<WaterConcept::Screen_UpsellWater2::TransitionType>&) @ 0x5bd95c(r)
+        r2 |= 0x6f6c << 16
+        [r6 + 0x19] = r2
+        r2 = 9
+        [r6 + 0x18] = (byte) r0
+        r0 = r6 + 0x25
+        // DATA XREF from fcn.005bdaf4 @ 0x5be058(r)
+        [r6 + 0x21] = (byte) r4
+        [r6 + 0x24] = r4
+        [r6 + 0x28] = r4
+        [r6 + 0x2c] = r4
+        [r6 + 0x24] = (byte) r7
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r7 + 0x30]! = r4
+        [r7 - 2] = (byte) r4
+        [r7 + 4] = r4
+        [r7 + 8] = r4
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011e9e4] // [0x11e9e4:4]=0x59d924
+        r4 = r0
+        sb = 0x11
+        r0 = 0xd
+        r1 = pc + r1  // 0x6bc770 // "StarsRequired" // str.StarsRequired
+        [r6 + 0x30] = sb
+        // DATA XREF from fcn.005bdaf4 @ 0x5bdef0(r)
+        [r6 + 0x34] = r0
+        r0 = r4
+        r2 = 0xd
+        [r6 + 0x38] = r4
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6
+        [r7 + 0x3c]! = r5
+        [r4 + 0xd] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011e9e8] // [0x11e9e8:4]=0x59d8e8
+        r4 = r0
+        r0 = 0xb
+        [r6 + 0x3c] = sb
+        r1 = pc + r1  // 0x6bc780 // "TileTexture" // str.TileTexture
+        [r6 + 0x40] = r0
+        r0 = r4
+        r2 = 0xb
+        [r6 + 0x44] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r4 + 0xb] = (byte) r5
+        [r7 + 0x48]! = r5
+        [r7 + 4] = r5
+        // DATA XREF from WaterConcept::Screen_WaterTest::~Screen_WaterTest() @ 0x5be5b4(r)
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011e9ec] // [0x11e9ec:4]=0x59d8b4
+        r4 = r0
+        sb = 0x11
+        r0 = 0xd
+        r1 = pc + r1  // 0x6bc790 // "LightingColor" // str.LightingColor
+        [r6 + 0x48] = sb
+        [r6 + 0x4c] = r0
+        r0 = r4
+        r2 = 0xd
+        [r6 + 0x50] = r4
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6
+        [r7 + 0x54]! = r5
+        [r4 + 0xd] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        sl = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011e9f0] // [0x11e9f0:4]=0x59d874
+        r7 = 0xe      // str.pper
+        r2 = 0xe      // str.pper
+        [r6 + 0x54] = sb
+        r1 = pc + r1  // 0x6bc7a0 // "CurtainTexture" // str.CurtainTexture
+        [r6 + 0x58] = r7
+        r4 = r0
+        [r6 + 0x5c] = r0
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9f4] // [0x11e9f4:4]=0x59d860
+        r0 = r6 + 0x61
+        [r4 + 0xe] = (byte) r5
+        r4 = 0x12     // "("
+        r1 = pc + r1  // 0x6bc7b0 // "LockColor" // str.LockColor
+        r2 = 9
+        [r6 + 0x60] = r5
+        [r6 + 0x64] = r5
+        [r6 + 0x68] = r5
+        [r6 + 0x60] = (byte) r4
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011e9f8] // [0x11e9f8:4]=0x59d840
+        r0 = 0x14
+        [r6 + 0x6a] = (byte) r5
+        r2 = 0xa
+        [r6 + 0x6c] = (byte) r0
+        r1 = pc + r1  // 0x6bc7c0 // "HasAlerted" // str.HasAlerted
+        r0 = r6 + 0x6d
+        sym.imp.__aeabi_memcpy ()
+        sb = 0xc
+        r0 = 0x6e65   // 'en'
+        r1 = [0x0011e9fc] // [0x11e9fc:4]=0x59d790
+        [r6 + 0x78] = r5
+        [r6 + 0x7c] = r5
+        r1 = pc + r1  // 0x6bc730 // "StartDate" // str.StartDate
+        [r6 + 0x80] = r5
+        [r6 + 0x98] = r5
+        [r6 + 0x94] = r5
+        [r6 + 0x90] = r5
+        [r6 + 0x77] = (byte) r5
+        [r6 + 0x8c] = r5
+        [r6 + 0x84] = (byte) sb
+        [r6 + 0x89] = (half) r0
+        r0 = 0x6948   // 'Hi'
+        r0 |= 0x6464 << 16
+        [r6 + 0x85] = r0
+        r0 = 0x6150   // 'Pa'
+        r0 |= 0x6b63 << 16
+        [r6 + 0x8b] = (byte) r5
+        r2 = r0
+        [r6 + 0x79] = r0
+        r0 = 0x6349   // 'Ic'
+        [r6 + 0x7d] = r8
+        r0 |= 0x6e6f << 16
+        [r6 + 0x95] = r0
+        r0 = r6 + 0x9d
+        [r6 + 0x78] = (byte) sl
+        [r6 + 0x81] = (byte) r5
+        [r6 + 0x91] = r2
+        r2 = 9
+        [r6 + 0x90] = (byte) sl
+        [r6 + 0x99] = (byte) r5
+        [r6 + 0x9c] = r5
+        [r6 + 0xa4] = r5
+        [r6 + 0xa0] = r5
+        [r6 + 0x9c] = (byte) r4
+        // DATA XREF from WaterConcept::Screen_UpsellWater2::_fileExistsCallback(void*) @ 0x5bd44c(r)
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011ea00] // [0x11ea00:4]=0x59d70c
+        r0 = r6 + 0xa9
+        r2 = 7
+        [r6 + 0xa6] = (byte) r5
+        r1 = pc + r1  // 0x6bc740 // "EndDate" // str.EndDate
+        [r6 + 0xa8] = r5
+        [r6 + 0xac] = r5
+        [r6 + 0xb0] = r5
+        [r6 + 0xa8] = (byte) r7
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011ea04] // [0x11ea04:4]=0x59d774
+        r0 = r6 + 0xb5
+        r2 = 9
+        [r6 + 0xb0] = (byte) r5
+        r1 = pc + r1  // 0x6bc7d0 // "Storyline" // str.Storyline
+        [r6 + 0xb4] = r5
+        [r6 + 0xb8] = r5
+        [r6 + 0xbc] = r5
+        [r6 + 0xb4] = (byte) r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r7 + 0xc0]! = r5
+        [r7 - 2] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea08] // [0x11ea08:4]=0x59d740
+        r4 = r0
+        sl = 0x11
+        r0 = 0xb
+        r1 = pc + r1  // 0x6bc7e0 // "IAP_item_id" // str.IAP_item_id
+        [r6 + 0xc0] = sl
+        [r6 + 0xc4] = r0
+        r0 = r4
+        r2 = 0xb
+        [r6 + 0xc8] = r4
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6
+        [r7 + 0xd8]! = r5
+        r0 = 0x7468   // 'ht'
+        [r4 + 0xb] = (byte) r5
+        [r7 - 4] = r5
+        [r7 - 0xc] = (byte) sb
+        [r7 - 7] = (half) r0
+        r0 = 0x6f42   // 'Bo'
+        r0 |= 0x6775 << 16
+        [r7 - 0xb] = r0
+        [r7 - 5] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011ea0c] // [0x11ea0c:4]=0x59d6e4
+        r4 = r0
+        r0 = 0x21     // '!' // "Nn"
+        r2 = 0x11
+        r1 = pc + r1  // 0x6bc7f0 // "DuckTextureSuffix" // str.DuckTextureSuffix
+        [r6 + 0xd8] = r0
+        r0 = r4
+        [r6 + 0xdc] = sl
+        [r6 + 0xe0] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r4 + 0x11] = (byte) r5
+        [r7 + 0xe4]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea10] // [0x11ea10:4]=0x59d6b8
+        r4 = r0
+        sb = 0x11
+        r0 = 0xc
+        r1 = pc + r1  // 0x6bc808 // "FB_AlbumName" // str.FB_AlbumName
+        [r6 + 0xe4] = sb
+        [r6 + 0xe8] = r0
+        r0 = r4
+        r2 = 0xc
+        [r6 + 0xec] = r4
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6
+        [r7 + 0xf0]! = r5
+        [r4 + 0xc] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea14] // [0x11ea14:4]=0x59d67c
+        r4 = r0
+        r0 = 0xf
+        [r6 + 0xf0] = sb
+        r1 = pc + r1  // 0x6bc818 // "DisplayPackName" // str.DisplayPackName
+        [r6 + 0xf4] = r0
+        r0 = r4
+        r2 = 0xf
+        [r6 + 0xf8] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r4 + 0xf] = (byte) r5
+        [r7 + 0xfc]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        sl = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea18] // [0x11ea18:4]=0x59d644
+        r5 = r0
+        r2 = 0x11
+        r0 = 0xb
+        r1 = pc + r1  // 0x6bc828 // "LS_Unlocked" // str.LS_Unlocked
+        [r6 + 0xfc] = r2
+        [r6 + fcn.00000100] = r0
+        r0 = r5
+        r2 = 0xb
+        [r6 + 0x104] = r5
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011ea1c] // [0x11ea1c:4]=0xffffeff0
+        r1 = 0x7247   // 'Gr'
+        r4 = [0x0011ea20] // [0x11ea20:4]=0x5c4de8
+        r7 = 0
+        r0 = pc + r0
+        r1 |= 0x7961 << 16
+        r4 = pc + r4  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        [r6 + 0x108] = r7
+        [r6 + 0x10c] = r7
+        [r6 + 0x110] = r7
+        r2 = r4       // section..data
+        [r6 + 0x109] = r1
+        r1 = 0
+        [r6 + 0x10d] = r8
+        [r6 + 0x108] = (byte) sl
+        [r5 + 0xb] = (byte) r7
+        [r6 + 0x111] = (byte) r7
+        sym.imp.__cxa_atexit ()
+        r1 = [0x0011ea24] // [0x11ea24:4]=0x5c70b8
+        r2 = 0x614e   // 'Na'
+        r2 |= 0x656d << 16
+        r0 = [0x0011ea28] // [0x11ea28:4]=0xffffefe4
+        r1 = pc + r1
+        r0 = pc + r0
+        [r1] = r7
+        [r1 + 4] = r7
+        [r1 + 8] = r7
+        [r1 + 0xc] = r7
+        [r1 + 0x10] = r7
+        [r1 + 0x14] = r7
+        [r1 + 1] = r2
+        r2 = 8
+        [r1] = (byte) r2
+        r2 = 0x65     // 'e'
+        [r1 + 5] = (byte) r7
+        [r1 + 0x11] = (half) r2
+        r2 = 0x6156   // 'Va'
+        r2 |= 0x756c << 16
+        [r1 + 0xd] = r2
+        r2 = 0xa
+        [r1 + 0xc] = (byte) r2
+        r1 = 0
+        r2 = r4       // section..data
+        sym.imp.__cxa_atexit ()
+        // XREFS: DATA 0x005a3bb4  DATA 0x005a3bbc  DATA 0x005a3bc8
+        // XREFS: DATA 0x005bd1c0
+        r6 = [0x0011ea2c] // [0x11ea2c:4]=0x5c7068
+        r0 = 0x6b63   // 'ck'
+        r5 = 4
+        r0 |= 0x6465 << 16
+        r6 = pc + r6
+        r8 = 0x4449   // 'ID'
+        r2 = 9
+        [r6 + 4] = r7
+        [r6 + 8] = r7
+        [r6 + 0xc] = r7
+        [r6 + 0x10] = r7
+        [r6 + 0x14] = r7
+        [r6 + 0x18] = r7
+        [r6 + 0x1c] = r7
+        [r6 + 0x20] = r7
+        [r6] = (byte) r5
+        [r6 + 0x11] = r0
+        r0 = 0x6e55   // 'Un' // "l,"
+        r0 |= 0x6f6c << 16
+        [r6 + 1] = (half) r8
+        [r6 + 3] = (byte) r7
+        [r6 + 0xd] = r0
+        r0 = 0x616e   // 'na'
+        r0 |= 0x656d << 16
+        [r6 + 0xc] = (byte) sl
+        [r6 + 0x15] = (byte) r7
+        [r6 + 0x1d] = r0
+        r0 = 0x6142   // 'Ba'
+        r0 |= 0x6573 << 16
+        [r6 + 0x19] = r0
+        r0 = r6 + 0x25
+        [r6 + 0x18] = (byte) sl
+        sl = 0x12     // "("
+        [r6 + 0x21] = (byte) r7
+        [r6 + 0x24] = r7
+        [r6 + 0x28] = r7
+        [r6 + 0x2c] = r7
+        [r6 + 0x24] = (byte) sl
+        r1 = [0x0011ea30] // [0x11ea30:4]=0x59d4ec // "P"
+        r1 = pc + r1  // 0x6bc838 // "HasViewed" // str.HasViewed
+        sym.imp.__aeabi_memcpy ()
+        [r6 + 0x2e] = (byte) r7
+        r1 = 0
+        r0 = [0x0011ea34] // [0x11ea34:4]=0xffffef1c
+        r2 = r4       // section..data
+        r0 = pc + r0
+        sym.imp.__cxa_atexit ()
+        sb = [0x0011ea38] // [0x11ea38:4]=0x5c6fe4
+        r0 = 0x64     // 'd'
+        sb = pc + sb
+        [sb] = r7
+        [sb + 4] = r7
+        [sb + 8] = r7
+        [sb + 0xc] = (byte) r5
+        [sb + 0xd] = (half) r8
+        [sb + 0xf] = (byte) r7
+        [sb + 0x10] = r7
+        [sb + 0x14] = r7
+        [sb + 0x18] = r7
+        [sb + 0x1c] = r7
+        [sb + 0x20] = r7
+        [sb + 5] = (half) r0
+        r0 = 0x6f72   // 'ro'
+        r0 |= 0x6977 << 16
+        [sb + 1] = r0
+        r0 = 0xa
+        [sb] = (byte) r0
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea3c] // [0x11ea3c:4]=0x59d474
+        r4 = r0
+        r2 = 0x11
+        r0 = 0xf
+        r1 = pc + r1  // 0x6bc848 // "PercentComplete" // str.PercentComplete
+        [sb + 0x18] = r2
+        [sb + 0x1c] = r0
+        r0 = r4
+        r2 = 0xf
+        [sb + 0x20] = r4
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011ea40] // [0x11ea40:4]=0xffffeec0
+        r5 = 0
+        r2 = [0x0011ea44] // [0x11ea44:4]=0x5c4bf8
+        r1 = 0
+        r0 = pc + r0
+        [r4 + 0xf] = (byte) r5
+        r2 = pc + r2  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        sym.imp.__cxa_atexit ()
+        r6 = [0x0011ea48] // [0x11ea48:4]=0x5c6f60
+        r0 = 4
+        r1 = [0x0011ea4c] // [0x11ea4c:4]=0x59d324
+        r2 = 9
+        r6 = pc + r6
+        r1 = pc + r1  // 0x6bc748 // "Available" // str.Available
+        [r6] = (byte) r0
+        r0 = r6 + 0xd
+        [r6 + 1] = (half) r8
+        [r6 + 3] = (byte) r5
+        [r6 + 4] = r5
+        [r6 + 8] = r5
+        [r6 + 0xc] = r5
+        [r6 + 0x10] = r5
+        [r6 + 0x14] = r5
+        [r6 + 0xc] = (byte) sl
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r7 + 0x18]! = r5
+        [r7 - 2] = (byte) r5
+        [r7 + 4] = r5
+        // DATA XREFS from WaterConcept::Screen_Popup::messageRx(Walaber::Message const&) @ 0x5a3994(r), 0x5a39d8(r)
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea50] // [0x11ea50:4]=0x59d360
+        r4 = r0
+        r8 = 0x11
+        r0 = 0xb
+        r1 = pc + r1  // 0x6bc7e0 // "IAP_item_id" // str.IAP_item_id
+        [r6 + 0x18] = r8
+        [r6 + 0x1c] = r0
+        r0 = r4
+        r2 = 0xb
+        [r6 + 0x20] = r4
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011ea54] // [0x11ea54:4]=0x59d3ac // "x"
+        r0 = r6 + 0x25
+        [r4 + 0xb] = (byte) r5
+        r4 = 0x12     // "("
+        r1 = pc + r1  // 0x6bc858 // "Completed" // str.Completed
+        r2 = 9
+        [r6 + 0x24] = r5
+        [r6 + 0x28] = r5
+        [r6 + 0x2c] = r5
+        [r6 + 0x24] = (byte) r4
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011ea58] // [0x11ea58:4]=0x59d390
+        r0 = r6 + 0x31
+        r2 = 9
+        [r6 + 0x2e] = (byte) r5
+        r1 = pc + r1  // 0x6bc868 // "LevelName" // str.LevelName
+        [r6 + 0x30] = r5
+        [r6 + 0x34] = r5
+        [r6 + 0x38] = r5
+        [r6 + 0x30] = (byte) r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r7 + 0x3c]! = r5
+        [r7 - 2] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011ea5c] // [0x11ea5c:4]=0x59d35c
+        r4 = r0
+        // DATA XREFS from WaterConcept::Screen_Popup::messageRx(Walaber::Message const&) @ 0x5a35d4(r), 0x5a361c(r)
+        r0 = 0x21     // '!' // "Nn"
+        r2 = 0x11
+        r1 = pc + r1  // 0x6bc878 // "LevelRequirements" // str.LevelRequirements
+        [r6 + 0x3c] = r0
+        r0 = r4
+        [r6 + 0x40] = r8
+        [r6 + 0x44] = r4
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6
+        [r7 + 0x48]! = r5
+        [r4 + 0x11] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea60] // [0x11ea60:4]=0x59d154
+        r4 = r0
+        r8 = 0x11
+        r0 = 0xb
+        r1 = pc + r1  // 0x6bc6b8 // "TimesPlayed" // str.TimesPlayed
+        [r6 + 0x48] = r8
+        [r6 + 0x4c] = r0
+        r0 = r4
+        r2 = 0xb
+        [r6 + 0x50] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6
+        [r4 + 0xb] = (byte) r5
+        [r7 + 0x54]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011ea64] // [0x11ea64:4]=0x59d2e4
+        r5 = r0
+        r0 = 0xe      // str.pper
+        [r6 + 0x54] = r8
+        r1 = pc + r1  // 0x6bc890 // "TimesCompleted" // str.TimesCompleted
+        [r6 + 0x58] = r0
+        r0 = r5
+        r2 = 0xe      // str.pper
+        [r6 + 0x5c] = r5
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011ea68] // [0x11ea68:4]=0xffffed20
+        r7 = 0
+        r8 = [0x0011ea6c] // [0x11ea6c:4]=0x5c4a24
+        r4 = 8
+        [r5 + 0xe] = (byte) r7
+        r5 = 0x6544   // 'De'
+        r8 = pc + r8  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        r0 = pc + r0
+        r5 |= 0x6373 << 16
+        r1 = 0
+        r2 = r8       // section..data
+        [r6 + 0x60] = r7
+        [r6 + 0x64] = r7
+        [r6 + 0x68] = r7
+        [r6 + 0x61] = r5
+        [r6 + 0x60] = (byte) r4
+        [r6 + 0x65] = (byte) r7
+        sym.imp.__cxa_atexit ()
+        r6 = [0x0011ea70] // [0x11ea70:4]=0x5c6dd4
+        r0 = 4
+        r1 = [0x0011ea74] // [0x11ea74:4]=0x59d244
+        sb = 0x12     // "("
+        r6 = pc + r6
+        r2 = 9
+        r1 = pc + r1  // 0x6bc868 // "LevelName" // str.LevelName
+        [r6] = (byte) r0
+        r0 = 0x4449   // 'ID'
+        [r6 + 1] = (half) r0
+        r0 = r6 + 0xd
+        [r6 + 3] = (byte) r7
+        [r6 + 4] = r7
+        [r6 + 8] = r7
+        [r6 + 0xc] = r7
+        [r6 + 0x10] = r7
+        [r6 + 0x14] = r7
+        [r6 + 0xc] = (byte) sb
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011ea78] // [0x11ea78:4]=0xffffecd8
+        r1 = 0
+        r2 = r8       // section..data
+        [r6 + 0x16] = (byte) r7
+        r0 = pc + r0
+        [r6 + 0x18] = r7
+        [r6 + 0x1c] = r7
+        [r6 + 0x20] = r7
+        [r6 + 0x19] = r5
+        [r6 + 0x18] = (byte) r4
+        [r6 + 0x1d] = (byte) r7
+        sym.imp.__cxa_atexit ()
+        r5 = [0x0011ea7c] // [0x11ea7c:4]=0x5c6d80
+        r6 = 0x14
+        r1 = [0x0011ea80] // [0x11ea80:4]=0x59d204
+        r2 = 0xa
+        r5 = pc + r5
+        r1 = pc + r1  // 0x6bc8a0 // "PlayerData" // str.PlayerData
+        r0 = r5 + 1
+        [r5] = (byte) r6
+        // DATA XREF from WaterConcept::Screen_UpsellWater2::_finishedLoadingWidgets(void*) @ 0x5bd004(r)
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011ea84] // [0x11ea84:4]=0x59d1f0
+        r0 = 0x400    // (pstr 0x000001ef) "\"
+        r0 |= 0x4449 << 16
+        r2 = 9
+        [r5 + 0xb] = r0
+        r1 = pc + r1  // 0x6bc8b0 // "EventName" // str.EventName
+        r0 = r5 + 0x19
+        [r5 + 0xf] = (byte) r7
+        [r5 + 0x10] = r7
+        [r5 + 0x14] = r7
+        [r5 + 0x18] = r7
+        [r5 + 0x1c] = r7
+        [r5 + 0x20] = r7
+        [r5 + 0x18] = (byte) sb
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011ea88] // [0x11ea88:4]=0x59d1c8
+        r0 = r5 + 0x25
+        r2 = 0xa
+        [r5 + 0x22] = (byte) r7
+        r1 = pc + r1  // 0x6bc8c0 // "EventValue" // str.EventValue
+        [r5 + 0x24] = (byte) r6
+        sym.imp.__aeabi_memcpy ()
+        [r5 + 0x2f] = (byte) r7
+        [r5 + 0x30] = r7
+        [r5 + 0x34] = r7
+        [r5 + 0x38] = r7
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011ea8c] // [0x11ea8c:4]=0x59d1a4
+        // DATA XREFS from fcn.00588040 @ 0x58ab88(r), 0x58abbc(r)
+        r4 = r0
+        r8 = 0x21     // '!' // "Nn"
+        r0 = 0x10
+        r1 = pc + r1  // 0x6bc8d0 // "EventStringValue" // str.EventStringValue
+        [r5 + 0x30] = r8
+        // DATA XREF from WaterConcept::Screen_UpsellWater2::_finishedLoadingWidgets(void*) @ 0x5bcf78(r)
+        [r5 + 0x34] = r0
+        r0 = r4
+        r2 = 0x10
+        [r5 + 0x38] = r4
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011ea90] // [0x11ea90:4]=0xffffec28
+        r5 = 0
+        r2 = [0x0011ea94] // [0x11ea94:4]=0x5c48a0 // "p"
+        r1 = 0
+        r0 = pc + r0
+        [r4 + 0x10] = (byte) r5
+        r2 = pc + r2  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        sym.imp.__cxa_atexit ()
+        r6 = [0x0011ea98] // [0x11ea98:4]=0x5c6ce8
+        r0 = 0x20
+        r6 = pc + r6
+        [r6] = r5
+        // DATA XREF from fcn.00588040 @ 0x58ab34(r)
+        [r6 + 4] = r5
+        [r6 + 8] = r5
+        rsym._Znwj ()
+        r1 = [0x0011ea9c] // [0x11ea9c:4]=0x59d154
+        r4 = r0
+        r0 = 0x11
+        [r6] = r8
+        r1 = pc + r1  // 0x6bc8e8 // "PoisonWaterLosses" // str.PoisonWaterLosses
+        stmib r6, (r0, r4)
+        r0 = r4
+        r2 = 0x11
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r4 + 0x11] = (byte) r5
+        // XREFS: DATA 0x005a3628  DATA 0x005a3654  DATA 0x005a36a8
+        // XREFS: DATA 0x005a36b4  DATA 0x005a36bc  DATA 0x005a36c8
+        [r7 + 0xc]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eaa0] // [0x11eaa0:4]=0x59d12c
+        r4 = r0
+        r0 = 0x13
+        [r6 + 0xc] = r8
+        r1 = pc + r1  // 0x6bc900 // "RubberDuckiesKilled" // str.RubberDuckiesKilled
+        [r6 + 0x10] = r0
+        r0 = r4
+        r2 = 0x13
+        [r6 + 0x14] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        // DATA XREF from WaterConcept::Screen_UpsellWater2::_finishedLoadingWidgets(void*) @ 0x5bd014(r)
+        [r4 + 0x13] = (byte) r5
+        [r7 + 0x18]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eaa4] // [0x11eaa4:4]=0x59d0fc
+        r4 = r0
+        r0 = 0x21     // '!' // "Nn"
+        r2 = 0x17
+        r3 = r6 + 0x18
+        r1 = pc + r1  // 0x6bc918 // "FirstCollectibleSighted" // str.FirstCollectibleSighted
+        stm r3, (r0, r2, r4)
+        r0 = r4
+        r2 = 0x17
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r7 + 0x24]! = r5
+        [r4 + 0x17] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011eaa8] // [0x11eaa8:4]=0x59d0d0
+        r8 = 0x11
+        sb = 0xd
+        r2 = 0xd
+        r1 = pc + r1  // 0x6bc930 // "LastHourCount" // str.LastHourCount
+        [r6 + 0x24] = r8
+        [r6 + 0x28] = sb
+        r4 = r0
+        [r6 + 0x2c] = r0
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        // DATA XREF from WaterConcept::Screen_UpsellWater2::_finishedLoadingWidgets(void*) @ 0x5bcf88(r)
+        [r4 + 0xd] = (byte) r5
+        [r7 + 0x30]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011eaac] // [0x11eaac:4]=0x59d09c
+        r2 = 0xd
+        [r6 + 0x30] = r8
+        r4 = r0
+        r1 = pc + r1  // 0x6bc940 // "SwampyTouched" // str.SwampyTouched
+        [r6 + 0x34] = sb
+        [r6 + 0x38] = r0
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r7 + 0x3c]! = r5
+        [r4 + 0xd] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eab0] // [0x11eab0:4]=0x59d06c
+        r8 = 0x21     // '!' // "Nn"
+        sb = 0x11
+        r2 = 0x11
+        r1 = pc + r1  // 0x6bc950 // "CloudSyncPrompted" // str.CloudSyncPrompted
+        [r6 + 0x3c] = r8
+        [r6 + 0x40] = sb
+        r4 = r0
+        [r6 + 0x44] = r0
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r4 + 0x11] = (byte) r5
+        [r7 + 0x48]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eab4] // [0x11eab4:4]=0x59d040
+        r2 = 0x11
+        [r6 + 0x48] = r8
+        r4 = r0
+        r1 = pc + r1  // 0x6bc968 // "PreferredLanguage" // str.PreferredLanguage
+        [r6 + 0x4c] = sb
+        [r6 + 0x50] = r0
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r7 + 0x54]! = r5
+        // DATA XREF from fcn.005bdaf4 @ 0x5bdb34(r)
+        [r4 + 0x11] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eab8] // [0x11eab8:4]=0x59d018
+        r4 = r0
+        r8 = 0x21     // '!' // "Nn"
+        r0 = 0x18
+        r1 = pc + r1  // 0x6bc980 // "CheckCrankyLevelsForFood" // str.CheckCrankyLevelsForFood
+        [r6 + 0x54] = r8
+        [r6 + 0x58] = r0
+        r0 = r4
+        r2 = 0x18
+        [r6 + 0x5c] = r4
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r4 + 0x18] = (byte) r5
+        [r7 + 0x60]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eabc] // [0x11eabc:4]=0x59cff0
+        r4 = r0
+        r0 = 0x10
+        [r6 + 0x60] = r8
+        r1 = pc + r1  // 0x6bc9a0 // "NewCrankyContent" // str.NewCrankyContent
+        [r6 + 0x64] = r0
+        r0 = r4
+        r2 = 0x10
+        [r6 + 0x68] = r4
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r7 + 0x6c]! = r5
+        [r4 + 0x10] = (byte) r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011eac0] // [0x11eac0:4]=0x59cfbc
+        r4 = r0
+        r0 = 0x11
+        r2 = 0xe      // str.pper
+        r3 = r6 + 0x6c
+        r1 = pc + r1  // 0x6bc9b8 // "DateLastPlayed" // str.DateLastPlayed
+        stm r3, (r0, r2, r4)
+        r0 = r4
+        r2 = 0xe      // str.pper
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r4 + 0xe] = (byte) r5
+        [r7 + 0x78]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eac4] // [0x11eac4:4]=0x59cf8c
+        r4 = r0
+        r8 = 0x21     // '!' // "Nn"
+        r0 = 0x15     // (pstr 0x00000001) "EL"
+        r1 = pc + r1  // 0x6bc9c8 // "ConsecutiveDaysPlayed" // str.ConsecutiveDaysPlayed
+        [r6 + 0x78] = r8
+        [r6 + 0x7c] = r0
+        r0 = r4
+        r2 = 0x15     // (pstr 0x00000001) "EL"
+        [r6 + 0x80] = r4
+        sym.imp.__aeabi_memcpy ()
+        r5 = 0
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r7 + 0x90]! = r5
+        r0 = 8
+        [r4 + 0x15] = (byte) r5
+        [r7 - 0xc] = r5
+        [r7 - 8] = r5
+        [r7 - 4] = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        [r7 - 0xc] = (byte) r0
+        r0 = 0x5547   // 'GU'
+        r0 |= 0x4449 << 16
+        [r7 - 0xb] = r0
+        [r7 - 7] = (byte) r5
+        r0 = 0x20
+        rsym._Znwj ()
+        r1 = [0x0011eac8] // [0x11eac8:4]=0x59cf34
+        sb = 0x10
+        r2 = 0x10
+        [r6 + 0x90] = r8
+        r1 = pc + r1  // 0x6bc9e0 // "FacebookLoggedIn" // str.FacebookLoggedIn
+        [r6 + 0x94] = sb
+        r4 = r0
+        [r6 + 0x98] = r0
+        sym.imp.__aeabi_memcpy ()
+        r7 = r6       // (pstr 0x00000021) "Nn"
+        [r4 + 0x10] = (byte) r5
+        [r7 + 0x9c]! = r5
+        [r7 + 4] = r5
+        [r7 + 8] = r5
+        r0 = 0x10
+        rsym._Znwj ()
+        r1 = [0x0011fadc] // [0x11fea0:4]=0x59cf0c
+        r5 = r0
+        r0 = 0x11
+        r7 = 0xc
+        r1 = pc + r1  // 0x6bc9f8 // "NewHubViewed" // str.NewHubViewed
+        [r6 + 0x9c] = r0
+        r0 = r5
+        r2 = 0xc
+        [r6 + 0xa0] = r7
+        [r6 + 0xa4] = r5
+        sym.imp.__aeabi_memcpy ()
+        r0 = [0x0011fb08] // [0x11fea4:4]=0xffffe8a4
+        r1 = 0x4445   // 'ED'
+        r2 = [0x0011fb10] // [0x11fea8:4]=0x5c44e0
+        sl = 0
+        r1 |= 0x424f << 16
+        r0 = pc + r0
+        r2 = pc + r2  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        [r6 + 0xa8] = sl
+        [r6 + 0xac] = sl
+        [r6 + 0xb0] = sl
+        [r6 + 0xa9] = r1
+        r1 = 8
+        [r6 + 0xa8] = (byte) r1
+        r1 = 0
+        [r5 + 0xc] = (byte) sl
+        r5 = r2       // section..data
+        [r6 + 0xad] = (byte) sl
+        sym.imp.__cxa_atexit ()
+        r4 = [0x0011fb50] // [0x11feac:4]=0x5c69b0
+        r0 = 4
+        r2 = 7
+        r8 = 4
+        r4 = pc + r4
+        r6 = 0x4449   // 'ID'
+        [r4] = (byte) r0
+        r0 = 0x4449   // 'ID'
+        [r4 + 1] = (half) r0
+        r0 = 0x6e72   // 'rn'
+        r0 |= 0x6c61 << 16
+        [r4 + 3] = (byte) sl
+        [r4 + 4] = sl
+        [r4 + 8] = sl
+        [r4 + 0xc] = sl
+        [r4 + 0x10] = sl
+        [r4 + 0x14] = sl
+        [r4 + 0x18] = sl
+        [r4 + 0x1c] = sl
+        [r4 + 0x20] = sl
+        [r4 + 0x11] = r0
+        r0 = 6
+        [r4 + 0x18] = (byte) r0
+        r0 = 0x53     // 'S'
+        [r4 + 0x1b] = (byte) r0
+        r0 = 0x4f69   // 'iO'
+        // DATA XREF from WaterConcept::Screen_UpsellWater2::_finishedLoadingWidgets(void*) @ 0x5bc8b4(r)
+        [r4 + 0x19] = (half) r0
+        r0 = 0x6e49   // 'In'
+        r0 |= 0x6574 << 16
+        [r4 + 0xd] = r0
+        r0 = 0x656c   // 'le' // (pstr 0x00000012) "("
+        [r4 + 0xc] = (byte) sb
+        [r4 + 0x15] = (byte) sl
+        [r4 + 0x1c] = (byte) sl
+        [r4 + 0x2c] = sl
+        [r4 + 0x24] = (byte) r7
+        [r4 + 0x29] = (half) r0
+        r0 = 0x6f47   // 'Go' // (pstr 0x00002400) "(("
+        r0 |= 0x676f << 16
+        [r4 + 0x25] = r0
+        r0 = 0x6e6f   // 'on'
+        [r4 + 0x2b] = (byte) sl
+        [r4 + 0x30] = (byte) r7
+        [r4 + 0x35] = (half) r0
+        r0 = 0x6d41   // 'Am'
+        r0 |= 0x7a61 << 16
+        [r4 + 0x31] = r0
+        r0 = 0xe      // str.pper
+        [r4 + 0x37] = (byte) sl
+        [r4 + 0x38] = sl
+        [r4 + 0x3c] = sl
+        [r4 + 0x3c] = (byte) r0
+        r0 = r4 + 0x3d
+        [r4 + 0x40] = sl
+        [r4 + 0x44] = sl
+        r1 = [0x0011fc2c] // [0x11feb0:4]=0x59cdd8
+        r1 = pc + r1  // 0x6bca08 // "B&Noble" // str.BNoble
+        sym.imp.__aeabi_memcpy ()
+        // DATA XREFS from WaterConcept::Screen_Popup::update(float, bool) @ 0x59d4a4(r), 0x59d4ec(r)
+        [r4 + 0x44] = (byte) sl
+        r1 = 0
+        r0 = [0x0011fc40] // [0x11feb4:4]=0xffffe7b8
+        r2 = r5       // section..data
+        r0 = pc + r0
+        sym.imp.__cxa_atexit ()
+        r4 = [0x0011fc50] // [0x11feb8:4]=0x5c68f8 // "@"
+        r0 = 0x14
+        r1 = [0x0011fc58] // [0x11febc:4]=0x59cda8
+        r7 = 0x616e   // 'na'
+        r4 = pc + r4
+        sb = 0x10
+        r1 = pc + r1  // 0x6bca10 // "ObjectName" // str.ObjectName
+        r7 |= 0x656d << 16
+        [r4 + 4] = sl
+        r2 = 0xa
+        [r4 + 8] = sl
+        [r4 + 0xc] = sl
+        [r4 + 0x10] = sl
+        [r4 + 0x14] = sl
+        [r4] = (byte) r8
+        [r4 + 1] = (half) r6
+        [r4 + 3] = (byte) sl
+        [r4 + 0x18] = (byte) r0
+        r0 = 0x6142   // 'Ba'
+        r0 |= 0x6573 << 16
+        [r4 + 0x11] = r7
+        [r4 + 0xd] = r0
+        r0 = r4 + 0x19
+        [r4 + 0xc] = (byte) sb
+        [r4 + 0x15] = (byte) sl
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011fcb8] // [0x11fec0:4]=0x59cd58
+        r0 = r4 + 0x25
+        r8 = 0x12     // "("
+        r2 = 9
+        r1 = pc + r1  // 0x6bca20 // "GroupName" // str.GroupName
+        [r4 + 0x23] = (byte) sl
+        [r4 + 0x24] = sl
+        [r4 + 0x28] = sl
+        [r4 + 0x2c] = sl
+        [r4 + 0x24] = (byte) r8
+        sym.imp.__aeabi_memcpy ()
+        r1 = [0x0011fce4] // [0x11fec4:4]=0x59cb44
+        r5 = 0x6b63   // 'ck'
+        r6 = 0x6e55   // 'Un' // "l,"
+        r0 = r4 + 0x3d
+        r1 = pc + r1  // 0x6bc838 // "HasViewed" // str.HasViewed
+        r2 = 9
+        r5 |= 0x6465 << 16
+        r6 |= 0x6f6c << 16
+        [r4 + 0x2e] = (byte) sl
+        [r4 + 0x30] = sl
+        [r4 + 0x34] = sl
+        [r4 + 0x38] = sl
+        [r4 + 0x3c] = sl
+        [r4 + 0x40] = sl
+        [r4 + 0x44] = sl
+        [r4 + 0x35] = r5
+        [r4 + 0x31] = r6
+        [r4 + 0x30] = (byte) sb
+        [r4 + 0x39] = (byte) sl
+        [r4 + 0x3c] = (byte) r8
+        // DATA XREF from WaterConcept::Screen_UpsellWater2::_closeButtonPressed() @ 0x5bc73c(r)
+        sym.imp.__aeabi_memcpy ()
+        [r4 + 0x46] = (byte) sl
+        r1 = 0
+        r0 = [0x0011fd40] // [0x11fec8:4]=0xffffe6f8
+        r2 = [0x0011fd44] // [0x11fecc:4]=0x5c42b4
+        r0 = pc + r0
+        r2 = pc + r2  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        sym.imp.__cxa_atexit ()
+        r4 = [0x0011fd54] // [0x11fed0:4]=0x5c683c
+        r0 = 0x14
+        r6 = 0x4449   // 'ID'
+        r2 = 0xa
+        r4 = pc + r4
+        [r4 + 0x18] = (byte) r0
+        r0 = 0x6142   // 'Ba'
+        [r4 + 0x14] = sl
+        r0 |= 0x6573 << 16
+        [r4 + 0x10] = sl
+        [r4 + 0x11] = r7
+        r7 = 4
+        [r4 + 0xc] = sl
+        [r4 + 0xd] = r0
+        r0 = r4 + 0x19
+        [r4 + 8] = sl
+        [r4 + 4] = sl
+        [r4] = (byte) r7
+        [r4 + 1] = (half) r6
+        [r4 + 3] = (byte) sl
+        [r4 + 0xc] = (byte) sb
+        [r4 + 0x15] = (byte) sl
+        r1 = [0x0011fdac] // [0x11fed4:4]=0x59cc60
+        r1 = pc + r1  // 0x6bca10 // "ObjectName" // str.ObjectName
+        sym.imp.__aeabi_memcpy ()
+        [r4 + 0x23] = (byte) sl
+        r0 = r4 + 0x25
+        [r4 + 0x24] = sl
+        r2 = 9
+        [r4 + 0x28] = sl
+        [r4 + 0x2c] = sl
+        [r4 + 0x24] = (byte) r8
+        r1 = [0x0011fdd4] // [0x11fed8:4]=0x59cc48
+        r1 = pc + r1  // 0x6bca20 // "GroupName" // str.GroupName
+        sym.imp.__aeabi_memcpy ()
+        r0 = 0x6e55   // 'Un' // "l,"
+        [r4 + 0x38] = sl
+        r0 |= 0x6f6c << 16
+        [r4 + 0x34] = sl
+        [r4 + 0x35] = r5
+        r2 = 9
+        [r4 + 0x30] = sl
+        [r4 + 0x31] = r0
+        r0 = r4 + 0x3d
+        [r4 + 0x3c] = sl
+        [r4 + 0x2e] = (byte) sl
+        [r4 + 0x44] = sl
+        [r4 + 0x40] = sl
+        [r4 + 0x30] = (byte) sb
+        [r4 + 0x39] = (byte) sl
+        [r4 + 0x3c] = (byte) r8
+        r1 = [0x0011fe20] // [0x11fedc:4]=0x59ca14
+        r1 = pc + r1  // 0x6bc838 // "HasViewed" // str.HasViewed
+        sym.imp.__aeabi_memcpy ()
+        [r4 + 0x46] = (byte) sl
+        r1 = 0
+        r0 = [0x0011fe34] // [0x11fee0:4]=0xffffe644
+        r2 = [0x0011fe38] // [0x11fee4:4]=0x5c41c0 // "P"
+        r0 = pc + r0
+        r2 = pc + r2  // 0x6e4000 // section..data
+        [21] -rw- section size 7176 named .data
+        sym.imp.__cxa_atexit ()
+        r5 = [0x0011fe48] // [0x11fee8:4]=0x5c6798
+        r2 = 9
+        r5 = pc + r5
+        r0 = r5 + 0xd
+        [r5] = (byte) r7
+        [r5 + 1] = (half) r6
+        r1 = [0x0011fe60] // [0x11feec:4]=0x59c968
+        [r5 + 3] = (byte) sl
+        r1 = pc + r1  // 0x6bc7d0 // "Storyline" // str.Storyline
+        [r5 + 4] = sl
+        [r5 + 8] = sl
+        [r5 + 0xc] = sl
+        [r5 + 0x10] = sl
+        [r5 + 0x14] = sl
+        [r5 + 0xc] = (byte) r8
+        sym.imp.__aeabi_memcpy ()
+        r6 = r5
+        [r6 + 0x18]! = sl
+        [r6 - 2] = (byte) sl
+        [r6 + 4] = sl
+        [r6 + 8] = sl
+        r0 = 0x10
+        rsym._Znwj ()
+        goto 0x11ff68
+        return r0;
+    loc_0x0011ff68: // orphan
+         // CODE XREF from entry.init0 @ 0x11fe9c(x)
+         r1 = [0x0011fef0]        // [0x11fef0:4]=0x59c860
+         r4 = r0
+         r2 = 0x11
+         r0 = 0xb
+         r1 = pc + r1             // 0x6bc7e0 // "IAP_item_id" // str.IAP_item_id
+         [r5 + 0x18] = r2
+         [r5 + 0x1c] = r0
+         r0 = r4
+         r2 = 0xb
+         [r5 + 0x20] = r4 // DATA XREFS from WaterConcept::Screen_Popup::messageRx(Walaber::Message const&) @ 0x5a2e28(r), 0x5a2e78(r)
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5                  // r14
+         r0 = 0xc
+         [r6 + 0x30]! = sl
+         [r4 + 0xb] = (byte) sl
+         [r6 - 4] = sl
+         [r6 - 0xc] = (byte) r0
+         r0 = 0x7468              // 'ht'
+         [r6 - 7] = (half) r0
+         r0 = 0x6f42              // 'Bo'
+         r0 |= 0x6775 << 16
+         [r6 - 0xb] = r0
+         [r6 - 5] = (byte) sl
+         [r6 + 4] = sl
+         [r6 + 8] = sl
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x0011fef4]        // [0x11fef4:4]=0x59ca44
+         r4 = r0
+         r8 = 0x11
+         r0 = 0xc
+         r1 = pc + r1             // 0x6bca30 // "TitleTexture" // str.TitleTexture
+         [r5 + 0x30] = r8
+         [r5 + 0x34] = r0
+         r0 = r4
+         r2 = 0xc
+         [r5 + 0x38] = r4
+         sym.imp.__aeabi_memcpy () // XREFS(245)
+         r7 = 0 // DATA XREF from WaterConcept::World::_convertPoolToFluidType(WaterConcept::ParticleDescription const&, std::__ndk1::set<unsigned int, std::__ndk1::less<unsigned int>, std::__ndk1::allocator<unsigned int> >&, WaterConceptConstants::FluidType) @ 0x496264(r)
+         r6 = r5                  // r14 // DATA XREFS from WaterConcept::World::_convertPoolToFluidType(WaterConcept::ParticleDescription const&, std::__ndk1::set<unsigned int, std::__ndk1::less<unsigned int>, std::__ndk1::allocator<unsigned int> >&, WaterConceptConstants::FluidType) @ 0x496288(r), 0x49629c(r)
+         [r6 + 0x3c]! = r7
+         [r4 + 0xc] = (byte) r7 // DATA XREF from WaterConcept::World::_convertPoolToFluidType(WaterConcept::ParticleDescription const&, std::__ndk1::set<unsigned int, std::__ndk1::less<unsigned int>, std::__ndk1::allocator<unsigned int> >&, WaterConceptConstants::FluidType) @ 0x49624c(r)
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x0011fef8]        // [0x11fef8:4]=0x59ca08 // DATA XREF from Walaber::Widget_ScrollableCamera::draw(Walaber::SpriteBatch*) @ 0x398d0c(r)
+         r4 = r0
+         r0 = 0xb
+         [r5 + 0x3c] = r8
+         r1 = pc + r1             // 0x6bca40 // "MainTexture" // str.MainTexture
+         [r5 + 0x40] = r0
+         r0 = r4
+         r2 = 0xb
+         [r5 + 0x44] = r4
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5                  // r14
+         [r4 + 0xb] = (byte) r7
+         [r6 + 0x48]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x0011fefc]        // [0x11fefc:4]=0x59c9d4
+         r4 = r0
+         r8 = 0x11
+         r0 = 0xc
+         r1 = pc + r1             // 0x6bca50 // "FrameTexture" // str.FrameTexture
+         [r5 + 0x48] = r8
+         [r5 + 0x4c] = r0
+         r0 = r4
+         r2 = 0xc
+         [r5 + 0x50] = r4
+         sym.imp.__aeabi_memcpy ()
+         r1 = [0x0011ff00]        // [0x11ff00:4]=0x59c9b8
+         r7 = 0
+         r0 = r5 + 0x55
+         [r4 + 0xc] = (byte) r7
+         r1 = pc + r1             // 0x6bca60 // "TextColor" // str.TextColor
+         r2 = 9
+         r4 = 0x12                // "("
+         [r5 + 0x54] = r7
+         [r5 + 0x58] = r7
+         [r5 + 0x5c] = r7
+         [r5 + 0x54] = (byte) r4
+         sym.imp.__aeabi_memcpy ()
+         r1 = [0x0011ff04]        // [0x11ff04:4]=0x59c998
+         r0 = r5 + 0x61
+         r2 = 9
+         [r5 + 0x5e] = (byte) r7
+         r1 = pc + r1             // 0x6bca70 // "TextLine1" // str.TextLine1
+         [r5 + 0x60] = r7
+         [r5 + 0x64] = r7
+         [r5 + 0x68] = r7
+         [r5 + 0x60] = (byte) r4
+         sym.imp.__aeabi_memcpy ()
+         r1 = [0x0011ff08]        // [0x11ff08:4]=0x59c980
+         r0 = r5 + 0x6d
+         r2 = 9
+         [r5 + 0x6a] = (byte) r7
+         r1 = pc + r1             // 0x6bca80 // "TextLine2" // str.TextLine2
+         [r5 + 0x6c] = r7
+         [r5 + 0x70] = r7
+         [r5 + 0x74] = r7
+         [r5 + 0x6c] = (byte) r4
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5                  // r14
+         [r6 + 0x78]! = r7
+         [r6 - 2] = (byte) r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x0011ff0c]        // [0x11ff0c:4]=0x59c94c
+         sl = 0xd
+         r2 = 0xd
+         [r5 + 0x78] = r8
+         r1 = pc + r1             // 0x6bca90 // "DuckCharacter" // str.DuckCharacter
+         [r5 + 0x7c] = sl
+         r4 = r0
+         [r5 + 0x80] = r0
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5                  // r14
+         [r4 + 0xd] = (byte) r7
+         [r6 + 0x84]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         sb = 0x10
+         rsym._Znwj ()
+         r1 = [0x0011ff10]        // [0x11ff10:4]=0x59c918
+         r8 = 0x11
+         r2 = 0xd
+         [r5 + 0x84] = r8
+         r1 = pc + r1             // 0x6bcaa0 // "ItemCharacter" // str.ItemCharacter
+         [r5 + 0x88] = sl
+         r4 = r0
+         [r5 + 0x8c] = r0
+         sym.imp.__aeabi_memcpy () // DATA XREF from WaterConcept::Screen_UpsellWater2::handleEvent(int, Walaber::Widget::WidgetActionRet const&, Walaber::Widget*) @ 0x5bc2d0(r)
+         r0 = 0x5153              // 'SQ'
+         r2 = 0x7544              // 'Du'
+         r3 = 0x5153              // 'SQ'
+         r7 = 0
+         r0 |= 0x314c << 16
+         r2 |= 0x6b63 << 16
+         r3 |= 0x324c << 16
+         r1 = [0x0011ff14]        // [0x11ff14:4]=0x59c8ec
+         [r5 + 0xb0] = r7
+         [r5 + 0x90] = r7
+         r1 = pc + r1             // 0x6bcab0 // "TextButton" // str.TextButton
+         [r5 + 0x94] = r7
+         [r5 + 0x98] = r7
+         [r5 + 0x9c] = r7
+         [r5 + 0xa0] = r7
+         [r5 + 0xa4] = r7
+         [r5 + 0xa8] = r7
+         [r5 + 0xac] = r7
+         [r5 + 0x95] = r0
+         [r5 + 0x91] = r2
+         [r5 + 0x9d] = r2
+         r2 = 0xa
+         [r5 + 0xa1] = r3
+         [r5 + 0x99] = (byte) r7
+         [r5 + 0x90] = (byte) sb
+         [r5 + 0x9c] = (byte) sb
+         [r5 + 0xa5] = (byte) r7
+         [r5 + 0xa8] = (byte) sb
+         [r5 + 0xad] = r0
+         r0 = 0x7449              // 'It'
+         r0 |= 0x6d65 << 16
+         [r4 + 0xd] = (byte) r7
+         [r5 + 0xa9] = r0
+         [r5 + 0xb1] = (byte) r7
+         [r5 + 0xbc] = r7
+         [r5 + 0xb8] = r7
+         [r5 + 0xb4] = r7
+         [r5 + 0xb5] = r0
+         r0 = 0x14
+         [r5 + 0xb9] = r3
+         [r5 + 0xb4] = (byte) sb
+         [r5 + 0xbd] = (byte) r7
+         [r5 + 0xc0] = (byte) r0
+         r0 = r5 + 0xc1
+         sym.imp.__aeabi_memcpy ()
+         r1 = [0x0011ff18]        // [0x11ff18:4]=0x59c85c
+         r0 = 0x12                // "("
+         [r5 + 0xcb] = (byte) r7
+         r2 = 9
+         [r5 + 0xcc] = r7
+         r1 = pc + r1             // 0x6bcac0 // "AlertText" // str.AlertText
+         [r5 + 0xcc] = (byte) r0
+         r0 = r5 + 0xcd
+         [r5 + 0xd0] = r7
+         [r5 + 0xd4] = r7
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5                  // r14
+         r0 = 0x6b63              // 'ck'
+         [r6 + 0xe4]! = r7
+         r0 |= 0x6465 << 16
+         [r6 - 0xc] = r7
+         [r6 - 8] = r7
+         [r6 - 4] = r7
+         [r6 - 0xe] = (byte) r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         [r6 - 7] = r0
+         r0 = 0x6e55              // 'Un' // "l,"
+         r0 |= 0x6f6c << 16
+         [r6 - 0xb] = r0
+         [r6 - 0xc] = (byte) sb
+         [r6 - 3] = (byte) r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x0011ff1c]        // [0x11ff1c:4]=0x59c7fc
+         r4 = r0
+         r0 = 0xc
+         [r5 + 0xe4] = r8
+         r1 = pc + r1             // 0x6bcad0 // "DisplayOrder" // str.DisplayOrder // DATA XREF from WaterConcept::Screen_UpsellWater2::update(float, bool) @ 0x5bc198(r)
+         [r5 + 0xe8] = r0
+         r0 = r4
+         r2 = 0xc
+         [r5 + 0xec] = r4
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5                  // r14
+         [r4 + 0xc] = (byte) r7
+         [r6 + 0xf0]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff20]        // [0x11ff20:4]=0x59c7c8
+         r4 = r0
+         r6 = 0x21                // '!'
+         r0 = 0x13
+         r1 = pc + r1             // 0x6bcae0 // "DuckyCounterTexture" // str.DuckyCounterTexture
+         [r5 + 0xf0] = r6
+         [r5 + 0xf4] = r0 // DATA XREF from WaterConcept::Screen_UpsellWater2::update(float, bool) @ 0x5bc148(r)
+         r0 = r4 // DATA XREFS from fcn.00588040 @ 0x588f78(r), 0x588f98(r), 0x588f9c(r), 0x588fa4(r), 0x588fa8(r)
+         r2 = 0x13
+         [r5 + 0xf8] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = [0x0011ff24]        // [0x11ff24:4]=0xffffe17c
+         r5 = 0
+         r2 = [0x0011ff28]        // [0x11ff28:4]=0x5c3cb4
+         r1 = 0
+         r0 = pc + r0
+         [r4 + 0x13] = (byte) r5
+         r2 = pc + r2             // 0x6e4000 // section..data
+                                  [21] -rw- section size 7176 named .data
+         sym.imp.__cxa_atexit ()
+         r0 = [0x0011ff2c]        // [0x11ff2c:4]=0x5c6390
+         r0 = pc + r0
+         [r0] = r5
+         [r0 + 4] = r5
+         [r0 + 8] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r7 = [0x0011ff30]        // [0x11ff30:4]=0x5c6368
+         r4 = r0
+         r1 = [0x0011ff34]        // [0x11ff34:4]=0x59c770
+         r0 = 0x16
+         r7 = pc + r7
+         r2 = 0x16
+         r1 = pc + r1             // 0x6bcaf8 // "/Textures/objects.webp" // str._Textures_objects.webp
+         [r7] = r6
+         stmib r7, (r0, r4)
+         r0 = r4
+         sym.imp.__aeabi_memcpy ()
+         sb = 6
+         r0 = 0x33                // '3'
+         [r7 + 0xc] = r5
+         sl = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x10] = r5
+         r6 = 8
+         [r7 + 0x14] = r5
+         r8 = 0x2e31              // '1.' // "3"
+         [r7 + 0x18] = r5
+         [r7 + 0x1c] = r5
+         [r7 + 0x20] = r5
+         [r7 + 0x24] = r5
+         [r7 + 0x28] = r5
+         [r7 + 0x2c] = r5
+         [r7 + 0xc] = (byte) sb
+         [r7 + 0xf] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0xd] = (half) sl
+         [r7 + 0x10] = (byte) r5
+         [r7 + 0x19] = r0
+         r0 = str.s3              // 0x2e30 // "s3" // DATA XREF from WaterConcept::Screen_UpsellWater2::handleEvent(int, Walaber::Widget::WidgetActionRet const&, Walaber::Widget*) @ 0x5bc2fc(r)
+         r0 |= 0x3131 << 16
+         [r7 + 0x18] = (byte) r6
+         [r7 + 0x1d] = (byte) r5
+         [r7 + 0x24] = (byte) r6
+         [r7 + 0x25] = r0 // DATA XREF from WaterConcept::Screen_UpsellWater2::_closeButtonPressed() @ 0x5bc800(r)
+         r0 = 0x30                // '0'
+         [r7 + 0x29] = (byte) r5
+         [r7 + 0x30] = r5
+         [r7 + 0x38] = r5
+         [r7 + 0x34] = r5
+         [r7 + 0x30] = (byte) sb
+         [r7 + 0x33] = (byte) r0
+         r0 = 0x2e31              // '1.' // "3"
+         r0 |= 0x3532 << 16
+         [r7 + 0x31] = (half) r8
+         [r7 + 0x34] = (byte) r5
+         [r7 + 0x3c] = r5
+         [r4 + 0x16] = (byte) r5
+         [r7 + 0x44] = r5
+         [r7 + 0x40] = r5
+         [r7 + 0x3c] = (byte) r6
+         [r7 + 0x3d] = r0
+         [r7 + 0x41] = (byte) r5
+         [r7 + 0x4c] = r5
+         [r7 + 0x50] = r5
+         [r7 + 0x48] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff38]        // [0x11ff38:4]=0x59c69c
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x13
+         r1 = pc + r1             // 0x6bcb10 // "/Textures/rock.webp" // str._Textures_rock.webp
+         [r7 + 0x48] = r2
+         [r7 + 0x4c] = r0
+         r0 = r4
+         r2 = 0x13
+         [r7 + 0x50] = r4
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x33                // '3'
+         [r7 + 0x54] = r5
+         [r7 + 0x58] = r5
+         [r7 + 0x5c] = r5 // DATA XREF from WaterConcept::Screen_UpsellWater2::draw(int) @ 0x5bc204(r)
+         [r7 + 0x60] = r5
+         [r7 + 0x64] = r5
+         [r7 + 0x68] = r5
+         [r7 + 0x6c] = r5
+         [r7 + 0x70] = r5
+         [r7 + 0x74] = r5
+         [r7 + 0x54] = (byte) sb
+         [r7 + 0x57] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x55] = (half) sl
+         [r7 + 0x58] = (byte) r5
+         [r7 + 0x61] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x60] = (byte) r6
+         [r7 + 0x65] = (byte) r5
+         [r7 + 0x6c] = (byte) r6
+         [r7 + 0x6d] = r0
+         r0 = 0x30                // '0'
+         [r7 + 0x71] = (byte) r5
+         [r7 + 0x78] = r5
+         [r7 + 0x80] = r5
+         [r7 + 0x7c] = r5
+         [r7 + 0x78] = (byte) sb
+         [r7 + 0x7b] = (byte) r0
+         r0 = 0x38                // '8'
+         [r7 + 0x79] = (half) r8
+         [r7 + 0x7c] = (byte) r5
+         [r7 + 0x84] = r5
+         [r4 + 0x13] = (byte) r5
+         [r7 + 0x8c] = r5
+         [r7 + 0x88] = r5
+         [r7 + 0x84] = (byte) sb
+         [r7 + 0x87] = (byte) r0
+         [r7 + 0x85] = (half) sl
+         [r7 + 0x88] = (byte) r5
+         [r7 + 0x94] = r5
+         [r7 + 0x98] = r5
+         [r7 + 0x90] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff3c]        // [0x11ff3c:4]=0x59c5cc
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x1a
+         r1 = pc + r1             // 0x6bcb28 // "/Textures/rock_shadow.webp" // str._Textures_rock_shadow.webp
+         [r7 + 0x90] = r2
+         [r7 + 0x94] = r0
+         r0 = r4
+         r2 = 0x1a
+         [r7 + 0x98] = r4
+         sym.imp.__aeabi_memcpy ()
+         r6 = 6
+         r0 = 0x33                // '3'
+         [r7 + 0x9c] = r5 // DATA XREF from WaterConcept::Screen_UpsellWater2::_closeButtonPressed() @ 0x5bc81c(r)
+         sl = str.s3              // 0x2e30 // "s3"
+         [r7 + 0xa0] = r5
+         sb = 8
+         [r7 + 0xa4] = r5
+         r8 = 0x2e31              // '1.' // "3"
+         [r7 + 0xa8] = r5
+         [r7 + 0xac] = r5
+         [r7 + 0xb0] = r5
+         [r7 + 0xb4] = r5
+         [r7 + 0xb8] = r5
+         [r7 + 0xbc] = r5
+         [r7 + 0x9c] = (byte) r6
+         [r7 + 0x9f] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x9d] = (half) sl
+         [r7 + 0xa0] = (byte) r5
+         [r7 + 0xa9] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0xa8] = (byte) sb // DATA XREF from WaterConcept::Screen_UpsellWater2::_closeButtonPressed() @ 0x5bc7ec(r)
+         [r7 + 0xad] = (byte) r5
+         [r7 + 0xb4] = (byte) sb
+         [r7 + 0xb5] = r0
+         r0 = 0x30                // '0'
+         [r7 + 0xb9] = (byte) r5
+         [r7 + 0xc0] = r5
+         [r7 + 0xc8] = r5
+         [r7 + 0xc4] = r5
+         [r7 + 0xc0] = (byte) r6
+         [r7 + 0xc3] = (byte) r0
+         r0 = 0x38                // '8'
+         [r7 + 0xc1] = (half) r8
+         [r7 + 0xc4] = (byte) r5
+         [r7 + 0xcc] = r5
+         [r4 + 0x1a] = (byte) r5
+         [r7 + 0xd4] = r5
+         [r7 + 0xd0] = r5
+         [r7 + 0xcc] = (byte) r6
+         [r7 + 0xcf] = (byte) r0
+         [r7 + 0xcd] = (half) sl
+         [r7 + 0xd0] = (byte) r5
+         [r7 + 0xdc] = r5
+         [r7 + 0xe0] = r5
+         [r7 + 0xd8] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff40]        // [0x11ff40:4]=0x59c4f8
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x1b
+         r1 = pc + r1             // 0x6bcb48 // "/Textures/rock_hilight.webp" // str._Textures_rock_hilight.webp
+         [r7 + 0xd8] = r2
+         [r7 + 0xdc] = r0
+         r0 = r4
+         r2 = 0x1b
+         [r7 + 0xe0] = r4
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x33                // '3'
+         [r7 + 0xe4] = r5
+         [r7 + 0xe8] = r5
+         [r7 + 0xec] = r5
+         [r7 + 0xf0] = r5
+         [r7 + 0xf4] = r5
+         [r7 + 0xf8] = r5
+         [r7 + 0xfc] = r5
+         [r7 + fcn.00000100] = r5
+         [r7 + 0x104] = r5
+         [r7 + 0xe4] = (byte) r6
+         [r7 + 0xe7] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0xe5] = (half) sl
+         [r7 + 0xe8] = (byte) r5
+         [r7 + 0xf1] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0xf0] = (byte) sb
+         [r7 + 0xf5] = (byte) r5
+         [r7 + 0xfc] = (byte) sb
+         [r7 + 0xfd] = r0
+         r0 = 0x109
+         [r7 + 0x101] = (byte) r5
+         [r7 + 0x108] = r5
+         [r7 + 0x110] = r5
+         [r7 + 0x10c] = r5
+         [r7 + 0x108] = (byte) r6
+         [r7 + r0] = (half) r8
+         r0 = 0x30                // '0'
+         [r7 + 0x10b] = (byte) r0
+         r0 = 0x115
+         [r7 + 0x10c] = (byte) r5
+         [r7 + 0x114] = r5
+         [r7 + 0x11c] = r5
+         [r7 + str._m] = r5
+         [r7 + 0x114] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x38                // '8'
+         [r7 + 0x117] = (byte) r0
+         [r7 + str._m] = (byte) r5
+         [r4 + 0x1b] = (byte) r5
+         [r7 + 0x124] = r5
+         [r7 + 0x128] = r5
+         [r7 + 0x120] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff44]        // [0x11ff44:4]=0x59c428
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x13
+         r1 = pc + r1             // 0x6bcb68 // "/Textures/dirt.webp" // str._Textures_dirt.webp
+         [r7 + 0x120] = r2
+         [r7 + 0x124] = r0
+         r0 = r4
+         r2 = 0x13
+         [r7 + 0x128] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = 0x12d
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x12c] = r5
+         r6 = 6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x130] = r5
+         sl = 8
+         [r7 + 0x138] = r5
+         sb = 0x2e31              // '1.' // "3"
+         [r7 + 0x13c] = r5
+         [r7 + 0x144] = r5
+         [r7 + 0x148] = r5
+         [r7 + segment.NOTE] = r5
+         [r7 + 0x140] = r5
+         [r7 + str.r19c] = r5
+         [r7 + 0x12c] = (byte) r6
+         [r7 + 0x12f] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x130] = (byte) r5
+         [r7 + 0x139] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x138] = (byte) sl
+         [r7 + 0x13d] = (byte) r5
+         [r7 + 0x144] = (byte) sl
+         [r7 + 0x145] = r0
+         r0 = 0x151
+         [r7 + 0x149] = (byte) r5
+         [r7 + 0x150] = r5
+         [r7 + 0x158] = r5
+         [r7 + 0x154] = r5
+         [r7 + 0x150] = (byte) r6
+         [r7 + r0] = (half) sb // DATA XREF from WaterConcept::Screen_UpsellWater2::update(float, bool) @ 0x5bbc80(r)
+         r0 = 0x30                // '0'
+         [r7 + 0x153] = (byte) r0
+         r0 = 0x15d
+         [r7 + 0x154] = (byte) r5
+         [r7 + 0x15c] = r5
+         [r7 + 0x164] = r5
+         [r7 + 0x160] = r5 // DATA XREF from WaterConcept::Screen_UpsellWater2::_finishedLoadingWidgets(void*) @ 0x5bcc70(r)
+         [r7 + 0x15c] = (byte) r6 // DATA XREF from WaterConcept::Screen_UpsellWater2::_finishedLoadingWidgets(void*) @ 0x5bcc64(r)
+         [r7 + r0] = (half) sb
+         r0 = 0x35                // '5'
+         [r7 + 0x15f] = (byte) r0
+         [r7 + 0x160] = (byte) r5
+         [r4 + 0x13] = (byte) r5
+         [r7 + 0x16c] = r5
+         [r7 + 0x170] = r5
+         [r7 + 0x168] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff48]        // [0x11ff48:4]=0x59c340
+         r4 = r0
+         r8 = 0x21                // '!'
+         r0 = 0x16
+         r1 = pc + r1             // 0x6bcb80 // "/Textures/bg_tile.webp" // str._Textures_bg_tile.webp
+         [r7 + 0x168] = r8
+         [r7 + 0x16c] = r0
+         r0 = r4
+         r2 = 0x16
+         [r7 + 0x170] = r4
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x175
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x174] = r5
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x178] = r5
+         [r7 + 0x180] = r5
+         [r7 + 0x184] = r5
+         [r7 + 0x18c] = r5
+         [r7 + str._00] = r5
+         [r7 + 0x17c] = r5
+         [r7 + 0x188] = r5
+         [r7 + 0x194] = r5
+         [r7 + 0x174] = (byte) r6
+         [r7 + 0x177] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x178] = (byte) r5
+         [r7 + 0x181] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x180] = (byte) sl
+         [r7 + 0x185] = (byte) r5
+         [r7 + 0x18c] = (byte) sl
+         [r7 + 0x18d] = r0
+         r0 = 0x199
+         [r7 + 0x191] = (byte) r5
+         [r7 + 0x198] = r5
+         [r7 + 0x1a0] = r5
+         [r7 + 0x19c] = r5
+         [r7 + 0x198] = (byte) r6
+         [r7 + r0] = (half) sb
+         r0 = 0x30                // '0'
+         [r7 + 0x19b] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3537 << 16
+         [r7 + 0x19c] = (byte) r5
+         [r7 + 0x1a4] = r5
+         [r4 + 0x16] = (byte) r5
+         [r7 + 0x1ac] = r5
+         [r7 + 0x1a8] = r5
+         [r7 + 0x1a4] = (byte) sl
+         [r7 + 0x1a5] = r0
+         [r7 + 0x1a9] = (byte) r5
+         [r7 + 0x1b4] = r5
+         [r7 + 0x1b8] = r5
+         [r7 + 0x1b0] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff4c]        // [0x11ff4c:4]=0x59c264
+         r4 = r0
+         r0 = 0x1d
+         [r7 + 0x1b0] = r8
+         r1 = pc + r1             // 0x6bcb98 // "/Textures/bg_tile_bright.webp" // str._Textures_bg_tile_bright.webp
+         [r7 + 0x1b4] = r0 // ICOD XREF from WaterConcept::Screen_Processing::_finishedLoadingWidgets(void*) @ 0x5ad110(x)
+         r0 = r4
+         r2 = 0x1d
+         [r7 + 0x1b8] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = 0x1bd
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x1bc] = r5
+         r6 = 6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x1c0] = r5
+         r8 = 8
+         [r7 + 0x1c8] = r5
+         sl = 0x2e31              // '1.' // "3"
+         [r7 + section..note.gnu.build_id] = r5
+         sb = 0x30                // '0'
+         [r7 + 0x1d4] = r5
+         [r7 + 0x1d8] = r5
+         [r7 + 0x1c4] = r5
+         [r7 + 0x1d0] = r5
+         [r7 + 0x1dc] = r5 // DATA XREF from WaterConcept::Screen_UpsellWater2::_buildUI() @ 0x5bbadc(r)
+         [r7 + 0x1bc] = (byte) r6
+         [r7 + 0x1bf] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x1c0] = (byte) r5
+         [r7 + 0x1c9] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x1c8] = (byte) r8
+         [r7 + 0x1cd] = (byte) r5
+         [r7 + 0x1d4] = (byte) r8
+         [r7 + 0x1d5] = r0
+         r0 = 0x1e1
+         [r7 + 0x1d9] = (byte) r5
+         [r7 + 0x1e0] = r5
+         [r7 + 0x1e8] = r5
+         [r7 + 0x1e4] = r5
+         [r7 + 0x1e0] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x1ed
+         [r7 + 0x1e3] = (byte) sb
+         [r7 + 0x1e4] = (byte) r5
+         [r7 + 0x1ec] = r5
+         [r4 + 0x1d] = (byte) r5
+         [r7 + 0x1f4] = r5
+         [r7 + section..dynsym] = r5
+         [r7 + 0x1ec] = (byte) r6
+         [r7 + r0] = (half) sl
+         [r7 + 0x1ef] = (byte) sb
+         [r7 + section..dynsym] = (byte) r5
+         [r7 + 0x1fc] = r5
+         [r7 + 0x200] = r5
+         [r7 + 0x1f8] = r5
+         r0 = 0x30                // '0'
+         rsym._Znwj ()
+         r1 = [0x0011ff50]        // [0x11ff50:4]=0x59c188
+         r4 = r0
+         r0 = 0x31                // '1'
+         r2 = 0x21                // '!'
+         r3 = r7 + 0x1f8 // DATA XREFS from WaterConcept::Screen_Popup::handleEvent(int, Walaber::Widget::WidgetActionRet const&, Walaber::Widget*) @ 0x5a2350(r), 0x5a2398(r)
+         r1 = pc + r1             // 0x6bcbb8 // "/Textures/new_particle_atlas.webp" // str._Textures_new_particle_atlas.webp
+         stm r3, (r0, r2, r4) // DATA XREF from WaterConcept::Screen_Popup::_checkLevelPackCompletionAchievement() @ 0x5975dc(r)
+         r0 = r4
+         r2 = 0x21                // '!'
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x205
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x204] = r5
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x208] = r5
+         [r7 + 0x210] = r5
+         [r7 + 0x214] = r5
+         [r7 + 0x21c] = r5
+         [r7 + 0x220] = r5
+         [r7 + 0x20c] = r5
+         [r7 + 0x218] = r5
+         [r7 + 0x224] = r5
+         [r7 + 0x204] = (byte) r6
+         [r7 + 0x207] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x208] = (byte) r5
+         [r7 + 0x211] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x210] = (byte) r8
+         [r7 + 0x215] = (byte) r5
+         [r7 + 0x21c] = (byte) r8
+         [r7 + 0x21d] = r0
+         r0 = 0x229
+         [r7 + 0x221] = (byte) r5
+         [r7 + 0x228] = r5
+         [r7 + 0x230] = r5
+         [r7 + 0x22c] = r5
+         [r7 + 0x228] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x235               // "A$"
+         [r7 + 0x22b] = (byte) sb
+         [r7 + 0x22c] = (byte) r5
+         [r7 + 0x234] = r5
+         [r4 + 0x21] = (byte) r5
+         [r7 + 0x23c] = r5
+         [r7 + 0x238] = r5
+         [r7 + 0x234] = (byte) r6
+         [r7 + r0] = (half) sl
+         [r7 + 0x237] = (byte) sb
+         [r7 + 0x238] = (byte) r5
+         [r7 + 0x244] = r5
+         [r7 + 0x248] = r5
+         [r7 + 0x240] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff54]        // [0x11ff54:4]=0x59c0c8
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x16
+         r1 = pc + r1             // 0x6bcbe0 // "/Textures/duckies.webp" // str._Textures_duckies.webp
+         [r7 + 0x240] = r2
+         [r7 + 0x244] = r0
+         r0 = r4
+         r2 = 0x16
+         [r7 + 0x248] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = 0x24d
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x24c] = r5
+         r6 = 6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x250] = r5
+         sb = 8
+         [r7 + 0x258] = r5
+         sl = 0x2e31              // '1.' // "3"
+         [r7 + 0x25c] = r5
+         r8 = 0x30                // '0'
+         [r7 + 0x264] = r5
+         [r7 + 0x268] = r5
+         [r7 + 0x254] = r5
+         [r7 + 0x260] = r5
+         [r7 + 0x26c] = r5
+         [r7 + 0x24c] = (byte) r6
+         [r7 + 0x24f] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x250] = (byte) r5
+         [r7 + 0x259] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x258] = (byte) sb
+         [r7 + 0x25d] = (byte) r5
+         [r7 + 0x264] = (byte) sb
+         [r7 + 0x265] = r0
+         r0 = 0x271
+         [r7 + 0x269] = (byte) r5
+         [r7 + 0x270] = r5
+         [r7 + 0x278] = r5
+         [r7 + str.tC_] = r5
+         [r7 + 0x270] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x27d
+         [r7 + 0x273] = (byte) r8
+         [r7 + str.tC_] = (byte) r5
+         [r7 + 0x27c] = r5
+         [r4 + 0x16] = (byte) r5
+         [r7 + 0x284] = r5
+         [r7 + 0x280] = r5
+         [r7 + 0x27c] = (byte) r6
+         [r7 + r0] = (half) sl
+         [r7 + 0x27f] = (byte) r8
+         [r7 + 0x280] = (byte) r5
+         [r7 + 0x28c] = r5
+         [r7 + 0x290] = r5
+         [r7 + 0x288] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff58]        // [0x11ff58:4]=0x59bfe4
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x13
+         r1 = pc + r1             // 0x6bcbf8 // "/Textures/room.webp" // str._Textures_room.webp
+         [r7 + 0x288] = r2
+         [r7 + 0x28c] = r0
+         r0 = r4
+         r2 = 0x13
+         [r7 + 0x290] = r4
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x295               // "C$"
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x294] = r5
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x298] = r5
+         [r7 + 0x2a0] = r5
+         [r7 + 0x2a4] = r5
+         [r7 + 0x2ac] = r5
+         [r7 + 0x2b0] = r5
+         [r7 + 0x29c] = r5
+         [r7 + 0x2a8] = r5
+         [r7 + 0x2b4] = r5
+         [r7 + 0x294] = (byte) r6
+         [r7 + 0x297] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x298] = (byte) r5
+         [r7 + 0x2a1] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x2a0] = (byte) sb
+         [r7 + 0x2a5] = (byte) r5
+         [r7 + 0x2ac] = (byte) sb
+         [r7 + 0x2ad] = r0
+         r0 = 0x2b9
+         [r7 + 0x2b1] = (byte) r5
+         [r7 + 0x2b8] = r5
+         [r7 + 0x2c0] = r5
+         [r7 + 0x2bc] = r5
+         [r7 + 0x2b8] = (byte) r6 // DATA XREF from WaterConcept::Screen_UpsellWater2::enter() @ 0x5bb7b8(r)
+         [r7 + r0] = (half) sl
+         r0 = 0x2c5
+         [r7 + 0x2bb] = (byte) r8
+         [r7 + 0x2bc] = (byte) r5
+         [r7 + 0x2c4] = r5
+         [r7 + 0x2cc] = r5
+         [r7 + 0x2c8] = r5
+         [r7 + 0x2c4] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x35                // '5'
+         [r7 + 0x2c7] = (byte) r0
+         [r7 + 0x2c8] = (byte) r5
+         [r4 + 0x13] = (byte) r5
+         [r7 + str._D_] = r5
+         [r7 + 0x2d8] = r5
+         [r7 + str.td] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff5c]        // [0x11ff5c:4]=0x59bf08
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x1b
+         r1 = pc + r1             // 0x6bcc10 // "/Textures/room_overlay.webp" // str._Textures_room_overlay.webp
+         [r7 + str.td] = r2
+         [r7 + str._D_] = r0
+         r0 = r4
+         r2 = 0x1b
+         [r7 + 0x2d8] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = 0x2dd
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x2dc] = r5
+         r6 = 6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x2e0] = r5
+         r8 = 8
+         [r7 + 0x2e8] = r5
+         sl = 0x2e31              // '1.' // "3"
+         [r7 + 0x2ec] = r5
+         sb = 0x30                // '0'
+         [r7 + str.TD_] = r5
+         [r7 + 0x2f8] = r5
+         [r7 + 0x2e4] = r5
+         [r7 + 0x2f0] = r5
+         [r7 + 0x2fc] = r5
+         [r7 + 0x2dc] = (byte) r6
+         [r7 + 0x2df] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x2e0] = (byte) r5
+         [r7 + 0x2e9] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x2e8] = (byte) r8
+         [r7 + 0x2ed] = (byte) r5
+         [r7 + str.TD_] = (byte) r8
+         [r7 + 0x2f5] = r0
+         r0 = 0x301
+         [r7 + 0x2f9] = (byte) r5
+         [r7 + 0x300] = r5
+         [r7 + 0x308] = r5
+         [r7 + 0x304] = r5
+         [r7 + 0x300] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x30d
+         [r7 + 0x303] = (byte) sb
+         [r7 + 0x304] = (byte) r5
+         [r7 + 0x30c] = r5
+         [r4 + 0x1b] = (byte) r5
+         [r7 + 0x314] = r5
+         [r7 + 0x310] = r5
+         [r7 + 0x30c] = (byte) r6
+         [r7 + r0] = (half) sl
+         [r7 + 0x30f] = (byte) sb
+         [r7 + 0x310] = (byte) r5
+         [r7 + 0x31c] = r5
+         [r7 + 0x320] = r5
+         [r7 + 0x318] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff60]        // [0x11ff60:4]=0x59be2c
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x18
+         r1 = pc + r1             // 0x6bcc30 // "/Textures/Endcap-01.webp" // str._Textures_Endcap_01.webp
+         [r7 + 0x318] = r2
+         [r7 + 0x31c] = r0
+         r0 = r4
+         r2 = 0x18
+         [r7 + 0x320] = r4
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x325
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x324] = r5
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x328] = r5
+         [r7 + 0x330] = r5
+         [r7 + 0x334] = r5
+         [r7 + 0x33c] = r5
+         [r7 + 0x340] = r5
+         [r7 + 0x32c] = r5
+         [r7 + 0x338] = r5
+         [r7 + 0x344] = r5
+         [r7 + 0x324] = (byte) r6
+         [r7 + 0x327] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x328] = (byte) r5
+         [r7 + 0x331] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x330] = (byte) r8
+         [r7 + 0x335] = (byte) r5
+         [r7 + 0x33c] = (byte) r8
+         [r7 + 0x33d] = r0
+         r0 = 0x349
+         [r7 + 0x341] = (byte) r5
+         [r7 + 0x348] = r5
+         [r7 + 0x350] = r5 // DATA XREF from WaterConcept::Screen_Popup::_sendPhotofinishShareMessage() @ 0x5a0498(r)
+         [r7 + 0x34c] = r5
+         [r7 + 0x348] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x355
+         [r7 + 0x34b] = (byte) sb
+         [r7 + 0x34c] = (byte) r5
+         [r7 + 0x354] = r5
+         [r4 + 0x18] = (byte) r5
+         [r7 + 0x35c] = r5
+         [r7 + 0x358] = r5
+         [r7 + 0x354] = (byte) r6
+         [r7 + r0] = (half) sl
+         [r7 + 0x357] = (byte) sb
+         [r7 + 0x358] = (byte) r5
+         [r7 + 0x364] = r5
+         [r7 + 0x368] = r5
+         [r7 + 0x360] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0011ff64]        // [0x11ff64:4]=0x59bd5c
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x1c
+         r1 = pc + r1             // 0x6bcc50 // "/Textures/level_end_cap.webp" // str._Textures_level_end_cap.webp
+         [r7 + 0x360] = r2
+         [r7 + 0x364] = r0
+         r0 = r4
+         r2 = 0x1c
+         [r7 + 0x368] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = 0x36d
+         r1 = str.s3              // 0x2e30 // "s3" // DATA XREF from WaterConcept::Screen_UpsellWater2::enter() @ 0x5bb7d8(r)
+         [r7 + 0x36c] = r5
+         r6 = 6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x370] = r5
+         r8 = 8
+         [r7 + 0x378] = r5
+         sl = 0x2e31              // '1.' // "3"
+         [r7 + 0x37c] = r5
+         sb = 0x30                // '0'
+         [r7 + 0x384] = r5
+         [r7 + 0x388] = r5
+         [r7 + 0x374] = r5
+         [r7 + 0x380] = r5 // DATA XREF from WaterConcept::Screen_Upsell::backKeyPressed() @ 0x5bb51c(r)
+         [r7 + 0x38c] = r5
+         [r7 + 0x36c] = (byte) r6
+         [r7 + 0x36f] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x370] = (byte) r5
+         [r7 + 0x379] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x378] = (byte) r8
+         [r7 + 0x37d] = (byte) r5
+         [r7 + 0x384] = (byte) r8
+         [r7 + 0x385] = r0
+         r0 = 0x391
+         [r7 + 0x389] = (byte) r5
+         [r7 + 0x390] = r5
+         [r7 + 0x398] = r5
+         [r7 + 0x394] = r5
+         [r7 + 0x390] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x39d
+         [r7 + 0x393] = (byte) sb
+         [r7 + 0x394] = (byte) r5
+         [r7 + 0x39c] = r5
+         [r4 + 0x1c] = (byte) r5
+         [r7 + 0x3a4] = r5
+         [r7 + 0x3a0] = r5
+         [r7 + 0x39c] = (byte) r6
+         [r7 + r0] = (half) sl
+         [r7 + 0x39f] = (byte) sb
+         [r7 + 0x3a0] = (byte) r5
+         [r7 + 0x3ac] = r5
+         [r7 + 0x3b0] = r5
+         [r7 + 0x3a8] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x00120fe0]        // [0x121fd4:4]=0x59bc80
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x15
+         r1 = pc + r1             // 0x6bcc70 // "/Textures/UI_Tub.webp" // str._Textures_UI_Tub.webp
+         [r7 + 0x3a8] = r2
+         [r7 + 0x3ac] = r0
+         r0 = r4
+         r2 = 0x15
+         [r7 + 0x3b0] = r4
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x3b5               // "P$"
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x3b4] = r5
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x3b8] = r5
+         [r7 + 0x3c0] = r5
+         [r7 + 0x3c4] = r5
+         [r7 + 0x3cc] = r5
+         [r7 + 0x3d0] = r5
+         [r7 + 0x3bc] = r5
+         [r7 + 0x3c8] = r5
+         [r7 + str._H_] = r5
+         [r7 + 0x3b4] = (byte) r6
+         [r7 + 0x3b7] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x3b8] = (byte) r5
+         [r7 + 0x3c1] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x3c0] = (byte) r8
+         [r7 + 0x3c5] = (byte) r5
+         [r7 + 0x3cc] = (byte) r8
+         [r7 + 0x3cd] = r0
+         r0 = 0x3d9 // DATA XREF from WaterConcept::Screen_Popup::_buildUI() @ 0x596e94(r)
+         [r7 + 0x3d1] = (byte) r5
+         [r7 + 0x3d8] = r5
+         [r7 + 0x3e0] = r5
+         [r7 + 0x3dc] = r5
+         [r7 + 0x3d8] = (byte) r6
+         [r7 + r0] = (half) sl
+         r0 = 0x3e5               // "Z$"
+         [r7 + 0x3db] = (byte) sb
+         [r7 + 0x3dc] = (byte) r5
+         [r7 + 0x3e4] = r5
+         [r4 + 0x15] = (byte) r5
+         [r7 + 0x3ec] = r5
+         [r7 + 0x3e8] = r5
+         [r7 + 0x3e4] = (byte) r6
+         [r7 + r0] = (half) sl
+         [r7 + 0x3e7] = (byte) sb
+         [r7 + 0x3e8] = (byte) r5
+         [r7 + str.pS_] = r5
+         [r7 + 0x3f8] = r5
+         [r7 + 0x3f0] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x001210d0]        // [0x1220b8:4]=0x59bba8
+         r4 = r0
+         r2 = 0x21                // '!'
+         r0 = 0x1b
+         r1 = pc + r1             // 0x6bcc88 // "/Textures/tile_magenta.webp" // str._Textures_tile_magenta.webp
+         [r7 + 0x3f0] = r2 // DATA XREF from WaterConcept::Screen_Popup::_buildUI() @ 0x596e7c(r)
+         [r7 + str.pS_] = r0 // DATA XREF from WaterConcept::Screen_Upsell::_fileExistsCallback(void*) @ 0x5bb380(r)
+         r0 = r4
+         r2 = 0x1b
+         [r7 + 0x3f8] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = 0x3fd
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x3fc] = r5
+         r6 = 6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x400] = r5
+         r8 = 8
+         [r7 + 0x408] = r5
+         sb = 0x2e31              // '1.' // "3"
+         [r7 + 0x40c] = r5
+         [r7 + 0x414] = r5
+         [r7 + 0x418] = r5
+         [r7 + 0x404] = r5
+         [r7 + 0x410] = r5
+         [r7 + 0x41c] = r5
+         [r7 + 0x3fc] = (byte) r6
+         [r7 + 0x3ff] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x400] = (byte) r5
+         [r7 + 0x409] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x408] = (byte) r8
+         [r7 + 0x40d] = (byte) r5
+         [r7 + 0x414] = (byte) r8
+         [r7 + 0x415] = r0
+         r0 = 0x421
+         [r7 + 0x419] = (byte) r5
+         [r7 + 0x420] = r5
+         [r7 + 0x428] = r5
+         [r7 + 0x424] = r5
+         [r7 + 0x420] = (byte) r6
+         [r7 + r0] = (half) sb
+         r0 = 0x42d
+         [r7 + 0x423] = (byte) sl
+         [r7 + 0x424] = (byte) r5
+         [r7 + 0x42c] = r5
+         [r4 + 0x1b] = (byte) r5
+         [r7 + 0x434] = r5
+         [r7 + 0x430] = r5
+         [r7 + 0x42c] = (byte) r6
+         [r7 + r0] = (half) sb
+         [r7 + 0x42f] = (byte) sl
+         [r7 + 0x430] = (byte) r5
+         [r7 + 0x43c] = r5
+         [r7 + 0x440] = r5
+         [r7 + 0x438] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x001211cc]        // [0x1221c4:4]=0x59bac4
+         r4 = r0
+         r0 = 0x21                // '!'
+         r2 = 0x1b
+         [r7 + 0x438] = r0
+         r0 = 0x1b
+         r1 = pc + r1             // 0x6bcca8 // "/Textures/swampy_level.webp" // str._Textures_swampy_level.webp
+         [r7 + 0x43c] = r0
+         r0 = r4
+         [r7 + 0x440] = r4
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r0 = 0x445               // "An"
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x444] = r5
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x448] = r5
+         [r7 + 0x450] = r5 // DATA XREFS from WaterConcept::Screen_Popup::handleEvent(int, Walaber::Widget::WidgetActionRet const&, Walaber::Widget*) @ 0x5a1ba0(r), 0x5a1bec(r), 0x5a1c00(r)
+         [r7 + 0x454] = r5
+         [r7 + 0x45c] = r5
+         [r7 + 0x460] = r5
+         [r7 + 0x44c] = r5
+         [r7 + 0x458] = r5
+         [r7 + 0x464] = r5
+         [r7 + 0x444] = (byte) r6
+         [r7 + 0x447] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x448] = (byte) r5
+         [r7 + 0x451] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x450] = (byte) r8
+         [r7 + 0x455] = (byte) r5
+         [r7 + 0x45c] = (byte) r8 // DATA XREF from WaterConcept::Screen_Processing::update(float, bool) @ 0x5ac7fc(r)
+         [r7 + 0x45d] = r0
+         r0 = 0x469
+         [r7 + 0x461] = (byte) r5
+         [r7 + 0x468] = r5
+         [r7 + 0x470] = r5
+         [r7 + 0x46c] = r5
+         [r7 + 0x468] = (byte) r6
+         [r7 + r0] = (half) sb
+         r0 = 0x475               // "P'"
+         [r7 + 0x46b] = (byte) sl
+         [r7 + 0x46c] = (byte) r5
+         [r7 + 0x474] = r5
+         [r4 + 0x1b] = (byte) r5
+         [r7 + 0x47c] = r5
+         [r7 + 0x478] = r5
+         [r7 + 0x474] = (byte) r6
+         [r7 + r0] = (half) sb
+         [r7 + 0x477] = (byte) sl
+         [r7 + 0x478] = (byte) r5
+         [r7 + str._E_] = r5
+         [r7 + 0x488] = r5
+         [r7 + 0x480] = r5
+         r0 = 0x30                // '0'
+         rsym._Znwj ()
+         r1 = [0x001212bc]        // [0x12227c:4]=0x59b9fc
+         r4 = r0
+         r6 = 0x31                // '1'
+         r0 = 0x21                // '!'
+         r1 = pc + r1             // 0x6bccc8 // "/Textures/WMW_UI_water_light.webp" // str._Textures_WMW_UI_water_light.webp
+         [r7 + 0x480] = r6
+         [r7 + str._E_] = r0
+         r0 = r4
+         r2 = 0x21                // '!'
+         [r7 + 0x488] = r4
+         sym.imp.__aeabi_memcpy ()
+         r0 = 0x48d
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x48c] = r5
+         sl = 6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x490] = r5
+         sb = 8
+         [r7 + 0x498] = r5
+         r1 = 0x2e31              // '1.' // "3"
+         [r7 + 0x49c] = r5
+         r8 = 0x30                // '0'
+         [r7 + 0x4a4] = r5
+         [r7 + 0x4a8] = r5
+         [r7 + 0x494] = r5
+         [r7 + 0x4a0] = r5
+         [r7 + 0x4ac] = r5
+         [r7 + 0x48c] = (byte) sl
+         [r7 + 0x48f] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x490] = (byte) r5
+         [r7 + 0x499] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x498] = (byte) sb
+         [r7 + 0x49d] = (byte) r5
+         [r7 + 0x4a4] = (byte) sb
+         [r7 + 0x4a5] = r0
+         r0 = 0x4b1               // (pstr 0x00000002) "L"
+         [r7 + 0x4a9] = (byte) r5
+         [r7 + 0x4b0] = r5
+         [r7 + 0x4b8] = r5
+         [r7 + 0x4b4] = r5
+         [r7 + 0x4b0] = (byte) sl
+         [r7 + r0] = (half) r1
+         r0 = 0x4bd
+         [r7 + 0x4b3] = (byte) r8
+         [r7 + 0x4b4] = (byte) r5
+         [r7 + 0x4bc] = r5
+         [r4 + 0x21] = (byte) r5
+         [r7 + 0x4c4] = r5
+         [r7 + 0x4c0] = r5
+         [r7 + 0x4bc] = (byte) sl
+         [r7 + r0] = (half) r1
+         [r7 + 0x4bf] = (byte) r8
+         [r7 + 0x4c0] = (byte) r5
+         [r7 + 0x4cc] = r5
+         [r7 + 0x4d0] = r5
+         [r7 + 0x4c8] = r5
+         r0 = 0x30                // '0'
+         rsym._Znwj ()
+         r1 = [0x001213b8]        // [0x122280:4]=0x59b928
+         r4 = r0
+         r0 = 0x20
+         [r7 + 0x4c8] = r6
+         r1 = pc + r1             // 0x6bccf0 // "/Textures/WMW_UI_water_dark.webp" // str._Textures_WMW_UI_water_dark.webp
+         [r7 + 0x4cc] = r0
+         r0 = r4
+         r2 = 0x20
+         [r7 + 0x4d0] = r4
+         sym.imp.__aeabi_memcpy ()
+         r6 = 0
+         r0 = 0x4d5
+         r1 = str.s3              // 0x2e30 // "s3"
+         [r7 + 0x4d4] = r6
+         [r7 + r0] = (half) r1
+         r0 = 0x33                // '3'
+         [r7 + 0x4d8] = r6
+         r1 = 0x2e31              // '1.' // "3"
+         [r7 + 0x4e0] = r6
+         [r7 + 0x4e4] = r6
+         [r7 + 0x4ec] = r6
+         [r7 + 0x4f0] = r6
+         [r7 + 0x4dc] = r6
+         [r7 + 0x4e8] = r6
+         [r7 + 0x4f4] = r6
+         [r7 + 0x4d4] = (byte) sl
+         [r7 + 0x4d7] = (byte) r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3935 << 16
+         [r7 + 0x4d8] = (byte) r6
+         [r7 + 0x4e1] = r0
+         r0 = str.s3              // 0x2e30 // "s3"
+         r0 |= 0x3131 << 16
+         [r7 + 0x4e0] = (byte) sb
+         [r7 + 0x4e5] = (byte) r6
+         [r7 + 0x4ec] = (byte) sb
+         [r7 + 0x4ed] = r0
+         r0 = 0x4f9
+         [r7 + 0x4f1] = (byte) r6
+         [r7 + 0x4f8] = r6
+         [r7 + 0x500] = r6
+         [r7 + 0x4fc] = r6
+         [r7 + 0x4f8] = (byte) sl
+         [r7 + r0] = (half) r1
+         r0 = 0x505               // "[$"
+         [r7 + 0x4fb] = (byte) r8
+         [r7 + 0x4fc] = (byte) r6
+         [r7 + 0x504] = r6
+         [r4 + 0x20] = (byte) r6
+         [r7 + 0x50c] = r6
+         [r7 + 0x508] = r6
+         [r7 + 0x504] = (byte) sl
+         [r7 + r0] = (half) r1
+         [r7 + 0x507] = (byte) r8
+         [r7 + 0x508] = (byte) r6
+         [r7 + 0x518] = r6
+         [r7 + 0x510] = r6
+         r0 = 0x30                // '0'
+         rsym._Znwj ()
+         r1 = [0x001214a8]        // [0x122284:4]=0x59b85c
+         r5 = r0
+         r0 = 0x31                // '1'
+         r2 = 0x24                // '$'
+         r3 = r7 + 0x510
+         r1 = pc + r1             // 0x6bcd18 // "/Textures/tile_magenta_lighting.webp" // str._Textures_tile_magenta_lighting.webp
+         stm r3, (r0, r2, r5)
+         r0 = r5
+         r2 = 0x24                // '$'
+         sym.imp.__aeabi_memcpy ()
+         r1 = 0x51d
+         r2 = str.s3              // 0x2e30 // "s3"
+         r0 = [0x001214d8]        // [0x122288:4]=0xffffd014
+         r8 = 8
+         sb = [0x001214e0]        // [0x12228c:4]=0x5c2afc // "`"
+         r3 = 0x2e31              // '1.' // "3"
+         [r7 + 0x51c] = r6
+         r0 = pc + r0
+         [r7 + r1] = (half) r2
+         r1 = 6
+         r2 = 0x33                // '3'
+         [r7 + 0x520] = r6
+         [r7 + 0x528] = r6
+         sb = pc + sb             // 0x6e4000 // section..data
+                                  [21] -rw- section size 7176 named .data
+         [r7 + 0x52c] = r6
+         [r7 + 0x534] = r6
+         [r7 + 0x538] = r6
+         [r7 + 0x524] = r6
+         [r7 + 0x530] = r6
+         [r7 + 0x53c] = r6
+         [r7 + 0x51c] = (byte) r1
+         [r7 + 0x51f] = (byte) r2
+         r2 = str.s3              // 0x2e30 // "s3"
+         r2 |= 0x3935 << 16
+         [r7 + 0x520] = (byte) r6
+         [r7 + 0x529] = r2
+         r2 = str.s3              // 0x2e30 // "s3"
+         r2 |= 0x3131 << 16
+         [r7 + 0x528] = (byte) r8
+         [r7 + 0x52d] = (byte) r6
+         [r7 + 0x534] = (byte) r8
+         [r7 + 0x535] = r2
+         r2 = 0x541
+         [r7 + 0x539] = (byte) r6 // DATA XREFS from WaterConcept::Screen_Popup::handleEvent(int, Walaber::Widget::WidgetActionRet const&, Walaber::Widget*) @ 0x5a1838(r), 0x5a1880(r), 0x5a1894(r)
+         [r7 + 0x540] = r6
+         [r7 + 0x548] = r6
+         [r7 + 0x544] = r6
+         [r7 + 0x540] = (byte) r1
+         [r7 + r2] = (half) r3
+         r2 = 0x30                // '0'
+         [r7 + 0x543] = (byte) r2
+         [r7 + 0x544] = (byte) r6
+         [r7 + 0x54c] = r6
+         [r7 + 0x54c] = (byte) r1
+         r1 = 0x54d
+         [r7 + 0x554] = r6
+         [r7 + 0x550] = r6
+         [r7 + r1] = (half) r3
+         r1 = 0
+         [r7 + 0x54f] = (byte) r2
+         r2 = sb                  // section..data
+         [r5 + 0x24] = (byte) r6
+         [r7 + 0x550] = (byte) r6
+         sym.imp.__cxa_atexit ()
+         r7 = [0x001215a8]        // [0x122290:4]=0x5c5688
+         r0 = 0x14
+         r1 = [0x001215b0]        // [0x122294:4]=0x59b784
+         r2 = 0xa
+         r7 = pc + r7
+         r1 = pc + r1             // 0x6bcd40 // "ScreenName" // str.ScreenName
+         [r7] = (byte) r0
+         r0 = r7 + 1
+         sym.imp.__aeabi_memcpy ()
+         r4 = 0x6853              // 'Sh'
+         r0 = 0x7265              // 'er'
+         r5 = 0xc
+         r4 |= 0x776f << 16
+         r0 |= 0x4441 << 16
+         [r7 + 0xb] = (byte) r6
+         [r7 + 0xc] = r6
+         r1 = 0x10 // DATA XREF from str._a_b_t_n_n_v_f_r @ +0x6b9(r)
+         [r7 + 0x10] = r6
+         r2 = 0x6e49              // 'In'
+         [r7 + 0x14] = r6
+         r2 |= 0x6574 << 16
+         [r7 + 0x18] = r6
+         [r7 + 0x1c] = r6
+         [r7 + 0x20] = r6
+         [r7 + 0x2c] = r6
+         [r7 + 0x24] = (byte) r5
+         [r7 + 0xd] = r4
+         [r7 + 0xc] = (byte) r8
+         r8 = 0x6c46              // 'Fl' // u",\xe4"
+         [r7 + 0x11] = (byte) r6
+         r8 |= 0x7661 << 16
+         [r7 + 0x1d] = r0
+         r0 = 0x7250              // 'Pr'
+         r0 |= 0x6665 << 16
+         [r7 + 0x19] = r0
+         r0 = 0x726f              // 'or'
+         [r7 + 0x18] = (byte) r1
+         [r7 + 0x29] = (half) r0
+         r0 = 0x6e72              // 'rn'
+         r0 |= 0x6c61 << 16
+         [r7 + 0x21] = (byte) r6
+         [r7 + 0x25] = r8
+         r0 = r0 + 0x800
+         [r7 + 0x2b] = (byte) r6
+         [r7 + 0x38] = r6
+         [r7 + 0x34] = r6
+         [r7 + 0x30] = r6
+         [r7 + 0x35] = r0
+         r0 = [0x00121668]        // [0x122298:4]=0xffffcec8
+         [r7 + 0x31] = r2
+         r2 = sb                  // section..data
+         r0 = pc + r0
+         [r7 + 0x30] = (byte) r1
+         r1 = 0 // DATA XREF from WaterConcept::Screen_Upsell::backKeyPressed() @ 0x5bb588(r)
+         [r7 + 0x39] = (byte) r6
+         sym.imp.__cxa_atexit ()
+         r1 = [0x00121688]        // [0x12229c:4]=0x5c55e8
+         r2 = 0x303d              // '=0'
+         r0 = [0x00121690]        // [0x1222a0:4]=0xffffcee4
+         r1 = pc + r1
+         r0 = pc + r0
+         [r1 + 8] = r6
+         [r1] = (byte) r5
+         [r1 + 5] = (half) r2
+         r2 = 0x313d              // '=1'
+         [r1 + 1] = r4
+         [r1 + 7] = (byte) r6
+         [r1 + 0x14] = r6
+         [r1 + 0xc] = (byte) r5
+         [r1 + 0x11] = (half) r2
+         r2 = sb                  // section..data
+         [r1 + 0xd] = r4
+         [r1 + 0x13] = (byte) r6 // DATA XREF from WaterConcept::Screen_Upsell::_finishedLoadingWidgets(void*) @ 0x5bada4(r)
+         r1 = 0
+         sym.imp.__cxa_atexit ()
+         sb = [0x001216d4]        // [0x1222a4:4]=0x5c55bc
+         r0 = 0x20
+         sb = pc + sb
+         [sb] = r6
+         [sb + 4] = r6
+         [sb + 8] = r6
+         rsym._Znwj ()
+         r1 = [0x001216f0]        // [0x1222a8:4]=0x59b650
+         r4 = r0
+         r5 = 0x21                // '!'
+         r0 = 0x11
+         r1 = pc + r1             // 0x6bcd50 // "PreferAD='Cranky'" // str.PreferADCranky
+         [sb] = r5
+         stmib sb, (r0, r4)
+         r0 = r4
+         r2 = 0x11
+         sym.imp.__aeabi_memcpy ()
+         r7 = sb
+         [r4 + 0x11] = (byte) r6
+         [r7 + 0xc]! = r6
+         [r7 + 4] = r6
+         [r7 + 8] = r6
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x00121734]        // [0x1222ac:4]=0x59b624
+         r4 = r0
+         r0 = 0x16
+         [sb + 0xc] = r5
+         r1 = pc + r1             // 0x6bcd68 // "PreferAD='MysteryDuck'" // str.PreferADMysteryDuck
+         [sb + 0x10] = r0
+         r0 = r4
+         r2 = 0x16
+         [sb + 0x14] = r4
+         sym.imp.__aeabi_memcpy ()
+         r6 = 0
+         r7 = sb
+         [r7 + 0x18]! = r6
+         [r4 + 0x16] = (byte) r6
+         [r7 + 4] = r6
+         [r7 + 8] = r6
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x0012177c]        // [0x1222b0:4]=0x59b5f4
+         sl = 0x21                // '!'
+         r7 = 0x10
+         r2 = 0x10
+         r1 = pc + r1             // 0x6bcd80 // "PreferAD='Allie'" // str.PreferADAllie
+         [sb + 0x18] = sl
+         [sb + 0x1c] = r7
+         r5 = r0
+         [sb + 0x20] = r0
+         sym.imp.__aeabi_memcpy ()
+         r0 = [0x001217a4]        // [0x1222b4:4]=0xffffce0c
+         r1 = 0
+         r4 = [0x001217ac]        // [0x1222b8:4]=0x5c2848
+         r0 = pc + r0
+         [r5 + 0x10] = (byte) r6
+         r4 = pc + r4             // 0x6e4000 // section..data
+                                  [21] -rw- section size 7176 named .data
+         r2 = r4                  // section..data
+         sym.imp.__cxa_atexit ()
+         r1 = [0x001217c4]        // [0x1222bc:4]=0x5c54ec // "p"
+         r2 = 0x726f              // 'or'
+         r2 |= 0x303d << 16
+         r0 = [0x001217d0]        // [0x1222c0:4]=0xffffce24
+         r1 = pc + r1
+         r0 = pc + r0
+         [r1 + 0x20] = r6
+         [r1] = r6
+         [r1 + 4] = r6
+         [r1 + 8] = r6
+         [r1 + 0xc] = r6
+         [r1 + 0x10] = r6 // DATA XREF from WaterConcept::Screen_Upsell::backKeyPressed() @ 0x5bb5ac(r)
+         [r1 + 0x14] = r6
+         [r1 + 0x18] = r6
+         [r1 + 0x1c] = r6
+         [r1 + 5] = r2
+         r2 = r2 + 0x1000000
+         [r1 + 1] = r8
+         [r1] = (byte) r7
+         [r1 + 9] = (byte) r6
+         [r1 + 0x11] = r2
+         r2 = 0x726f              // 'or'
+         r2 |= 0x323d << 16
+         [r1 + 0xd] = r8
+         [r1 + 0xc] = (byte) r7
+         [r1 + 0x15] = (byte) r6
+         [r1 + 0x1d] = r2
+         r2 = r4                  // section..data
+         [r1 + 0x19] = r8
+         [r1 + 0x18] = (byte) r7
+         [r1 + 0x21] = (byte) r6
+         r1 = 0
+         sym.imp.__cxa_atexit ()
+         r7 = [0x00121848]        // [0x1222c4:4]=0x5c5498
+         r0 = 0x20 // DATA XREF from WaterConcept::Screen_Upsell::backKeyPressed() @ 0x5bb574(r)
+         r7 = pc + r7
+         [r7] = r6
+         [r7 + 4] = r6
+         [r7 + 8] = r6
+         rsym._Znwj ()
+         r1 = [0x00121864]        // [0x1222c8:4]=0x59b524
+         r4 = r0
+         r0 = 0x16
+         [r7] = sl
+         r1 = pc + r1             // 0x6bcd98 // "ScreenName='main_menu'" // str.ScreenNamemain_menu
+         stmib r7, (r0, r4)
+         r0 = r4
+         r2 = 0x16
+         sym.imp.__aeabi_memcpy ()
+         r5 = r7
+         [r4 + 0x16] = (byte) r6
+         [r5 + 0xc]! = r6
+         [r5 + 4] = r6
+         [r5 + 8] = r6
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x001218a4]        // [0x1222cc:4]=0x59b4fc
+         r4 = r0
+         r0 = 0x17
+         [r7 + 0xc] = sl
+         r1 = pc + r1             // 0x6bcdb0 // "ScreenName='pause_menu'" // str.ScreenNamepause_menu
+         [r7 + 0x10] = r0
+         r0 = r4
+         r2 = 0x17
+         [r7 + 0x14] = r4
+         sym.imp.__aeabi_memcpy ()
+         r8 = 0
+         r5 = r7
+         [r5 + 0x18]! = r8
+         [r4 + 0x17] = (byte) r8
+         [r5 + 4] = r8
+         [r5 + 8] = r8
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x001218ec]        // [0x1222d0:4]=0x59b4c8
+         r4 = r0
+         r0 = 0x21                // '!'
+         r2 = 0x1a
+         r3 = r7 + 0x18
+         r1 = pc + r1             // 0x6bcdc8 // "ScreenName='result_screen'" // str.ScreenNameresult_screen
+         stm r3, (r0, r2, r4)
+         r0 = r4
+         r2 = 0x1a
+         sym.imp.__aeabi_memcpy ()
+         r0 = [0x00121914]        // [0x1222d4:4]=0xffffcd1c
+         r1 = 0
+         r2 = [0x0012191c]        // [0x1222d8:4]=0x5c26d8
+         r0 = pc + r0
+         [r4 + 0x1a] = (byte) r8
+         r2 = pc + r2             // 0x6e4000 // section..data
+                                  [21] -rw- section size 7176 named .data
+         sym.imp.__cxa_atexit () // DATA XREF from WaterConcept::Screen_UpsellWater2::_buildUI() @ 0x5bbb40(r)
+         r5 = [0x00121930]        // [0x1222dc:4]=0x5c53d8 // "p"
+         r0 = 0x10 // DATA XREF from WaterConcept::Screen_UpsellWater2::_buildUI() @ 0x5bbb38(r)
+         r5 = pc + r5
+         [r5] = r8
+         [r5 + 4] = r8
+         [r5 + 8] = r8
+         rsym._Znwj ()
+         r1 = [0x0012194c]        // [0x1222e0:4]=0x59b48c
+         r7 = 0x11
+         sb = 0xb
+         r2 = 0xb
+         r1 = pc + r1             // 0x6bcde8 // "Storyline=0" // str.Storyline0
+         stm r5, (r7, sb)
+         r4 = r0
+         [r5 + 8] = r0
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5
+         [r4 + 0xb] = (byte) r8
+         [r6 + 0xc]! = r8
+         [r6 + 4] = r8
+         [r6 + 8] = r8
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x0012198c]        // [0x1222e4:4]=0x59b45c
+         r2 = 0xb
+         [r5 + 0xc] = r7
+         r4 = r0
+         r1 = pc + r1             // 0x6bcdf8 // "Storyline=1" // str.Storyline1
+         [r5 + 0x10] = sb
+         [r5 + 0x14] = r0
+         sym.imp.__aeabi_memcpy ()
+         r7 = 0
+         r6 = r5
+         [r6 + 0x18]! = r7
+         [r4 + 0xb] = (byte) r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x001219cc]        // [0x1222e8:4]=0x59b42c
+         r8 = 0x11
+         sb = 0xb
+         r2 = 0xb
+         r1 = pc + r1             // 0x6bce08 // "Storyline=3" // str.Storyline3
+         [r5 + 0x18] = r8
+         [r5 + 0x1c] = sb
+         r4 = r0
+         [r5 + 0x20] = r0
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5
+         [r4 + 0xb] = (byte) r7
+         [r6 + 0x24]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121a10]        // [0x1222ec:4]=0x59b3f8
+         r2 = 0xb
+         [r5 + 0x24] = r8
+         r4 = r0
+         r1 = pc + r1             // 0x6bce18 // "Storyline=4" // str.Storyline4
+         [r5 + 0x28] = sb
+         [r5 + 0x2c] = r0
+         sym.imp.__aeabi_memcpy ()
+         r7 = 0
+         r6 = r5
+         [r6 + 0x30]! = r7
+         [r4 + 0xb] = (byte) r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121a50]        // [0x1222f0:4]=0x59b3c8
+         r8 = 0x11
+         sb = 0xb
+         r2 = 0xb
+         r1 = pc + r1             // 0x6bce28 // "Storyline=5" // str.Storyline5
+         [r5 + 0x30] = r8
+         [r5 + 0x34] = sb
+         r4 = r0
+         [r5 + 0x38] = r0
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5
+         [r4 + 0xb] = (byte) r7
+         [r6 + 0x3c]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121a94]        // [0x1222f4:4]=0x59b394
+         r2 = 0xb
+         [r5 + 0x3c] = r8
+         r4 = r0
+         r1 = pc + r1             // 0x6bce38 // "Storyline=6" // str.Storyline6
+         [r5 + 0x40] = sb
+         [r5 + 0x44] = r0
+         sym.imp.__aeabi_memcpy ()
+         r0 = [0x00121ab4]        // [0x1222f8:4]=0xffffcbb8
+         r7 = 0
+         r2 = [0x00121abc]        // [0x1222fc:4]=0x5c2534 // ")"
+         r1 = 0
+         r0 = pc + r0
+         [r4 + 0xb] = (byte) r7
+         r2 = pc + r2             // 0x6e4000 // section..data
+                                  [21] -rw- section size 7176 named .data
+         sym.imp.__cxa_atexit ()
+         r5 = [0x00121ad4]        // [0x122300:4]=0x5c527c
+         r0 = 0x10
+         r5 = pc + r5
+         [r5] = r7
+         [r5 + 4] = r7
+         [r5 + 8] = r7
+         rsym._Znwj ()
+         r1 = [0x00121af0]        // [0x122304:4]=0x59b2e8
+         r2 = 0xb
+         stm r5, (r8, sb)
+         r4 = r0
+         r1 = pc + r1             // 0x6bcde8 // "Storyline=0" // str.Storyline0
+         [r5 + 8] = r0
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5
+         [r4 + 0xb] = (byte) r7
+         [r6 + 0xc]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121b28]        // [0x122308:4]=0x59b2c0
+         r8 = 0x11
+         sb = 0xb
+         r2 = 0xb
+         r1 = pc + r1             // 0x6bcdf8 // "Storyline=1" // str.Storyline1
+         [r5 + 0xc] = r8
+         [r5 + 0x10] = sb
+         r4 = r0
+         [r5 + 0x14] = r0
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5
+         [r4 + 0xb] = (byte) r7
+         [r6 + 0x18]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121b6c]        // [0x12230c:4]=0x59b28c
+         r2 = 0xb
+         [r5 + 0x18] = r8
+         r4 = r0
+         r1 = pc + r1             // 0x6bce08 // "Storyline=3" // str.Storyline3
+         [r5 + 0x1c] = sb
+         [r5 + 0x20] = r0
+         sym.imp.__aeabi_memcpy ()
+         r7 = 0
+         r6 = r5
+         [r6 + 0x24]! = r7
+         [r4 + 0xb] = (byte) r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121bac]        // [0x122310:4]=0x59b25c
+         sb = 0x11
+         sl = 0xb
+         r2 = 0xb
+         r1 = pc + r1             // 0x6bce18 // "Storyline=4" // str.Storyline4
+         [r5 + 0x24] = sb
+         [r5 + 0x28] = sl
+         r4 = r0
+         [r5 + 0x2c] = r0
+         sym.imp.__aeabi_memcpy ()
+         r6 = r5
+         [r4 + 0xb] = (byte) r7
+         [r6 + 0x30]! = r7
+         [r6 + 4] = r7
+         [r6 + 8] = r7
+         r0 = 0x10
+         r8 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121bf4]        // [0x122314:4]=0x59b234
+         r2 = 0xb
+         [r5 + 0x30] = sb
+         r4 = r0
+         r1 = pc + r1             // 0x6bce38 // "Storyline=6" // str.Storyline6
+         [r5 + 0x34] = sl
+         [r5 + 0x38] = r0
+         sym.imp.__aeabi_memcpy ()
+         r0 = [0x00121c14]        // [0x122318:4]=0xffffca98
+         r5 = 0
+         r2 = [0x00121c1c]        // [0x12231c:4]=0x5c23d4
+         r1 = 0
+         r0 = pc + r0
+         [r4 + 0xb] = (byte) r5
+         r2 = pc + r2             // 0x6e4000 // section..data
+                                  [21] -rw- section size 7176 named .data
+         sym.imp.__cxa_atexit ()
+         r6 = [0x00121c34]        // [0x122320:4]=0x5c5154
+         r0 = 4
+         r1 = [0x00121c3c]        // [0x122324:4]=0x59ab84
+         sb = 0x12                // "("
+         r6 = pc + r6
+         r2 = 9
+         r1 = pc + r1             // 0x6bc7d0 // "Storyline" // str.Storyline
+         [r6] = (byte) r0
+         r0 = 0x4449              // 'ID'
+         [r6 + 1] = (half) r0
+         r0 = r6 + 0xd
+         [r6 + 3] = (byte) r5
+         [r6 + 4] = r5
+         [r6 + 8] = r5
+         [r6 + 0xc] = r5
+         [r6 + 0x10] = r5
+         [r6 + 0x14] = r5
+         [r6 + 0xc] = (byte) sb
+         sym.imp.__aeabi_memcpy ()
+         r7 = r6
+         r0 = 0x614e              // 'Na'
+         [r7 + 0x24]! = r5
+         r0 |= 0x656d << 16
+         [r7 - 0xc] = r5
+         [r7 - 8] = r5
+         [r7 - 4] = r5
+         [r7 - 0xe] = (byte) r5
+         [r7 + 4] = r5
+         [r7 + 8] = r5
+         [r7 - 7] = r0
+         r0 = 0x6150              // 'Pa'
+         r0 |= 0x6b63 << 16
+         [r7 - 0xb] = r0
+         [r7 - 0xc] = (byte) r8
+         [r7 - 3] = (byte) r5
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121cc8]        // [0x122328:4]=0x59adf8
+         r8 = 0x11
+         sl = 0xc
+         r2 = 0xc
+         r1 = pc + r1             // 0x6bcad0 // "DisplayOrder" // str.DisplayOrder
+         [r6 + 0x24] = r8
+         [r6 + 0x28] = sl
+         r4 = r0
+         [r6 + 0x2c] = r0
+         sym.imp.__aeabi_memcpy ()
+         r1 = [0x00121cf0]        // [0x12232c:4]=0x59ab68
+         r0 = r6 + 0x31
+         r2 = 9
+         [r6 + 0x30] = r5
+         r1 = pc + r1             // 0x6bc868 // "LevelName" // str.LevelName
+         [r4 + 0xc] = (byte) r5
+         [r6 + 0x34] = r5
+         [r6 + 0x38] = r5
+         [r6 + 0x30] = (byte) sb
+         sym.imp.__aeabi_memcpy ()
+         r7 = r6
+         [r7 + 0x3c]! = r5
+         [r7 - 2] = (byte) r5
+         [r7 + 4] = r5
+         [r7 + 8] = r5
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121d34]        // [0x122330:4]=0x59b104
+         r2 = 0xc
+         [r6 + 0x3c] = r8
+         r4 = r0
+         r1 = pc + r1             // 0x6bce48 // "DownloadDate" // str.DownloadDate
+         [r6 + 0x40] = sl
+         [r6 + 0x44] = r0
+         sym.imp.__aeabi_memcpy ()
+         r5 = 0
+         r7 = r6
+         [r7 + 0x48]! = r5 // DATA XREF from WaterConcept::Screen_UpsellWater2::~Screen_UpsellWater2() @ 0x5bb708(r)
+         [r4 + 0xc] = (byte) r5
+         [r7 + 4] = r5
+         [r7 + 8] = r5
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121d74]        // [0x122334:4]=0x59b0d4
+         r4 = r0
+         r8 = 0x11
+         r0 = 0xd
+         r1 = pc + r1             // 0x6bce58 // "PortalTexture" // str.PortalTexture
+         [r6 + 0x48] = r8
+         [r6 + 0x4c] = r0
+         r0 = r4
+         r2 = 0xd
+         [r6 + 0x50] = r4
+         sym.imp.__aeabi_memcpy ()
+         r7 = r6
+         [r4 + 0xd] = (byte) r5
+         [r7 + 0x54]! = r5
+         [r7 + 4] = r5
+         [r7 + 8] = r5
+         r0 = 0x20
+         rsym._Znwj ()
+         r1 = [0x00121dbc]        // [0x122338:4]=0x59b09c
+         r4 = r0
+         r0 = 0x21                // '!'
+         r2 = 0x11
+         r1 = pc + r1             // 0x6bce68 // "PlayButtonTexture" // str.PlayButtonTexture
+         [r6 + 0x54] = r0
+         r0 = r4
+         [r6 + 0x58] = r8
+         [r6 + 0x5c] = r4
+         sym.imp.__aeabi_memcpy () // DATA XREF from fcn.005bb668 @ 0x5bb688(r)
+         r5 = 0
+         r7 = r6
+         [r7 + 0x60]! = r5
+         [r4 + 0x11] = (byte) r5
+         [r7 + 4] = r5
+         [r7 + 8] = r5
+         r0 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121e04]        // [0x12233c:4]=0x59b06c
+         r4 = r0
+         sb = 0x11
+         r0 = 0xd
+         r1 = pc + r1             // 0x6bce80 // "BannerTexture" // str.BannerTexture
+         [r6 + 0x60] = sb
+         [r6 + 0x64] = r0
+         r0 = r4
+         r2 = 0xd
+         [r6 + 0x68] = r4
+         sym.imp.__aeabi_memcpy ()
+         r7 = r6
+         [r4 + 0xd] = (byte) r5
+         [r7 + 0x6c]! = r5
+         [r7 + 4] = r5
+         [r7 + 8] = r5
+         r0 = 0x10
+         r8 = 0x10
+         rsym._Znwj ()
+         r1 = [0x00121e50]        // [0x122340:4]=0x59b030
+         r5 = r0
+         r0 = 0xe                 // str.pper
+         [r6 + 0x6c] = sb
+         r1 = pc + r1             // 0x6bce90 // "levelStoryline" // str.levelStoryline
+         [r6 + 0x70] = r0
+         r0 = r5
+         r2 = 0xe                 // str.pper
+         [r6 + 0x74] = r5
+         sym.imp.__aeabi_memcpy ()
+         r0 = [0x00121e78]        // [0x122344:4]=0xffffc874
+         r6 = 0
+         r4 = [0x00121e80]        // [0x122348:4]=0x5c2170
+         r1 = 0
+         r0 = pc + r0
+         [r5 + 0xe] = (byte) r6
+         r4 = pc + r4             // 0x6e4000 // section..data
+                                  [21] -rw- section size 7176 named .data
+         r2 = r4                  // section..data
+         sym.imp.__cxa_atexit ()
+         r1 = [0x00121e9c]        // [0x12234c:4]=0x5c4f68
+         r2 = 4
+         r0 = [0x00121ea4]        // [0x122350:4]=0xffffc890
+         r1 = pc + r1
+         r0 = pc + r0
+         [r1] = (byte) r2
+         r2 = 0x4449              // 'ID'
+         [r1 + 1] = (half) r2
+         r2 = 0x6f73              // 'so'
+         r2 |= 0x676e << 16
+         [r1 + 3] = (byte) r6
+         [r1 + 4] = r6
+         [r1 + 8] = r6
+         [r1 + 0xc] = r6
+         [r1 + 0x10] = r6
+         [r1 + 0x14] = r6
+         [r1 + 0x18] = r6
+         [r1 + 0x1c] = r6 // DATA XREF from WaterConcept::Screen_Upsell::_finishedLoadingWidgets(void*) @ 0x5ba7c0(r)
+         [r1 + 0x20] = r6
+         [r1 + 0xd] = r2
+         r2 = 8
+         [r1 + 0xc] = (byte) r2
+         r2 = 0x6b63              // 'ck'
+         r2 |= 0x6465 << 16
+         [r1 + 0x11] = (byte) r6
+         [r1 + 0x1d] = r2
+         r2 = 0x6e55              // 'Un' // "l,"
+         r2 |= 0x6f6c << 16
+         r2 = r2 + 0x20
+         [r1 + 0x19] = r2
+         [r1 + 0x18] = (byte) r8
+         r2 = r4                  // section..data
+         [r1 + 0x21] = (byte) r6 // DATA XREF from WaterConcept::Screen_Upsell::_finishedLoadingWidgets(void*) @ 0x5ba54c(r)
+         r1 = 0
+         sp = fp - 0x1c
+         pop (r4, r5, r6, r7, r8, sb, sl, fp, lr) // r14 // r14 // r9 // r14 // r13 // r14 // r14
+         
+        return r0;
+}
+

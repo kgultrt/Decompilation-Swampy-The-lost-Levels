@@ -46,6 +46,9 @@ public:
     Patch CollectionBonusLevelRestriction3 {0x004ea33c, false, {0}, {0x14, 0x60, 0xc4, 0xe5}}; //14 60 c4 e5
     Patch FixFRANKENButton {0x0057c1a4, false, {0}, {0x1e, 0xff, 0x2f, 0xe1}}; // bx lr
     Patch TEST_HOOK {0x0058e250, false, {0}, {0x00, 0x00, 0xa0, 0xe1}}; // nop 0000a0e1
+    
+    Patch isGameWon1 {0x0045317c, false, {0}, {0x01, 0x00, 0xa0, 0xe3}}; // 0100a0e3
+    Patch isGameWon2 {0x00453180, false, {0}, {0x00, 0x00, 0xa0, 0xe1}}; // nop
 
     
     // 存储所有劫持

@@ -24,6 +24,7 @@ LOCAL_SRC_FILES := Source/Imgui/imgui.cpp \
                    Source/Imgui/imgui_impl_opengl3.cpp \
                    Source/Imgui_Android_Input.cpp \
                    Source/EGL.cpp \
+                   Source/HookGame.cpp \
                    Source/MyFile.cpp \
                    native-lib.cpp \
 

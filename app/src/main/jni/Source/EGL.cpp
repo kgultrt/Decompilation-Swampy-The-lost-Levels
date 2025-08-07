@@ -183,13 +183,8 @@ void EGL::EglThread() {
     uintptr_t base = getModuleBaseAddress("libwmw.so");
     
     if (!isGamePatched) {
-        patchMgr.TogglePatch(patchMgr.CollectionRestriction, base);
-        patchMgr.TogglePatch(patchMgr.CollectionBonusLevelRestriction, base);
-        patchMgr.TogglePatch(patchMgr.CollectionBonusLevelRestriction1, base);
-        patchMgr.TogglePatch(patchMgr.CollectionBonusLevelRestriction2, base);
-        patchMgr.TogglePatch(patchMgr.CollectionBonusLevelRestriction3, base);
-        patchMgr.TogglePatch(patchMgr.FixFRANKENButton, base);
-        patchMgr.TogglePatch(patchMgr.TEST_HOOK, base);
+        
+        hookGame.initGamePatch();
         
         isGamePatched = true;
     }
@@ -253,15 +248,21 @@ void EGL::EglThread() {
             ActiveMEMReader = !ActiveMEMReader;
         }
         
-        if (ImGui::Button(patchMgr.AtoB.applied ? "还原AtoB" : "应用AtoB")) {
-            bool success = patchMgr.TogglePatch(patchMgr.AtoB, base);
-            LOGE("%s %s", patchMgr.AtoB.applied ? "应用" : "还原", 
+        if (ImGui::Button(hookGame.patchMgr.AtoB.applied ? "还原AtoB" : "应用AtoB")) {
+            bool success = hookGame.AtoB_Hook();
+            LOGE("%s %s", hookGame.patchMgr.AtoB.applied ? "应用" : "还原", 
                  success ? "成功" : "失败");
         }
 
-        if (ImGui::Button(patchMgr.BtoA.applied ? "还原BtoA" : "应用BtoA")) {
-            bool success = patchMgr.TogglePatch(patchMgr.BtoA, base);
-            LOGE("%s %s", patchMgr.BtoA.applied ? "应用" : "还原", 
+        if (ImGui::Button(hookGame.patchMgr.BtoA.applied ? "还原BtoA" : "应用BtoA")) {
+            bool success = hookGame.BtoA_Hook();
+            LOGE("%s %s", hookGame.patchMgr.BtoA.applied ? "应用" : "还原", 
+                 success ? "成功" : "失败");
+        }
+        
+        if (ImGui::Button(patchMgr.isGameWon1.applied ? "直接胜利 开" : "直接胜利 关")) {
+            bool success = patchMgr.TogglePatch(patchMgr.isGameWon1, base) && patchMgr.TogglePatch(patchMgr.isGameWon2, base);
+            LOGE("%s %s", patchMgr.isGameWon1.applied ? "应用" : "还原", 
                  success ? "成功" : "失败");
         }
         

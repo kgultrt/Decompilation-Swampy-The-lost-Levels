@@ -9,7 +9,8 @@
 	<string name="load_game_obb">注入 OBB</string>
 	<string name="exit_str">是否退出？</string>
 	<string name="exit_str_title">退出？</string>
-	<string name="tip">此项目使用了以下存储库的代码: https://github.com/StArrayJaN/Where-is-My-Water，有一说一，我是真没有见过 Permission.申请(this)</string>
+	<string name="tip">此项目使用了以下存储库的代码: https://github.com/StArrayJaN/Where-is-My-Water\n注意: 本游戏推荐在60FPS下运行，更高的帧率会出现异常以及一些奇怪的bug</string>
+	<string name="edit_game_save">编辑游戏存档</string>
 	<string name="cancel">取消</string>
 	<string name="ok">确认</string>
 </resources>

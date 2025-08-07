@@ -26,6 +26,7 @@
 #include "android/native_window_jni.h"
 #include "log.h"
 #include "MyFile.h"
+#include "PatchManager.h"
 
 
 #endif //IMGUITESTMENU_PCH_H
