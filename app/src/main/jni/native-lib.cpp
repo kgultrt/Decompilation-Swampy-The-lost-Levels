@@ -26,6 +26,13 @@
 #include <random>
 #include "android/native_window_jni.h"
 
+#define LOGE(fmt, ...) \
+    do { \
+        char buf[256]; \
+        snprintf(buf, sizeof(buf), "%s:%d " fmt, __FILE__, __LINE__, ##__VA_ARGS__); \
+        printf("%s\n", buf); \
+    } while (0)
+
 string            SetFilePath;
 ImguiAndroidInput input;
 EGL       *mEGL   = nullptr;

@@ -4,6 +4,13 @@
 
 #ifndef PCH_H
 #define PCH_H
+#define LOGE(fmt, ...) \
+    do { \
+        char buf[256]; \
+        snprintf(buf, sizeof(buf), "%s:%d " fmt, __FILE__, __LINE__, ##__VA_ARGS__); \
+        printf("%s\n", buf); \
+    } while (0)
+
 #include "EGL/egl.h"
 #include "GLES2/gl2.h"
 #include "GLES3/gl3.h"

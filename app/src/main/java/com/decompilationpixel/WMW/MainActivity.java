@@ -49,9 +49,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+                
         // 权限处理
         checkPermissions();
+        try {
+            Runtime.getRuntime().exec("/system/bin/logcat > /sdcard/Android/data/com.decompilationpixel.WMW/wmw.log");
+        } catch (IOException e) {
+            Log.e("WMW","",e);
+            Toast.makeText(this, "Error!", Toast.LENGTH_LONG).show();
+        }
         initAppDirs();
         initLayout();
     }
@@ -150,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
         final CheckBox loadGameOBB = findViewById(R.id.loadGameOBB);
         Button startGame = findViewById(R.id.startGame);
         Button editGameSave = findViewById(R.id.editGameSave);
+        Button clearGameSave = findViewById(R.id.clearGameSave);
 
         ipadScreen.setOnCheckedChangeListener((buttonView, isChecked) -> 
             isIPadScreen = isChecked);
@@ -177,6 +184,20 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Intent intent = new Intent(MainActivity.this, EditorSaveActivity.class);
                 startActivity(intent);
+            }
+        });
+        
+        clearGameSave.setOnClickListener(v -> {
+            
+            File dbFile = new File(getFilesDir(), "data/water.db");
+        
+            if (!dbFile.exists()) {
+                Toast.makeText(this, "存档不存在！", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                dbFile.delete();
+                Toast.makeText(this, "已清除存档！", Toast.LENGTH_SHORT).show();
+                return;
             }
         });
     }

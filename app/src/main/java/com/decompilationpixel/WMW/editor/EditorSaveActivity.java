@@ -1,23 +1,26 @@
 package com.decompilationpixel.WMW.editor;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.SparseArray;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -29,7 +32,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.decompilationpixel.WMW.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -123,7 +129,7 @@ public class EditorSaveActivity extends AppCompatActivity {
     }
     
     private void showSearchDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle("搜索表数据");
         
         // 创建搜索视图
@@ -287,7 +293,15 @@ public class EditorSaveActivity extends AppCompatActivity {
             List<String> columns = activity.tableSchemas.get(tableName);
             if (columns == null) return;
 
-            try (Cursor cursor = activity.database.query(tableName, null, null, null, null, null, null)) {
+            // 确定排序字段（优先使用 _id，其次 id）
+            String orderBy = null;
+            if (columns.contains("_id")) {
+                orderBy = "_id DESC";
+            } else if (columns.contains("id")) {
+                orderBy = "id DESC";
+            }
+
+            try (Cursor cursor = activity.database.query(tableName, null, null, null, null, null, orderBy)) {
                 tableData.clear();
                 if (cursor.moveToFirst()) {
                     do {
@@ -322,32 +336,44 @@ public class EditorSaveActivity extends AppCompatActivity {
                 notifyDataSetChanged();
             }
             
+            @NonNull
             @Override
-            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_table_row, parent, false);
                 return new ViewHolder(view);
             }
             
             @Override
-            public void onBindViewHolder(ViewHolder holder, int position) {
+            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
                 Map<String, String> row = data.get(position);
                 
-                // 创建预览文本 (前3列)
-                StringBuilder preview = new StringBuilder();
-                int count = 0;
+                // 显示唯一ID（优先使用_id，其次id）
+                String idValue = "ID: ";
+                if (row.containsKey("_id")) {
+                    idValue += row.get("_id");
+                } else if (row.containsKey("id")) {
+                    idValue += row.get("id");
+                } else {
+                    idValue += "-";
+                }
+                holder.tvId.setText(idValue);
+                
+                // 创建详情预览（排除ID字段）
+                StringBuilder details = new StringBuilder();
                 for (Map.Entry<String, String> entry : row.entrySet()) {
-                    if (count < 3) {
-                        preview.append(entry.getValue()).append(" | ");
-                        count++;
+                    String key = entry.getKey();
+                    if (!key.equals("_id") && !key.equals("id")) {
+                        if (details.length() > 0) details.append(" • ");
+                        if (entry.getValue() != null && entry.getValue().length() > 20) {
+                            details.append(entry.getValue().substring(0, 20)).append("...");
+                        } else {
+                            details.append(entry.getValue());
+                        }
                     }
                 }
                 
-                if (preview.length() > 2) {
-                    preview.setLength(preview.length() - 3); // 移除末尾的" | "
-                }
-                
-                holder.tvPreview.setText(preview.toString());
+                holder.tvDetails.setText(details.toString());
                 
                 // 行点击事件
                 holder.itemView.setOnClickListener(v -> {
@@ -366,53 +392,68 @@ public class EditorSaveActivity extends AppCompatActivity {
             }
             
             public class ViewHolder extends RecyclerView.ViewHolder {
-                TextView tvPreview;
+                TextView tvId;
+                TextView tvDetails;
                 Button btnMore;
                 
-                public ViewHolder(View itemView) {
+                public ViewHolder(@NonNull View itemView) {
                     super(itemView);
-                    tvPreview = itemView.findViewById(R.id.tvRowPreview);
+                    tvId = itemView.findViewById(R.id.tvRowId);
+                    tvDetails = itemView.findViewById(R.id.tvRowDetails);
                     btnMore = itemView.findViewById(R.id.btnMore);
                 }
             }
         }
         
         private void showRowDetail(Map<String, String> row) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("行详情");
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
+            builder.setTitle("记录详情");
             
             // 创建垂直布局
-            LinearLayout layout = new LinearLayout(getContext());
+            LinearLayout layout = new LinearLayout(requireContext());
             layout.setOrientation(LinearLayout.VERTICAL);
-            layout.setPadding(32, 32, 32, 32);
+            int padding = dpToPx(16);
+            layout.setPadding(padding, padding, padding, padding);
             
             // 添加所有列值
             for (Map.Entry<String, String> entry : row.entrySet()) {
-                TextView label = new TextView(getContext());
-                label.setText(String.format(Locale.getDefault(), "● %s:", entry.getKey()));
+                TextView label = new TextView(requireContext());
+                label.setText(String.format(Locale.getDefault(), "%s:", entry.getKey()));
                 label.setTextSize(16);
-                label.setPadding(0, 8, 0, 4);
+                label.setTypeface(null, Typeface.BOLD);
+                label.setPadding(0, dpToPx(8), 0, dpToPx(2));
                 
-                TextView value = new TextView(getContext());
+                TextView value = new TextView(requireContext());
                 value.setText(entry.getValue());
-                value.setTextSize(18);
-                value.setPadding(16, 0, 0, 16);
+                value.setTextSize(16);
+                value.setPadding(dpToPx(12), 0, 0, dpToPx(10));
                 
                 layout.addView(label);
                 layout.addView(value);
             }
             
-            builder.setView(layout);
+            // 添加滚动支持
+            ScrollView scrollView = new ScrollView(requireContext());
+            scrollView.addView(layout);
+            
+            builder.setView(scrollView);
             builder.setPositiveButton("关闭", null);
             builder.setNeutralButton("编辑", (dialog, which) -> {
-                // 修复: 使用 tableData 而不是 data
+                // 获取记录的索引
                 showEditDialog(tableData.indexOf(row));
             });
             builder.show();
         }
         
+        private int dpToPx(int dp) {
+            return (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 
+                    dp, 
+                    getResources().getDisplayMetrics());
+        }
+        
         private void showRowMenu(View anchor, int position, Map<String, String> row) {
-            PopupMenu popup = new PopupMenu(getContext(), anchor);
+            PopupMenu popup = new PopupMenu(requireContext(), anchor);
             popup.getMenuInflater().inflate(R.menu.row_menu, popup.getMenu());
             
             popup.setOnMenuItemClickListener(item -> {
@@ -437,9 +478,9 @@ public class EditorSaveActivity extends AppCompatActivity {
             EditorSaveActivity activity = (EditorSaveActivity) getActivity();
             if (activity == null) return;
             
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
             builder.setTitle("确认删除");
-            builder.setMessage("确定要删除此行数据吗?");
+            builder.setMessage("确定要删除此行数据吗？该操作无法撤销。");
             
             builder.setPositiveButton("删除", (dialog, which) -> {
                 String where = "";
@@ -480,41 +521,41 @@ public class EditorSaveActivity extends AppCompatActivity {
             EditorSaveActivity activity = (EditorSaveActivity) getActivity();
             if (activity == null) return;
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
             builder.setTitle(position == null ? "添加记录" : "编辑记录");
             
             // 动态创建编辑表单
-            LinearLayout layout = new LinearLayout(getContext());
+            LinearLayout layout = new LinearLayout(requireContext());
             layout.setOrientation(LinearLayout.VERTICAL);
-            layout.setPadding(32, 32, 32, 32);
+            int padding = dpToPx(16);
+            layout.setPadding(padding, padding, padding, padding);
             
             Map<String, String> currentRow = position == null ? 
                 new HashMap<>() : tableData.get(position);
             
-            List<EditText> editTexts = new ArrayList<>();
+            List<TextInputLayout> inputLayouts = new ArrayList<>();
+            List<TextInputEditText> editTexts = new ArrayList<>();
             List<String> columns = activity.tableSchemas.get(tableName);
             
             for (String column : columns) {
-                // 列标签
-                TextView label = new TextView(getContext());
-                label.setText(column);
-                label.setTextSize(16);
-                label.setPadding(0, 8, 0, 4);
+                // 创建带标签的输入框
+                TextInputLayout inputLayout = new TextInputLayout(requireContext(), null);
+                inputLayout.setHint(column);
+                inputLayout.setPadding(0, 0, 0, dpToPx(8));
                 
-                // 编辑框
-                EditText editText = new EditText(getContext());
+                TextInputEditText editText = new TextInputEditText(inputLayout.getContext());
                 editText.setText(currentRow.get(column));
-                editText.setHint("输入 " + column);
-                editText.setTextSize(18);
-                editText.setPadding(16, 0, 0, 16);
+                editText.setMinWidth(dpToPx(200));
+                editText.setSingleLine(true);
+                inputLayout.addView(editText);
                 
-                layout.addView(label);
-                layout.addView(editText);
+                layout.addView(inputLayout);
+                inputLayouts.add(inputLayout);
                 editTexts.add(editText);
             }
             
-            // 修复: 添加ScrollView支持
-            ScrollView scrollView = new ScrollView(getContext());
+            // 添加滚动支持
+            ScrollView scrollView = new ScrollView(requireContext());
             scrollView.addView(layout);
             builder.setView(scrollView);
             
@@ -530,6 +571,7 @@ public class EditorSaveActivity extends AppCompatActivity {
                 if (position == null) {
                     // 插入新行
                     activity.database.insert(tableName, null, values);
+                    Toast.makeText(activity, "已添加新记录!", Toast.LENGTH_SHORT).show();
                 } else {
                     // 更新行
                     String where = "";
@@ -544,9 +586,9 @@ public class EditorSaveActivity extends AppCompatActivity {
                     }
                     
                     activity.database.update(tableName, values, where, whereArgs.toArray(new String[0]));
+                    Toast.makeText(activity, "已更新记录!", Toast.LENGTH_SHORT).show();
                 }
                 
-                Toast.makeText(activity, "保存成功!", Toast.LENGTH_SHORT).show();
                 reloadTable();
             });
             

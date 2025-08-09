@@ -20,7 +20,7 @@ EGL::EGL() {
     mEglConfig  = nullptr;
     mEglContext = EGL_NO_CONTEXT;
     
-    SaveDir = "/sdcard/WMW-MOD";
+    SaveDir = "/sdcard/Android/data/com.decompilationpixel.WMW";
 }
 
 int EGL::initEgl() {
@@ -236,10 +236,19 @@ void EGL::EglThread() {
         int hours = static_cast<int>(totalRunTime) / 3600;
         int minutes = (static_cast<int>(totalRunTime) % 3600) / 60;
         int seconds = static_cast<int>(totalRunTime) % 60;
+        // 碰撞回调计数
+        uint32_t collisionCount = hookGame.GetCollisionCount();
         
         ImGui::Text("累计运行时长: %02d:%02d:%02d", hours, minutes, seconds);
         ImGui::Text("目标库基址 (动态): 0x%lx", base);
+        ImGui::Text("LevelDone调用次数: %u", collisionCount);
 
+        // 添加重置按钮
+        if (ImGui::Button("重置碰撞计数器")) {
+            hookGame.ResetCollisionCounter();
+            LOGE("流体碰撞计数器已重置");
+        }
+        
         if (ImGui::Button("退出游戏(exit)")) {
             exit(0);
         }
@@ -265,7 +274,6 @@ void EGL::EglThread() {
             LOGE("%s %s", patchMgr.isGameWon1.applied ? "应用" : "还原", 
                  success ? "成功" : "失败");
         }
-        
         
         if (ActiveMEMReader) {
             drawMemoryBrowser();
@@ -536,4 +544,57 @@ EGL::ModuleInfo EGL::getModuleInfo(const char* moduleName) {
     fclose(fp);
     LOGE("模块 %s 范围: 0x%lx-0x%lx", moduleName, info.base, info.end);
     return info;
+}
+
+void EGL::saveModuleMemoryToFile() {
+    // 保存目录
+    std::string saveDir = "/sdcard/Android/data/com.decompilationpixel.WMW";
+    
+    // 生成文件名
+    auto now = std::chrono::system_clock::now();
+    auto time = std::chrono::system_clock::to_time_t(now);
+    char filename[128];
+    std::strftime(filename, sizeof(filename), "libwmw_%Y%m%d_%H%M%S.bin", std::localtime(&time));
+    std::string fullPath = saveDir + "/" + filename;
+    
+    // 显示初始状态
+    saveProgress = 0.0f;
+    isSavingMemory = true;
+    
+    // 在新线程中执行保存操作
+    std::thread([this, fullPath] {
+        FILE* file = fopen(fullPath.c_str(), "wb");
+        if (!file) {
+            LOGE("无法创建文件: %s", fullPath.c_str());
+            isSavingMemory = false;
+            return;
+        }
+        
+        const size_t bufferSize = 4096; // 4KB分块保存
+        uint8_t buffer[bufferSize];
+        size_t totalSize = safeRange.end - safeRange.start;
+        size_t bytesSaved = 0;
+        
+        for (uintptr_t addr = safeRange.start; addr < safeRange.end; addr += bufferSize) {
+            if (this->isDestroy) break; // 如果正在销毁则终止
+            
+            size_t currentSize = (addr + bufferSize <= safeRange.end) 
+                                ? bufferSize 
+                                : safeRange.end - addr;
+            
+            memcpy(buffer, (void*)addr, currentSize);
+            fwrite(buffer, 1, currentSize, file);
+            bytesSaved += currentSize;
+            
+            // 更新进度 (0.0f - 1.0f)
+            saveProgress = static_cast<float>(bytesSaved) / totalSize;
+        }
+        
+        fclose(file);
+        
+        LOGE("内存保存完成: %s (%.2f MB)", 
+             fullPath.c_str(), bytesSaved / (1024.0f * 1024.0f));
+        
+        isSavingMemory = false;
+    }).detach();
 }

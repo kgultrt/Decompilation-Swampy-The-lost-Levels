@@ -12,7 +12,7 @@ LOCAL_CFLAGS := -w -s -Wno-error=format-security -fvisibility=hidden -fpermissiv
 LOCAL_CPPFLAGS := -std=c++17 \
                   -w -s -Wno-error=format-security -fvisibility=hidden -Werror \
                   -Wno-error=c++11-narrowing -fpermissive -Wall -fexceptions \
-                  -I$(LOCAL_PATH)/Include -I$(LOCAL_PATH)/Include/Imgui -I$(LOCAL_PATH)/And64InlineHook
+                  -I$(LOCAL_PATH)/Include -I$(LOCAL_PATH)/Include/Imgui -I$(LOCAL_PATH)/Substrate
 
 # 定义源文件列表
 LOCAL_SRC_FILES := Source/Imgui/imgui.cpp \
@@ -23,6 +23,11 @@ LOCAL_SRC_FILES := Source/Imgui/imgui.cpp \
                    Source/Imgui/imgui_impl_android.cpp \
                    Source/Imgui/imgui_impl_opengl3.cpp \
                    Source/Imgui_Android_Input.cpp \
+                   Substrate/hde64.c \
+                   Substrate/SubstrateDebug.cpp \
+                   Substrate/SubstrateHook.cpp \
+                   Substrate/SubstratePosixMemory.cpp \
+                   Substrate/SymbolFinder.cpp \
                    Source/EGL.cpp \
                    Source/HookGame.cpp \
                    Source/MyFile.cpp \

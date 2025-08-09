@@ -2700,7 +2700,7 @@ The Mystery Duck has placed NEW ducks in classic levels-
 
 Get all levels for just %s*	
 HOURS_LEFT_TO_PLAY	%d hours left to play!	你还有%d小时可以玩这一关！	你還有%d小時可以玩這一關！	%d uur over om te spelen!	%d heures de jeu restantes !	*%d hours left to play!*	Noch %d Stunden spielbar!	Ancora %d ore per giocare!	残りプレイ時間、あと%d時間！	플레이 남은 시간 %d시간!	До выхода игры %d часов!	¡Queda %d horas para jugar!	*%d hours left to play!*	
-PRESENTS	presents ...	出品...	出品...	presenteert...	présente...	*presents ...*	präsentiert…	presenta…	ご紹介します…	소개합니다…	представляет...	presenta…	*presents ...*	
+PRESENTS	No production ...	没有出品...	没有出品...	geen productie uit...	*pas produit ...*	*pas produit ...*	keine Produktion von...	non prodotto...	制作していません...	제작하지 않았습니다...	не выпустило...	*no producido ...*	*no producido ...*	
 PF_TORNADO	TORNADO	龙卷风鸭	龍捲風鴨	TORNADO	TORNADE	*TORNADO*	WIRBELSTURM	TORNADO	たつまき	토네이도	ТОРНАДО	TORNADO	*TORNADO*	
 PF_ONE_CUT	ONE CUT WONDER	奇迹一挖鸭	奇蹟一挖鴨	ÉÉN-BEWEGINGSWONDER	COUPE MERVEILLEUSE	*ONE CUT WONDER*	EINTAGSSCHNEIDER	ESPERTO TAGLIA-FANGO	一発屋	한 방에 끝내기	ОДНОРЕЗ	CORTE DE UN DÍA	*ONE CUT WONDER*	
 PF_CAUTIOUS	CAUTIOUS CUTTER	谨慎挖土鸭	謹慎挖土鴨	VOORZICHTIGE GRAVER	COUPE DÉLICATE	*CAUTIOUS CUTTER*	VORSICHTIGER SCHNEIDER	PAPERA PRUDENTE	しんちょう派	신중한 커터	ОСТОРОЖНЫЙ РЕЗАТЕЛЬ	CORTADOR SIGILOSO	*CAUTIOUS CUTTER*	

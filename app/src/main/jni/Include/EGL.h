@@ -37,6 +37,7 @@ class EGL {
     void initMemoryBrowser();
     void pushHistory(uintptr_t address);
     void drawMemoryBrowser();
+    void saveModuleMemoryToFile();
     
     bool patch(void* addr, const unsigned char* patchBytes, size_t size);
     
@@ -70,6 +71,9 @@ class EGL {
     uintptr_t currentAddress = 0;
     uintptr_t previousAddresses[5] = {0}; // 历史地址栈
     int historyIndex = -1;
+    
+    bool isSavingMemory = false;
+    float saveProgress = 0.0f;
 
 public:
     ImGuiIO      *io;

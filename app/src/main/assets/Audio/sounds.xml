@@ -523,7 +523,8 @@
 		<Sound filename="/Audio/Misc/WallImpact01.wav" volume="1.0" />
 	</Group>
 	<Group id="243" name="CRANKY_LRS_MUSIC" loop="true" isMusic="true">
-		<Sound filename="/Audio/Misc/CRANKY_LRS.mp3" volume="1.0" />
+		<!-- <Sound filename="/Audio/Misc/CRANKY_LRS.mp3" volume="1.0" /> -->
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Cranky.mp3" volume="1.0" />
 	</Group>
 	
 	
@@ -1047,7 +1048,7 @@
 	</Group>
     <!-- Sounds playing while Swampy is in the shower (level results screen) -->
 	<Group id="121" name="SHOWER_LOOP" loop="true" isMusic="true">
-		<!--<Sound filename="/Audio/Misc/JAWSHR01.wav" volume="0.4" />-->
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Swampy.mp3" volume="0.4" />
 		<Sound filename="/Audio/Misc/JAWSHR02.wav" volume="0.4" />
 		<Sound filename="/Audio/Misc/JAWSHR03.wav" volume="0.4" />
 		<Sound filename="/Audio/Misc/JAWSHR04.wav" volume="0.4" />
@@ -1232,16 +1233,16 @@
     </Group>
 
 	<Group id="4069" name="ALLIE_LRS_MUSIC" loop="true" isMusic="true">
-		<Sound filename="/Audio/Music/Allie_Song_WheresMyWater_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_Chopsticks_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_BareNeccessities_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_LondonBridge_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_PiratesLife_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_Frere_Jacque_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_Weasel_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_The_Entertainer_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_Beethoven_03.mp3" volume="1.0" />
-		<Sound filename="/Audio/Music/Allie_Song_SmallWorld.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
 	</Group>
     
     <!-- Played when allie duckies 'hatch' -->
@@ -1356,6 +1357,14 @@
         
         <Group id="1">
             <Track filename="/Audio/Music/JAW_SubMenu_Music.mp3" />
+            
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Bayou.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Beach.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_MardiGras.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_PiratesCove.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Sewer.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Soap.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Winter.mp3" />
 		</Group>
         
 		<!-- Pack songs -->
@@ -1366,6 +1375,34 @@
             <Track filename="/Audio/Music/JAW_LevelPack_Music_4.mp3" />
 			<Track filename="/Audio/Music/JAW_LevelPack_Music_5.mp3" />
 			<Track filename="/Audio/Music/JAW_LevelPack_Music_6.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_3.mp3" />
 		</Group>
         
 		<!-- Bonus songs -->
@@ -1380,11 +1417,47 @@
 			<Track filename="/Audio/Music/Cranky_Music_2.mp3" />
 			<Track filename="/Audio/Music/Cranky_Music_3.mp3" />
 			<Track filename="/Audio/Music/Cranky_Music_4.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_3.mp3" />
 		</Group>
 		
 		<!-- Cranky menu music -->
 		<Group id="5">
             <Track filename="/Audio/Music/Cranky_Theme_Song.mp3" />
+            
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Bayou.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Beach.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_MardiGras.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_PiratesCove.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Sewer.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Soap.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Winter.mp3" />
 		</Group>
         
         <!-- Sewer ambiance -->
@@ -1402,6 +1475,13 @@
 		<!-- Mystery Duck menu music -->
 		<Group id="8">
 			<Track filename="/Audio/Music/MysteryDuck_LRS.mp3" volume="0.5"/>
+			<Track filename="/Audio/Music/wmw2_LocationMusic_Bayou.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Beach.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_MardiGras.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_PiratesCove.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Sewer.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Soap.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Winter.mp3" />
 		</Group>  
         
         <!-- Frankenweenie level selection screen music -->
@@ -1444,12 +1524,48 @@
         <!-- Allie Theme Sub -->
         <Group id="15">
             <Track filename="/Audio/Music/WMW_Allies_Menu.mp3" />
+            
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Bayou.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Beach.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_MardiGras.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_PiratesCove.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Sewer.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Soap.mp3" />
+            <Track filename="/Audio/Music/wmw2_LocationMusic_Winter.mp3" />
         </Group>
         
         <!-- Allie Music -->
         <Group id="16">
             <Track filename="/Audio/Music/Allie_LevelPack_1.mp3" />
             <Track filename="/Audio/Music/Allie_LevelPack_2.mp3" />
+            
+            <Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Bayou_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Beach_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_MardiGras_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_PiratesCove_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Sewer_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Soap_3.mp3" />
+			
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_1.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_2.mp3" />
+			<Track filename="/Audio/Music/wmw2_LevelMusic_Winter_3.mp3" />
         </Group>
         
     </Music>

@@ -43,6 +43,16 @@
         android:paddingVertical="6dp"
         android:paddingHorizontal="12dp"/>
     
+    <Button
+        android:id="@+id/clearGameSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_game_save"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="12dp"/>
+    
     <TextView
         android:id="@+id/checkObb"
         android:layout_width="wrap_content"

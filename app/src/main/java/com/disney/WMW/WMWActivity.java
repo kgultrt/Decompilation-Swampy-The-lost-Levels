@@ -33,6 +33,8 @@ import java.util.Locale;
 import java.util.UUID;
 import org.fmod.FMODAudioDevice;
 import com.decompilationpixel.WMW.MainActivity;
+import com.decompilationpixel.WMW.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import android.view.ActionMode;
 import android.view.ActionMode.Callback;
 
@@ -478,6 +480,19 @@ public class WMWActivity extends BaseActivity {
         Log.i("WMWJava", "Launching url: " + var1);
         //Toast.makeText(this,"Launching url: " + var1,0).show();
 
+        final Handler mainHandler = new Handler(this.getMainLooper());
+        
+        mainHandler.post(() ->
+            new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.url_str_title)
+                .setMessage(getString(R.string.url_str) + var1)
+                .setPositiveButton(R.string.ok, (dialog, which) -> truelyOpenURL(var1))
+                .setNegativeButton(R.string.cancel, null)
+                .show()
+        );
+    }
+    
+    public void truelyOpenURL(String var1) {
         try {
             Intent intent = new Intent("android.intent.action.VIEW");
             Intent intent1 = intent.setData(Uri.parse(var1));
@@ -606,5 +621,20 @@ public class WMWActivity extends BaseActivity {
 
         Launcher.Init(this);
         this.mSKU = 1;
+    }
+    
+    @Override
+    public void onBackPressed() {
+        Log.d("WMW", "Back button pressed");
+        showExitDialog();
+    }
+
+    private void showExitDialog() {
+        new MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.exit_str_title)
+            .setMessage(R.string.exit_str)
+            .setPositiveButton(R.string.ok, (dialog, which) -> finish())
+            .setNegativeButton(R.string.cancel, null)
+            .show();
     }
 }
