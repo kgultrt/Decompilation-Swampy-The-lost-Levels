@@ -13,7 +13,6 @@ static void (*original_loadLevelDone)(void* _this) = nullptr;
 // hook函数，和原函数签名一样，this指针作为参数
 void HookGame::hook_loadLevelDone(void* _this) {
     fluidCollisionCounter.fetch_add(1, std::memory_order_relaxed);
-    printf("[hook_loadLevelDone] called");
 
     // 直接调用原函数
     if (original_loadLevelDone) {
@@ -49,6 +48,7 @@ void HookGame::initGamePatch() {
         patchMgr.CollectionBonusLevelRestriction3,
         patchMgr.FixFRANKENButton,
         patchMgr.TEST_HOOK
+        // patchMgr.XML_HOOK
     };
 
     for (auto& patch : patches) {
@@ -56,10 +56,9 @@ void HookGame::initGamePatch() {
     }
 
     // 安装计数器
-    install_hook(base);
+    //install_hook(base);
 }
 
-// 你原来的 getBaseAddress 保留（略）
 uintptr_t HookGame::getBaseAddress(const char* moduleName) {
     uintptr_t baseAddress = 0;
     FILE* fp = fopen("/proc/self/maps", "r");

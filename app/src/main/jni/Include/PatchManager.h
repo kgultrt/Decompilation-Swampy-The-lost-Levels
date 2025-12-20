@@ -165,6 +165,7 @@ public:
     Patch TEST_HOOK;
     Patch isGameWon1;
     Patch isGameWon2;
+    Patch XML_HOOK;
     
 private:
     std::mutex hookMutex;
@@ -186,6 +187,7 @@ private:
         initPatch(TEST_HOOK, "TEST_HOOK", 0x0058e250, "0000A0E1");
         initPatch(isGameWon1, "isGameWon1", 0x0045317c, "0100A0E3");
         initPatch(isGameWon2, "isGameWon2", 0x00453180, "0000A0E1");
+        initPatch(XML_HOOK, "XML_HOOK", 0x004835f8, "010050e3");
     }
     
     void removeAllHooks() {

@@ -1233,16 +1233,17 @@
     </Group>
 
 	<Group id="4069" name="ALLIE_LRS_MUSIC" loop="true" isMusic="true">
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
-		<Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" />
+		<!-- <Sound filename="/Audio/Misc/wmw2_LevelResults_Allie.mp3" volume="1.0" /> -->
+		<Sound filename="/Audio/Music/Allie_Song_WheresMyWater_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_Chopsticks_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_BareNeccessities_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_LondonBridge_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_PiratesLife_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_Frere_Jacque_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_Weasel_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_The_Entertainer_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_Beethoven_03.mp3" volume="1.0" />
+		<Sound filename="/Audio/Music/Allie_Song_SmallWorld.mp3" volume="1.0" />
 	</Group>
     
     <!-- Played when allie duckies 'hatch' -->
