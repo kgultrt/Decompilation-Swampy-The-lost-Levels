@@ -15,9 +15,9 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <thread>
-#include "imgui.h"
-#include "imgui_impl_android.h"
-#include "imgui_impl_opengl3.h"
+#include "Imgui/imgui.h"
+#include "Imgui/imgui_impl_android.h"
+#include "Imgui/imgui_impl_opengl3.h"
 #include <android/log.h>
 #include <android/asset_manager.h>
 #include <EGL/egl.h>

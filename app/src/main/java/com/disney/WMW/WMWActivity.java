@@ -68,7 +68,7 @@ public class WMWActivity extends BaseActivity {
 	
 	static 
 	{
-		System.loadLibrary("fuckwater");
+		System.loadLibrary("hook");
 	}
 	
     public WMWActivity() {

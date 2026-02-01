@@ -6,7 +6,7 @@ import android.view.Surface;
 public class GLES3JNILib {
 
     static {
-        System.loadLibrary("fuckwater");
+        System.loadLibrary("hook");
     }
 
 

@@ -17,11 +17,11 @@
 #include <string>
 #include <sched.h>
 #include <unistd.h>
-#include "Imgui_Android_Input.h"
-#include "imgui.h"
-#include "imgui_impl_android.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_internal.h"
+#include "Imgui/Imgui_Android_Input.h"
+#include "Imgui/imgui.h"
+#include "Imgui/imgui_impl_android.h"
+#include "Imgui/imgui_impl_opengl3.h"
+#include "Imgui/imgui_internal.h"
 #include <jni.h>
 #include <unordered_map>
 //#include "../timer.h"
