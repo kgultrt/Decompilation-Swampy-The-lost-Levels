@@ -38,6 +38,14 @@ ImguiAndroidInput input;
 EGL       *mEGL   = nullptr;
 
 extern "C"
+JNIEXPORT void JNICALL Java_com_disney_WMW_WMWActivity_redirectOutput
+  (JNIEnv *, jclass)
+{
+    // TODO: implement init()
+    freopen("/sdcard/WMW-MOD/output.txt", "w", stdout);
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_game_ui_GLES3JNILib_setFilePath(JNIEnv *env, jclass clazz, jstring ph) {
     // TODO: implement setFilePath()
@@ -49,14 +57,6 @@ JNIEXPORT void JNICALL
 Java_com_game_ui_Views_mySurfaceView_init(JNIEnv *env, jclass clazz) {
     // TODO: implement init()
     input.funMshowinit(clazz, env);
-}
-
-extern "C"
-JNIEXPORT void JNICALL Java_com_disney_WMW_WMWActivity_redirectOutput
-  (JNIEnv *, jclass)
-{
-    // TODO: implement init()
-    freopen("/sdcard/WMW-MOD/output.txt", "w", stdout);
 }
 
 ///SurfaceView生命周期 创建

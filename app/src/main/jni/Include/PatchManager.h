@@ -162,10 +162,12 @@ public:
     Patch CollectionBonusLevelRestriction2;
     Patch CollectionBonusLevelRestriction3;
     Patch FixFRANKENButton;
+    Patch stopWater;
     Patch TEST_HOOK;
     Patch isGameWon1;
     Patch isGameWon2;
     Patch XML_HOOK;
+    Patch hookWater;
     
 private:
     std::mutex hookMutex;
@@ -184,10 +186,12 @@ private:
         initPatch(CollectionBonusLevelRestriction2, "CollectionBonusLevelRestriction2", 0x004ea328, "1400A0E3");
         initPatch(CollectionBonusLevelRestriction3, "CollectionBonusLevelRestriction3", 0x004ea33c, "1460C4E5");
         initPatch(FixFRANKENButton, "FixFRANKENButton", 0x0057c1a4, "1EFF2FE1");
+        initPatch(stopWater, "stopWater", 0x0047cae0, "1EFF2FE1");
         initPatch(TEST_HOOK, "TEST_HOOK", 0x0058e250, "0000A0E1");
         initPatch(isGameWon1, "isGameWon1", 0x0045317c, "0100A0E3");
         initPatch(isGameWon2, "isGameWon2", 0x00453180, "0000A0E1");
         initPatch(XML_HOOK, "XML_HOOK", 0x004835f8, "010050e3");
+        initPatch(hookWater, "hookWater", 0x006cd5ac, "6400");
     }
     
     void removeAllHooks() {

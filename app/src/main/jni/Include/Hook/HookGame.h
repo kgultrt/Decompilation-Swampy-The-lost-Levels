@@ -11,6 +11,8 @@ public:
     void initGamePatch();
     bool AtoB_Hook();
     bool BtoA_Hook();
+    bool hookWater_Hook();
+    bool stopWater_Hook();
     
     // 获取AtoB碰撞回调计数
     uint32_t GetCollisionCount() const { 

@@ -1,4 +1,4 @@
-#include "HookGame.h"
+#include "Hook/HookGame.h"
 #include <cstdio>
 #include <cstring>
 #include <errno.h>
@@ -39,7 +39,7 @@ void HookGame::initGamePatch() {
         return;
     }
 
-    // 你的其他补丁（保持不变）
+    // 其他补丁
     const std::initializer_list<std::reference_wrapper<PatchManager::Patch>> patches = {
         patchMgr.CollectionRestriction,
         patchMgr.CollectionBonusLevelRestriction,
@@ -97,6 +97,14 @@ uintptr_t HookGame::getBaseAddress(const char* moduleName) {
 
 bool HookGame::AtoB_Hook() {
     return patchMgr.TogglePatch(patchMgr.AtoB, base);
+}
+
+bool HookGame::hookWater_Hook() {
+    return patchMgr.TogglePatch(patchMgr.hookWater, base);
+}
+
+bool HookGame::stopWater_Hook() {
+    return patchMgr.TogglePatch(patchMgr.stopWater, base);
 }
 
 bool HookGame::BtoA_Hook() {

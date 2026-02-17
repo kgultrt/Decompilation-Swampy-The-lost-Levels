@@ -62,7 +62,7 @@ android {
         implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
         implementation fileTree(dir: "libs", include: ["1.18.8.jar"])
-        implementation fileTree(dir: "libs", include: ["内购.jar"])
+        implementation fileTree(dir: "libs", include: ["in-app.jar"])
     }
 }
 

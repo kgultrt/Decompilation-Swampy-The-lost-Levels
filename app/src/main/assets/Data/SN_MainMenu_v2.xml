@@ -115,18 +115,14 @@
 
     <!-- UI ********** for Level of the week ********** -->
     <!-- Logo -->
-    <!--
     <Widget type="WT_LABEL" id="3000" layer="6" pos="0.0 0.06" size="0.64 0.1" text="LEVEL_OF_THE_WEEK" textColorRGB="255 255 255" />
-     -->
     
     <!-- portal, banner and play button -->
-    <!--
     <Widget type="WT_LABEL" id="3101" layer="7" pos="-0.32 0.18" size="0.27 0" forceAspect="340:340" texBGName="WMW_UI_portal_small.png"/>
     <Widget type="WT_LABEL" id="3201" layer="6" pos="0 0.18" size="0.84 " forceAspect="1074:274" texBGName="WMW_UI_banner.png"/>
     <Widget type="WT_LABEL" id="3301" layer="7" pos="0.01 0.15" size="0.42 0.08" text="LOW_TITLE" textColorRGB="255 255 255" textPadding=".1"/>
     <Widget type="WT_LABEL" id="3401" layer="7" pos="0.01 0.22" size="0.42 0.08" text="LOW_TIMER" textColorRGB="235 204 46" paddingH=".04"/>
     <Widget type="WT_PUSH_BUTTON" id="3501" layer=" 7" pos="0.31 0.18" size="0.17 0" forceAspect="1" texNormalName="level_icon_3.png" texHilightName="level_icon_3.png" font="outlined" reactOnDown="false"/>
-     -->
     
     <!-- *********** Tri-duck reference ************** -->
      <!-- Swampy ducks -->

@@ -29,6 +29,9 @@ LOCAL_SRC_FILES := 3rd/Imgui/imgui.cpp \
                    3rd/Substrate/SubstratePosixMemory.cpp \
                    3rd/Substrate/SymbolFinder.cpp \
                    src/EGL.cpp \
+                   src/GamePatchManager.cpp \
+                   src/MemoryBrowser.cpp \
+                   src/RuntimeStats.cpp \
                    src/HookGame.cpp \
                    src/MyFile.cpp \
                    native-lib.cpp \

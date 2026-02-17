@@ -8,7 +8,7 @@ cd "$(dirname "$0")" || exit 1
 
 # 构建 APK
 echo "正在构建 Debug 版本..."
-bash gradlew app:assembleDebug || { echo "构建失败"; exit 1; }
+bash gradlew app:assembleDebug --info || { echo "构建失败"; exit 1; }
 
 # 切换到构建输出目录
 echo "进入目录..."
