@@ -198,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
         Button startGame = findViewById(R.id.startGame);
         Button editGameSave = findViewById(R.id.editGameSave);
         Button clearGameSave = findViewById(R.id.clearGameSave);
-        Button chooseObbBtn = findViewById(R.id.chooseObbBtn);
 
         ipadScreen.setOnCheckedChangeListener((buttonView, isChecked) ->
                 isIPadScreen = isChecked);
@@ -208,7 +207,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        chooseObbBtn.setOnClickListener(v -> showZipFileChooser());
 
         loadGameOBB.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isUpdatingCheckBox) return;

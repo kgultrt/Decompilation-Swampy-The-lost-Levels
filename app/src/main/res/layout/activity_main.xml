@@ -23,16 +23,6 @@
         android:layout_marginTop="12dp" />
 
     <Button
-        android:id="@+id/chooseObbBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="选择 OBB 文件"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
-        android:paddingVertical="6dp"
-        android:paddingHorizontal="12dp" />
-
-    <Button
         android:id="@+id/startGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

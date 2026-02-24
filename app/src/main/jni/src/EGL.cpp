@@ -276,7 +276,7 @@ void EGL::renderImGuiWindow() {
             LOGE("%s %s", hookGame.patchMgr.BtoA.applied ? "应用" : "还原",
                  success ? "成功" : "失败");
         }
-        if (ImGui::Button(hookGame.patchMgr.stopWater.applied ? "还原stopWater" : "应用stopWater")) {
+        if (ImGui::Button(hookGame.patchMgr.stopWater.applied ? "还原0x00492648" : "应用0x00492648")) {
             bool success = hookGame.stopWater_Hook();
             LOGE("%s %s", hookGame.patchMgr.stopWater.applied ? "应用" : "还原",
                  success ? "成功" : "失败");
