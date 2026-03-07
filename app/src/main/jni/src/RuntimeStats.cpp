@@ -2,9 +2,9 @@
 #include "Hook/RuntimeStats.h"
 
 RuntimeStats::RuntimeStats(const std::string& saveDir) {
-    runTimeFilePath = saveDir + "/runtime.ini";
+    runTimeFilePath = saveDir + "/time.ini";
     load();
-    lastSaveTime = 0; // 注意：getCurrentTime 需要定义，或者改用外部传入
+    lastSaveTime = 0.0; // 注意：getCurrentTime 需要定义，或者改用外部传入
 }
 
 void RuntimeStats::setSaveDir(const std::string& dir) {

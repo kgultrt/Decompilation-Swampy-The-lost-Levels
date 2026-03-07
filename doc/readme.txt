@@ -22,3 +22,4 @@ list_old.txt - 一个比较老版本的libwmw.so的全部符号表 (主要用来
 str.txt - libwmw.so 全部的字符串
 fun_notice.txt - nth表，记载着一些函数的作用
 nth2sym.txt - 为不同版本的libwmw.so提供我这个版本的符号参考，以帮助适配
+work.txt - 为从未玩过这个游戏的人提供一些解释，使其快速修改

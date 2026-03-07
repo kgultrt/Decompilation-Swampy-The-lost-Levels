@@ -33,7 +33,7 @@
         printf("%s\n", buf); \
     } while (0)
 
-string            SetFilePath;
+string            SetFilePath = "/sdcard/WMW-MOD/hook_data";
 ImguiAndroidInput input;
 EGL       *mEGL   = nullptr;
 
@@ -49,7 +49,7 @@ extern "C"
 JNIEXPORT void JNICALL
 Java_com_game_ui_GLES3JNILib_setFilePath(JNIEnv *env, jclass clazz, jstring ph) {
     // TODO: implement setFilePath()
-    SetFilePath=env->GetStringUTFChars(ph, JNI_FALSE);
+    // SetFilePath=env->GetStringUTFChars(ph, JNI_FALSE);
 }
 
 extern "C"

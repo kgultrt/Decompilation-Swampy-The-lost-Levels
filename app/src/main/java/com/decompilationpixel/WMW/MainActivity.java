@@ -133,9 +133,11 @@ public class MainActivity extends AppCompatActivity {
     private void initAppDirs() {
         File obbDir = getObbDir();
         File dataDir = new File(APP_DATA_DIR);
+        File hookDir = new File(APP_DATA_DIR+"/hook_data");
 
         if (!obbDir.exists()) obbDir.mkdirs();
         if (!dataDir.exists()) dataDir.mkdirs();
+        if (!hookDir.exists()) hookDir.mkdirs();
 
         updateObbInfoView();
     }
