@@ -1,26 +1,31 @@
 // RuntimeStats.cpp
 #include "Hook/RuntimeStats.h"
 
-RuntimeStats::RuntimeStats(const std::string& saveDir) {
+RuntimeStats::RuntimeStats(const std::string& saveDir) 
+    : totalRunTime(0.0), lastSaveTime(0.0) {   // 确保成员变量初始化
     runTimeFilePath = saveDir + "/time.ini";
     load();
-    lastSaveTime = 0.0; // 注意：getCurrentTime 需要定义，或者改用外部传入
-}
-
-void RuntimeStats::setSaveDir(const std::string& dir) {
-    runTimeFilePath = dir + "/runtime.ini";
 }
 
 void RuntimeStats::load() {
     FILE* f = fopen(runTimeFilePath.c_str(), "r");
     if (f) {
-        fscanf(f, "[Runtime]\nTotalSeconds=%lf", &totalRunTime);
+        int matched = fscanf(f, "[Runtime]\nTotalSeconds=%lf", &totalRunTime);
         fclose(f);
-        LOGE("读取运行时长成功: %.2f 秒", totalRunTime);
+        if (matched == 1) {
+            LOGE("读取运行时长成功: %.2f 秒", totalRunTime);
+        } else {
+            totalRunTime = 0.0;
+            LOGE("运行时长文件格式错误，重置为 0");
+        }
     } else {
         totalRunTime = 0.0;
         LOGE("运行时长文件不存在，初始化为 0");
     }
+}
+
+void RuntimeStats::setSaveDir(const std::string& dir) {
+    runTimeFilePath = dir + "/time.ini";
 }
 
 void RuntimeStats::save() {
@@ -32,11 +37,15 @@ void RuntimeStats::save() {
 }
 
 void RuntimeStats::update(double currentTime) {
+    if (lastSaveTime == 0.0) {          // 首次调用，只记录起始时间，不累加
+        lastSaveTime = currentTime;
+        return;
+    }
     double timeSinceLastSave = currentTime - lastSaveTime;
     if (timeSinceLastSave >= 1.0) {
         lastSaveTime = currentTime;
         totalRunTime += timeSinceLastSave;
-        save();
+        save();                         // 每秒保存一次，避免丢失
     }
 }
 
