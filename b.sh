@@ -19,6 +19,6 @@ cp app-debug.apk /sdcard || { echo "复制文件失败"; exit 1; }
 
 echo "构建完成！"
 
-adb -s 0.0.0.0 install /sdcard/app-debug.apk
+sudo pm install /sdcard/app-debug.apk
 
 echo "打开应用吧！"

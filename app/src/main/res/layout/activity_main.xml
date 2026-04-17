@@ -68,4 +68,14 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:textSize="10sp" />
+        
+    <Button
+        android:id="@+id/configGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/config_game"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="12dp" />
 </LinearLayout>

@@ -23,7 +23,7 @@ public:
 private:
     double totalRunTime = 0.0;
     double lastSaveTime = 0.0;
-    std::string runTimeFilePath;
+    std::string iniFilePath;
 
     // 从文件加载已保存的运行时间
     void load();
