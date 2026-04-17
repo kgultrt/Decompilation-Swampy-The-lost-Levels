@@ -22,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.decompilationpixel.WMW.editor.EditorSaveActivity;
+import com.decompilationpixel.WMW.editor.IniActivity;
 import com.disney.WMW.WMWActivity;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         // 权限处理
         checkPermissions();
         try {
-            Runtime.getRuntime().exec("/system/bin/logcat > /sdcard/Android/data/com.decompilationpixel.WMW/wmw.log");
+            Runtime.getRuntime().exec("/system/bin/logcat > /sdcard/WMW-MOD/wmw.log");
         } catch (IOException e) {
             Log.e("WMW", "", e);
             Toast.makeText(this, "Error!", Toast.LENGTH_LONG).show();
@@ -200,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
         Button startGame = findViewById(R.id.startGame);
         Button editGameSave = findViewById(R.id.editGameSave);
         Button clearGameSave = findViewById(R.id.clearGameSave);
+        Button configGame = findViewById(R.id.configGame);
 
         ipadScreen.setOnCheckedChangeListener((buttonView, isChecked) ->
                 isIPadScreen = isChecked);
@@ -246,6 +248,12 @@ public class MainActivity extends AppCompatActivity {
                 dbFile.delete();
                 Toast.makeText(this, "已清除存档！", Toast.LENGTH_SHORT).show();
             }
+        });
+        
+        configGame.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, IniActivity.class);
+            intent.putExtra("folder_path", APP_DATA_DIR+"/hook_data");
+            startActivity(intent);
         });
     }
 

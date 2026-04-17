@@ -100,6 +100,7 @@
 
         <activity android:name="com.disney.WMW.WMWActivity"/>
         <activity android:name=".editor.EditorSaveActivity"/>
+        <activity android:name=".editor.IniActivity"/>
         <activity android:name="GlobalApplication$CrashActivity"/>
 
         <meta-data
