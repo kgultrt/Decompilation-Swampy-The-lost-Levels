@@ -48,18 +48,18 @@ public class MainActivity extends AppCompatActivity {
     private static final int STORAGE_PERMISSION_REQUEST_CODE = 1003;
 
     // SharedPreferences 键
-    private static final String PREF_CURRENT_ZIP = "current_zip_path";      // 当前激活的 ZIP 路径
+    private static final String PREF_CURRENT_ZIP = "current_zip_path"; // 当前激活的 ZIP 路径
     private static final String PREF_LOAD_OBB_CHECKED = "load_obb_checked"; // CheckBox 状态
 
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
     private Handler mainHandler = new Handler(Looper.getMainLooper());
 
     // 存档相关路径
-    private File dbFile;                // 游戏使用的存档 data/water.db
-    private File savesDir;               // 存放所有 ZIP 独立存档的目录
+    private File dbFile; // 游戏使用的存档 data/water.db
+    private File savesDir; // 存放所有 ZIP 独立存档的目录
 
     private CheckBox loadGameOBB;
-    private String currentZipPath;       // 当前选中的 ZIP 路径（可能为 null）
+    private String currentZipPath; // 当前选中的 ZIP 路径（可能为 null）
     private boolean isUpdatingCheckBox = false; // 防止监听器循环触发
 
     @Override
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Error!", Toast.LENGTH_LONG).show();
         }
         initAppDirs();
+        ensureConfigIniExists();
         initLayout();
 
         // 恢复上次的 CheckBox 状态，但不触发加载（因为 data/water.db 应该已经是最新的）
@@ -134,13 +135,36 @@ public class MainActivity extends AppCompatActivity {
     private void initAppDirs() {
         File obbDir = getObbDir();
         File dataDir = new File(APP_DATA_DIR);
-        File hookDir = new File(APP_DATA_DIR+"/hook_data");
+        File hookDir = new File(APP_DATA_DIR + "/hook_data");
 
         if (!obbDir.exists()) obbDir.mkdirs();
         if (!dataDir.exists()) dataDir.mkdirs();
         if (!hookDir.exists()) hookDir.mkdirs();
 
         updateObbInfoView();
+    }
+
+    /** 确保 hook_data/config.ini 文件存在，若不存在则从 assets 提取 */
+    private void ensureConfigIniExists() {
+        File hookDataDir = new File(APP_DATA_DIR + "/hook_data");
+        if (!hookDataDir.exists()) {
+            hookDataDir.mkdirs();
+        }
+        File configIni = new File(hookDataDir, "config.ini");
+        if (!configIni.exists()) {
+            try (InputStream is = getAssets().open("hook_data/config.ini");
+                    OutputStream os = new FileOutputStream(configIni)) {
+                byte[] buffer = new byte[8192];
+                int len;
+                while ((len = is.read(buffer)) != -1) {
+                    os.write(buffer, 0, len);
+                }
+                Log.d("WMW", "config.ini extracted from assets");
+            } catch (IOException e) {
+                Log.e("WMW", "Failed to extract config.ini from assets", e);
+                // 可选：提示用户
+            }
+        }
     }
 
     private void updateObbInfoView() {
@@ -181,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     // 安全文件复制
     private boolean safeCopyFile(File source, File dest) {
         try (FileChannel inChannel = new FileInputStream(source).getChannel();
-             FileChannel outChannel = new FileOutputStream(dest).getChannel()) {
+                FileChannel outChannel = new FileOutputStream(dest).getChannel()) {
             outChannel.transferFrom(inChannel, 0, inChannel.size());
             return true;
         } catch (IOException e) {
@@ -210,7 +234,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, WMWActivity.class);
             startActivity(intent);
         });
-
 
         loadGameOBB.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isUpdatingCheckBox) return;
@@ -249,10 +272,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "已清除存档！", Toast.LENGTH_SHORT).show();
             }
         });
-        
+
         configGame.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, IniActivity.class);
-            intent.putExtra("folder_path", APP_DATA_DIR+"/hook_data");
+            intent.putExtra("folder_path", APP_DATA_DIR + "/hook_data");
             startActivity(intent);
         });
     }
@@ -318,9 +341,7 @@ public class MainActivity extends AppCompatActivity {
 
     // ---------- 存档隔离核心方法 ----------
 
-    /**
-     * 根据 ZIP 路径获取对应的独立存档文件
-     */
+    /** 根据 ZIP 路径获取对应的独立存档文件 */
     private File getSaveFileForZip(String zipPath) {
         if (zipPath == null) return null;
         // 使用文件路径的哈希作为文件名，避免非法字符
@@ -328,18 +349,14 @@ public class MainActivity extends AppCompatActivity {
         return new File(savesDir, hash + ".db");
     }
 
-    /**
-     * 保存当前游戏存档到指定 ZIP 的独立存档文件
-     */
+    /** 保存当前游戏存档到指定 ZIP 的独立存档文件 */
     private boolean saveCurrentDbToZip(String zipPath) {
         if (zipPath == null || !dbFile.exists()) return false;
         File saveFile = getSaveFileForZip(zipPath);
         return safeCopyFile(dbFile, saveFile);
     }
 
-    /**
-     * 从指定 ZIP 的独立存档文件恢复存档到游戏目录
-     */
+    /** 从指定 ZIP 的独立存档文件恢复存档到游戏目录 */
     private boolean restoreDbFromZip(String zipPath) {
         if (zipPath == null) return false;
         File saveFile = getSaveFileForZip(zipPath);
@@ -349,16 +366,14 @@ public class MainActivity extends AppCompatActivity {
         return false; // 存档文件不存在
     }
 
-    /**
-     * 从 ZIP 内提取 assets/Data/water.db 到目标文件
-     */
+    /** 从 ZIP 内提取 assets/Data/water.db 到目标文件 */
     private boolean extractDbFromZip(File zipFile, File destFile) {
         try (ZipFile zip = new ZipFile(zipFile)) {
             ZipEntry entry = zip.getEntry("assets/Data/water.db");
             if (entry == null) return false;
             destFile.getParentFile().mkdirs();
             try (InputStream is = zip.getInputStream(entry);
-                 OutputStream os = new FileOutputStream(destFile)) {
+                    OutputStream os = new FileOutputStream(destFile)) {
                 byte[] buffer = new byte[8192];
                 int len;
                 while ((len = is.read(buffer)) != -1) {
@@ -372,9 +387,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * 从 APK 内部 assets 提取默认存档到目标文件
-     */
+    /** 从 APK 内部 assets 提取默认存档到目标文件 */
     private boolean extractDefaultDbFromApk(File destFile) {
         try (InputStream is = getAssets().open("Data/water.db")) {
             destFile.getParentFile().mkdirs();
