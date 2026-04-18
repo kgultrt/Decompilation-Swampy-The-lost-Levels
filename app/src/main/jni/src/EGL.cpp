@@ -1,5 +1,6 @@
 #include "EGL.h"
 #include "ImGuiUtils.h"
+#include "ini.h"
 
 // 静态变量
 static bool RunInitImgui = false;
@@ -172,6 +173,16 @@ void EGL::onSurfaceDestroy() {
 
 // ========================= EGL 渲染线程 =========================
 void EGL::EglThread() {
+    std::string configPath = SaveDir + "/config.ini";
+    Ini config;
+    if (config.load(configPath)) {
+        mEnableMenu = config.getBool("EGL", "Menu", true);
+        LOGE("[EGL] Menu = %s", mEnableMenu ? "true" : "false");
+    } else {
+        LOGE("配置文件不存在或无法读取, 使用默认值");
+        mEnableMenu = true;
+    }
+    
     if (initEgl() != 1) return;
     if (initImgui() != 1) return;
 
@@ -183,9 +194,11 @@ void EGL::EglThread() {
     // 初始化功能模块
     runtimeStats = std::make_unique<RuntimeStats>(SaveDir);
     gamePatch = std::make_unique<GamePatchManager>(SaveDir);
-    memoryBrowser = std::make_unique<MemoryBrowser>(SaveDir,
-        MemoryBrowser::MemoryRange{gamePatch->getModuleInfo("libwmw.so").base,
-                                   gamePatch->getModuleInfo("libwmw.so").end});
+    if (mEnableMenu) {
+        memoryBrowser = std::make_unique<MemoryBrowser>(SaveDir,
+           MemoryBrowser::MemoryRange{gamePatch->getModuleInfo("libwmw.so").base,
+                                       gamePatch->getModuleInfo("libwmw.so").end});
+    }
 
     // 应用游戏补丁（如果需要）
     if (!gamePatch->isPatched()) {
@@ -219,21 +232,20 @@ void EGL::mainRenderLoop() {
         if (runtimeStats) {
             runtimeStats->update(currentTime);
         }
-
-        renderImGuiWindow();
+        
+        imguiMainWinStart();
+        if (mEnableMenu) {
+            renderImGuiWindow();
+        }
+        imguiMainWinEnd();
 
         swapBuffers();
     }
 }
 
 void EGL::renderImGuiWindow() {
-    imguiMainWinStart();
-
     // 内存浏览器开关
     static bool showMemoryBrowser = false;
-
-    ImGui::SetNextWindowBgAlpha(0.7f);
-    style->WindowTitleAlign = ImVec2(0.5f, 0.5f);
 
     if (input->Scrollio && !input->Activeio) {
         input->funScroll(g->WheelingWindow ? g->WheelingWindow : g->HoveredWindow);
@@ -304,8 +316,6 @@ void EGL::renderImGuiWindow() {
     if (showMemoryBrowser && memoryBrowser) {
         memoryBrowser->draw();
     }
-
-    imguiMainWinEnd();
 }
 
 // ========================= OpenGL 辅助 =========================

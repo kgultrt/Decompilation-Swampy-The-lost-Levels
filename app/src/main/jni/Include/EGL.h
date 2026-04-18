@@ -19,6 +19,7 @@ class EGL {
     std::thread*            SurfaceThread = nullptr;
     ImguiAndroidInput*      input = nullptr;
     int                     FPS = 90;
+    bool                    mEnableMenu=true;
 
     int surfaceWidthHalf = 0;
     int surfaceHighHalf  = 0;

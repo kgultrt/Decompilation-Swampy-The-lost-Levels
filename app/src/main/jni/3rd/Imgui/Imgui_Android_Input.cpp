@@ -1,643 +1,476 @@
-//
-// Created by Administrator on 2022/2/7.
-//
-
 #include "Imgui/Imgui_Android_Input.h"
+#include <cstring>
+#include <cmath>
 
-using namespace std;
+// 静态成员定义
+ImguiAndroidInput::InputState ImguiAndroidInput::s_inputState;
 
-void ImguiAndroidInput::Copy(ImGuiInputTextCallbackData *CallbackData) {
-    Copybuf = (char *) malloc(CallbackData->SelectionEnd - CallbackData->SelectionStart + 2);
-    bzero(Copybuf, CallbackData->SelectionEnd - CallbackData->SelectionStart + 2);
-    strlcat(Copybuf, &CallbackData->Buf[CallbackData->SelectionStart], CallbackData->SelectionEnd - CallbackData->SelectionStart + 1);
+ImguiAndroidInput::ImguiAndroidInput() {
+    g_window = nullptr;
+    loopRun = false;
+    Inputio = false;
+    Scrollio = false;
+    Activeio = false;
+    ScrollX = 0.0f;
+    ScrollY = 0.0f;
+    f = 1.0f;
+    fps = 60;
+    max_fps = 60;
+    winio = false;
+    fullwinio = false;
+    winWidth = 0.0f;
+    winHeight = 0.0f;
+    oldwinWidth = 0.0f;
+    oldwinHeight = 0.0f;
+    ItemActive = false;
+    ItemHovered = false;
+    ItemFocused = false;
+    ItemEdited = false;
+    ItemScrollio = false;
+    upio = false;
+    runScroll = false;
 }
 
-string ImguiAndroidInput::JNI_Copy() {
-    if (!io->WantTextInput) {
-        return "";
-    }
-    std::unique_lock<std::mutex> ulo(Copylk);
-    ImguiAndroidInput::ActiveInputsw = 0;
-    cond.wait(ulo, [this] { return ImguiAndroidInput::ActiveInputsw == 10; });
-    string tmp = Copybuf;
-    if (Copybuf != nullptr) {
-        free(Copybuf);
-        Copybuf = nullptr;
-    }
-    return tmp;
+ImguiAndroidInput::~ImguiAndroidInput() {
+    stopLongPressDetection();
 }
 
-void ImguiAndroidInput::Paste(ImGuiInputTextCallbackData *CallbackData) {
-    if (CallbackData->HasSelection()) {
-        CallbackData->DeleteChars(CallbackData->SelectionStart, CallbackData->SelectionEnd - CallbackData->SelectionStart);
-    }
-    CallbackData->InsertChars(CallbackData->CursorPos, Pastebuf);
-}
-
-void ImguiAndroidInput::JNI_Paste(string data) {
-    if (!io->WantTextInput) {
-        return;
-    }
-    std::unique_lock<std::mutex> ulo(Pastelk);
-    Pastebuf = data.c_str();
-    this->ActiveInputsw = 1;
-    cond.wait(ulo, [this] { return this->ActiveInputsw == 11; });
-}
-
-void ImguiAndroidInput::SelectAll(ImGuiInputTextCallbackData *CallbackData) {
-    CallbackData->SelectAll();
-    SelectSize = CallbackData->SelectionEnd - CallbackData->SelectionStart;
-}
-
-int ImguiAndroidInput::JNI_SelectAll() {
-    ImguiAndroidInput::SelectSize = 0;
-    if (!io->WantTextInput) {
-        return SelectSize;
-    }
-    std::unique_lock<std::mutex> ulo(Selectlk);
-    ImguiAndroidInput::ActiveInputsw = 2;
-    cond.wait(ulo, [this] { return this->ActiveInputsw == 12; });
-    return this->SelectSize;
-}
-
-void ImguiAndroidInput::Cut(ImGuiInputTextCallbackData *CallbackData) {
-    Copybuf = (char *) malloc(CallbackData->SelectionEnd - CallbackData->SelectionStart + 2);
-    bzero(Copybuf, CallbackData->SelectionEnd - CallbackData->SelectionStart + 2);
-    strlcat(Copybuf, &CallbackData->Buf[CallbackData->SelectionStart], CallbackData->SelectionEnd - CallbackData->SelectionStart + 1);
-    CallbackData->DeleteChars(CallbackData->SelectionStart, CallbackData->SelectionEnd - CallbackData->SelectionStart);
-}
-
-string ImguiAndroidInput::JNI_Cut() {
-    if (!io->WantTextInput) {
-        return "";
-    }
-    std::unique_lock<std::mutex> ulo(Cutlk);
-    this->ActiveInputsw = 3;
-    cond.wait(ulo, [this] { return this->ActiveInputsw == 13; });
-    string tmp = Copybuf;
-    if (Copybuf != nullptr) {
-        free(Copybuf);
-        Copybuf = nullptr;
-    }
-    return tmp;
-}
-
-int ImguiAndroidInput::inputCallback(ImGuiInputTextCallbackData *CallbackData) {
-    switch (ActiveInputsw) {
-        case 0: {
-            Copy(CallbackData);
-            ActiveInputsw = 10;
-            cond.notify_all();
-//			LOGE("inputCallback.Copy完成");
+// ---------- JNI 辅助函数 ----------
+bool ImguiAndroidInput::getJniEnv(JNIEnv** env, bool* shouldDetach) const {
+    if (!jni_.jvm) return false;
+    *shouldDetach = false;
+    jint result = jni_.jvm->GetEnv((void**)env, JNI_VERSION_1_6);
+    if (result == JNI_EDETACHED) {
+        if (jni_.jvm->AttachCurrentThread(env, nullptr) == JNI_OK) {
+            *shouldDetach = true;
+        } else {
+            return false;
         }
-            break;
-        case 1: {
-            Paste(CallbackData);
-            ActiveInputsw = 11;
-            cond.notify_all();
-//			LOGE("inputCallback.Paste完成");
-        }
-            break;
-        case 2: {
-            SelectAll(CallbackData);
-            ActiveInputsw = 12;
-            cond.notify_all();
-//			LOGE("inputCallback.SelectAll完成");
-        }
-            break;
-        case 3: {
-            Cut(CallbackData);
-            ActiveInputsw = 13;
-            cond.notify_all();
-//			LOGE("inputCallback.Cut完成");
-        }
-            break;
-        default: {
-
-        }
-            break;
     }
-//	LOGE("CallbackData->EventChar=%hu",CallbackData->EventChar);
+    return (*env != nullptr);
+}
+
+void ImguiAndroidInput::cleanupJniEnv(JNIEnv* env, bool shouldDetach) const {
+    if (shouldDetach) {
+        jni_.jvm->DetachCurrentThread();
+    }
+}
+
+void ImguiAndroidInput::checkJniException(JNIEnv* env) const {
+    if (env->ExceptionCheck()) {
+        env->ExceptionDescribe();
+        env->ExceptionClear();
+        toast("JNI异常");
+    }
+}
+
+// ---------- 文本输入回调实现 ----------
+void ImguiAndroidInput::CopyCallback(ImGuiInputTextCallbackData* data) {
+    std::lock_guard<std::mutex> lock(s_inputState.mtx);
+    int len = data->SelectionEnd - data->SelectionStart;
+    if (len <= 0) {
+        s_inputState.copyBuffer = nullptr;
+    } else {
+        s_inputState.copyBuffer = (char*)malloc(len + 1);
+        if (s_inputState.copyBuffer) {
+            memcpy(s_inputState.copyBuffer, data->Buf + data->SelectionStart, len);
+            s_inputState.copyBuffer[len] = '\0';
+        }
+    }
+    s_inputState.done = true;
+    s_inputState.cv.notify_one();
+}
+
+void ImguiAndroidInput::PasteCallback(ImGuiInputTextCallbackData* data) {
+    if (!s_inputState.pasteBuffer) return;
+    if (data->HasSelection()) {
+        data->DeleteChars(data->SelectionStart, data->SelectionEnd - data->SelectionStart);
+    }
+    data->InsertChars(data->CursorPos, s_inputState.pasteBuffer);
+}
+
+void ImguiAndroidInput::SelectAllCallback(ImGuiInputTextCallbackData* data) {
+    data->SelectAll();
+    s_inputState.selectSize = data->SelectionEnd - data->SelectionStart;
+}
+
+void ImguiAndroidInput::CutCallback(ImGuiInputTextCallbackData* data) {
+    CopyCallback(data);
+    data->DeleteChars(data->SelectionStart, data->SelectionEnd - data->SelectionStart);
+}
+
+int ImguiAndroidInput::inputCallback(ImGuiInputTextCallbackData* CallbackData) {
+    std::unique_lock<std::mutex> lock(s_inputState.mtx);
+    switch (s_inputState.activeAction) {
+        case 0: CopyCallback(CallbackData); break;
+        case 1: PasteCallback(CallbackData); break;
+        case 2: SelectAllCallback(CallbackData); break;
+        case 3: CutCallback(CallbackData); break;
+        default: return 0;
+    }
+    s_inputState.activeAction = -1;
+    s_inputState.done = true;
+    s_inputState.cv.notify_one();
     return 0;
 }
 
-void ImguiAndroidInput::addUTF8(const char *in_data) {
-
-    io->AddInputCharactersUTF8(in_data);
-//	LOGE("输入=%s,io=%d",in_data,io->WantTextInput);
-//	LOGE("输入了字符串=%d",io->InputQueueCharacters.Size);
+// ---------- JNI 公开方法实现 ----------
+std::string ImguiAndroidInput::JNI_Copy() {
+    if (!io_ || !io_->WantTextInput) return "";
+    std::unique_lock<std::mutex> lock(s_inputState.mtx);
+    s_inputState.activeAction = 0;
+    s_inputState.done = false;
+    s_inputState.cv.wait(lock, [] { return s_inputState.done; });
+    std::string result = s_inputState.copyBuffer ? s_inputState.copyBuffer : "";
+    free(s_inputState.copyBuffer);
+    s_inputState.copyBuffer = nullptr;
+    return result;
 }
 
-void ImguiAndroidInput::initImguiIo(ImGuiIO *io) {
-    this->io = io;
-    moveio   = false;
-    f        = 1.0f;
-    Copybuf  = nullptr;
-    Pastebuf = nullptr;
-    Inputio  = false;
-    fps      = 60;
-    if (max_fps == 0) {
-        max_fps = 60;
-    }
+void ImguiAndroidInput::JNI_Paste(std::string data) {
+    if (!io_ || !io_->WantTextInput) return;
+    std::unique_lock<std::mutex> lock(s_inputState.mtx);
+    s_inputState.pasteBuffer = data.c_str();
+    s_inputState.activeAction = 1;
+    s_inputState.done = false;
+    s_inputState.cv.wait(lock, [] { return s_inputState.done; });
+}
+
+int ImguiAndroidInput::JNI_SelectAll() {
+    if (!io_ || !io_->WantTextInput) return 0;
+    std::unique_lock<std::mutex> lock(s_inputState.mtx);
+    s_inputState.activeAction = 2;
+    s_inputState.done = false;
+    s_inputState.cv.wait(lock, [] { return s_inputState.done; });
+    return s_inputState.selectSize;
+}
+
+std::string ImguiAndroidInput::JNI_Cut() {
+    if (!io_ || !io_->WantTextInput) return "";
+    std::unique_lock<std::mutex> lock(s_inputState.mtx);
+    s_inputState.activeAction = 3;
+    s_inputState.done = false;
+    s_inputState.cv.wait(lock, [] { return s_inputState.done; });
+    std::string result = s_inputState.copyBuffer ? s_inputState.copyBuffer : "";
+    free(s_inputState.copyBuffer);
+    s_inputState.copyBuffer = nullptr;
+    return result;
+}
+
+void ImguiAndroidInput::addUTF8(const char* in_data) {
+    if (io_) io_->AddInputCharactersUTF8(in_data);
 }
 
 void ImguiAndroidInput::InputKey(int action, int code) {
-    switch (action) {
-        case InputAction::Action_DOWN: {
-            if (code == 59) {
-                io->KeyShift = true;
-            }
-            //按下回车关闭输入法
-            if (code == 66) {
-                Inputio=closeInput();
-            }
-            //io->AddKeyEvent(code, true);
-            //io->KeyMap[code]=true;
-            //LOGE("按下键值:%d",code);
-            io->KeysDown[code] = true;
-        }
-            break;
-        case InputAction::Action_UP: {
-            if (code == 59) {
-                io->KeyShift = false;
-            }
-            //弹起回车关闭输入法
-            if (code == 66) {
-                //重复两次 规避输入法隐藏失败
-             Inputio= closeInput();
-            }
-           // LOGE("弹起键值:%d",code);
-           // io->AddKeyEvent(code, false);
-            //io->KeyMap[code]= false;
-            io->KeysDown[code] = false;
-        }
-            break;
-    }
-//	LOGE("action = %d  code = %d",action,code);
-//调整响应速度
+    if (!io_) return;
+    bool down = (action == Action_DOWN);
+    if (code == 59) io_->KeyShift = down;
+    io_->KeysDown[code] = down;
     usleep(20000);
 }
 
-
-void ImguiAndroidInput::toast(string str) const {
-    if (gClassInfo.jvm == nullptr || gClassInfo.pJclass == nullptr || gClassInfo.show == nullptr) {
-        return;
-    }
-    JNIEnv  *env         = nullptr;
-    bool    shouldDetach = false;
-    int     result       = gClassInfo.jvm->GetEnv((void **) &env, JNI_VERSION_1_6);
-    if (result == JNI_EDETACHED) {
-        jint attachResult = gClassInfo.jvm->AttachCurrentThread(&env, NULL);
-        if (attachResult >= 0) {
-            shouldDetach = true;
-        }
-    }
-    jstring tmp          = env->NewStringUTF(str.c_str());
-    env->CallStaticVoidMethod(gClassInfo.pJclass, gClassInfo.show, tmp);
-    env->DeleteLocalRef(tmp);
-    if (shouldDetach) {
-        gClassInfo.jvm->DetachCurrentThread();
-    }
-}
-//打开输入法
-bool ImguiAndroidInput::openInput(){
-    if (gClassInfo.jvm == nullptr || gClassInfo.pJclass == nullptr || gClassInfo.openInput == nullptr) {
-        return false;
-    }
-    JNIEnv  *env         = nullptr;
-    bool    shouldDetach = false;
-    int     result       = gClassInfo.jvm->GetEnv((void **) &env, JNI_VERSION_1_6);
-    if (result == JNI_EDETACHED) {
-        jint attachResult = gClassInfo.jvm->AttachCurrentThread(&env, NULL);
-        if (attachResult >= 0) {
-            shouldDetach = true;
-        }
-    }
-    LOGE("触发输入法--窗口id%d",g_window->ID);
-    jboolean tmp=false;
-
-        tmp =  env->CallStaticBooleanMethod(gClassInfo.pJclass,gClassInfo.openInput);
-
-    if(env->ExceptionCheck()){
-
-        env->ExceptionDescribe();
-        env->ExceptionClear();
-        string s="检测到异常";
-        toast(s);
-        return false;
-
-    }
-    //LOGE("调用");
-    if (shouldDetach) {
-        gClassInfo.jvm->DetachCurrentThread();
-    }
-    //LOGE("调用1");
-    return tmp == JNI_TRUE ? true : false;
-}
-//关闭输入法
-bool ImguiAndroidInput::closeInput(){
-    if (gClassInfo.jvm == nullptr || gClassInfo.pJclass == nullptr || gClassInfo.closeInput == nullptr) {
-        return false;
-    }
-    JNIEnv  *env         = nullptr;
-    bool    shouldDetach = false;
-    int     result       = gClassInfo.jvm->GetEnv((void **) &env, JNI_VERSION_1_6);
-    if (result == JNI_EDETACHED) {
-        jint attachResult = gClassInfo.jvm->AttachCurrentThread(&env, NULL);
-        if (attachResult >= 0) {
-            shouldDetach = true;
-        }
-    }
-    LOGE("隐藏输入法");
-    jboolean tmp =  env->CallStaticBooleanMethod(gClassInfo.pJclass,gClassInfo.closeInput);
-    if (shouldDetach) {
-        gClassInfo.jvm->DetachCurrentThread();
-    }
-    return tmp == JNI_TRUE ? true : false;
+// ---------- 初始化 ----------
+void ImguiAndroidInput::initImguiIo(ImGuiIO* io) {
+    io_ = io;
+    touch_ = TouchState{};
+    if (max_fps == 0) max_fps = 60;
 }
 
-void ImguiAndroidInput::ioset(jint pos, jint v) const {
-    if (gClassInfo.jvm == nullptr || gClassInfo.pJclass == nullptr || gClassInfo.io == nullptr) {
-        return;
-    }
-//	LOGE("开始ioset");
-    JNIEnv  *env         = nullptr;
-    bool    shouldDetach = false;
-    int     result       = gClassInfo.jvm->GetEnv((void **) &env, JNI_VERSION_1_6);
-    if (result == JNI_EDETACHED) {
-        jint attachResult = gClassInfo.jvm->AttachCurrentThread(&env, NULL);
-        if (attachResult < 0) {
-//			LOGE("无法attach.JVM线程");
-            return;
-        }
-        shouldDetach = true;
-    }
-    jstring tmp          = env->NewStringUTF("psio");
-//	LOGE("set.pos=%d,v=%d", pos, v);
-    env->CallStaticVoidMethod(gClassInfo.pJclass, gClassInfo.io, tmp, pos, v);
-//	env->CallVoidMethod(gClassInfo.obj,gClassInfo.v,tmp,pos,v);
-//	LOGE("准备释放jstring");
-    env->DeleteLocalRef(tmp);
-    if (shouldDetach) {
-//		LOGE("准备释放jvm线程");
-        gClassInfo.jvm->DetachCurrentThread();
-    }
+void ImguiAndroidInput::setwin(ImGuiWindow* window) {
+    g_window = window;
 }
 
-void ImguiAndroidInput::isLongTouch(int x, int y) {
-    if (gClassInfo.jvm == nullptr || gClassInfo.pJclass == nullptr || gClassInfo.io == nullptr) {
-        return;
-    }
-    JNIEnv  *env         = nullptr;
-    bool    shouldDetach = false;
-    int     result       = gClassInfo.jvm->GetEnv((void **) &env, JNI_VERSION_1_6);
-    if (result == JNI_EDETACHED) {
-        jint attachResult = gClassInfo.jvm->AttachCurrentThread(&env, NULL);
-        if (attachResult < 0) {
-//			LOGE("无法attach.JVM线程");
-            return;
-        }
-        shouldDetach = true;
-    }
-    env->CallStaticVoidMethod(gClassInfo.pJclass,gClassInfo.isLongTouch,x,y);
-    if (shouldDetach) {
-//		LOGE("准备释放jvm线程");
-        gClassInfo.jvm->DetachCurrentThread();
-    }
-}
-
-
-//初始化
-void ImguiAndroidInput::funMshowinit(jclass thiz, JNIEnv *env) {
-
-    if (gClassInfo.show == nullptr) {
-        (*env).GetJavaVM(&gClassInfo.jvm);
-       // gClassInfo.pJclass = env->FindClass("com/example/imguimenu/TouchView");
-		gClassInfo.pJclass = thiz;
-        gClassInfo.show    = env->GetStaticMethodID(gClassInfo.pJclass, "mShow", "(Ljava/lang/String;)V");
-        if (nullptr == gClassInfo.show) {
-//			LOGE("can't find method mShow from JniClass");
-            return;
-        } else {
-//			LOGE("find method mShow from JniClass");
-        }
-        gClassInfo.io = env->GetStaticMethodID(gClassInfo.pJclass, "mIO", "(Ljava/lang/String;II)V");
-        if (nullptr == gClassInfo.io) {
-//			LOGE("can't find method mIO from JniClass");
-            return;
-        } else {
-//			LOGE("find method mIO from JniClass");
-        }
-        gClassInfo.openInput = env->GetStaticMethodID(gClassInfo.pJclass,"openInput","()Z");
-        if (nullptr == gClassInfo.openInput) {
-//			LOGE("can't find method mIO from JniClass");
-            return;
-        } else {
-//			LOGE("find method mIO from JniClass");
-        }
-        gClassInfo.closeInput = env->GetStaticMethodID(gClassInfo.pJclass,"closeInput","()Z");
-        if (nullptr == gClassInfo.closeInput) {
-//			LOGE("can't find method mIO from JniClass");
-            return;
-        } else {
-//			LOGE("find method mIO from JniClass");
-        }
-        gClassInfo.isLongTouch = env->GetStaticMethodID(gClassInfo.pJclass,"isLongTouch","(II)V");
-        if (nullptr == gClassInfo.isLongTouch) {
-//			LOGE("can't find method mIO from JniClass");
-            return;
-        } else {
-//			LOGE("find method mIO from JniClass");
-        }
-
-
-
-        gClassInfo.obj = (*env).NewGlobalRef(thiz);
-        if (nullptr == gClassInfo.obj) {
-//			LOGE("can't find jobject");
-            return;
-        } else {
-//			LOGE("find jobject");
-        }
-    }
-}
-
-void ImguiAndroidInput::longTouchLoop(){
-    if (loopRun){
-        return;
-    }
-    thread loop([this]{
-        for (;;){
-            if ( TOUCH_TIMER.islooptimestart ){
-                if (TOUCH_TIMER.getlooptime()>150000000&&!isMouseMove&&io->WantTextInput){
-                    LOGE("长按了编辑框");
-                    ioset(3,0);
-//                    isLongTouch((int)DOWN_x,(int)DOWN_y);
-                    loopRun = false;
-                    return ;
-                }
-                if (isMouseMove || !io->WantTextInput || !io->MouseDown[0] || !loopRun){
-                    loopRun = false;
-                    return;
-                }
-            }
-            usleep(1000);
-        }
-    });
-    loop.detach();
-}
-
-
-
-bool ImguiAndroidInput::InputTouchEvent(int event_get_action, float x, float y) {
-//	LOGE("event.key=%d",event_get_action);
-//bool ret= false;
-
-   // LOGE("触发状态:%s",io->WantCaptureMouseUnlessPopupClose? "触发":"没触发");
-   // LOGE("触发状态1:%s",g_window->HasCloseButton? "触发":"没触发");
-
-    if (io->WantTextInput) {
-
-//		LOGE("imgui输入获得焦点");
-        if (!Inputio && event_get_action != eTouchEvent::TOUCH_OUTSIDE) {
-//            ioset(2, 1);
-            Inputio = openInput();
-            //Inputio = openInput();
-//            Inputio = io->WantTextInput;
-//			LOGE("imgui呼出输入法%d",Inputio);
-        }
-    } else {
-//		LOGE("imgui输入丢失焦点");
-        if (Inputio) {
-//            ioset(2, 0);
-            Inputio = closeInput();
-           // Inputio = closeInput();
-//			LOGE("imgui关闭输入法%d",Inputio);
-        }
-    }
-    if (ItemHovered) {
-        Activeio = ItemHovered;
-    }
-
-    switch (event_get_action) {
-        case eTouchEvent::TOUCH_OUTSIDE:
-           // io->MouseDown[0] = false;
-            io->AddMouseButtonEvent(0,0);
-            moveio   = false;
-            Activeio = false;
-            Scrollio = false;
-            loopRun = false;
-            DOWN_x   = DOWN_y   = 0;
-            if (Inputio) {
-                Inputio = closeInput();
-//			LOGE("imgui关闭输入法%d",Inputio);
-            }
-            break;
-        case eTouchEvent::TOUCH_DOWN:
-            DOWN_x = x;
-            DOWN_y = y;
-            io->AddMousePosEvent(x, y);
-            io->AddMouseButtonEvent(0,1);
-            Activeio   = ItemHovered;
-            SetScrollX = 0.0f;
-            SetScrollY = 0.0f;
-            ScrollXMAX = 0.0f;
-            ScrollYMAX = 0.0f;
-            TOUCH_TIME = 0.0f;
-            upio       = false;
-           // Scrollio   = false;
-            runScroll  = false;
-            isMouseMove = false;
-            TOUCH_TIMER.start();
-            TOUCH_TIMER.looptimestart();
-            longTouchLoop();
-            loopRun = true;
-            if (y <= g_window->TitleBarHeight() && !moveio) {
-                moveio = true;
-            }
-            break;
-        case eTouchEvent::TOUCH_UP:
-            //io->MouseDown[0] = false;
-            io->AddMouseButtonEvent(0,0);
-            SetScrollX = x - DOWN_x;
-            SetScrollY = y - DOWN_y;
-            moveio     = false;
-            Activeio   = false;
-            runScroll  = false;
-            loopRun = false;
-            DOWN_x     = DOWN_y = 0;
-            TOUCH_TIME = TOUCH_TIMER.stop(1);
-            break;
-        case eTouchEvent::TOUCH_MOVE:
-            //io->MousePos.x = x;
-           // io->MousePos.y                          = y;
-            io->AddMousePosEvent(x, y);
-            loopRun = false;
-            //io->isMouseMove = true;
-           /* if (y > g_window->TitleBarHeight() && abs(DOWN_x - x) > 3.0f  ||  abs(DOWN_y - y) > 3.0f ){
-                io->isMouseMove = true;
-               // Scrollio = true;
-            }*/
-
-//			LOGE("滑动");
-            break;
-        default:
-
-            break;
-    }
-
-    if (io->WantCaptureMouse==0) {
-        return false;
-    } else {
-        return true;
-//		LOGE("imgui无焦点");
-    }
-}
-
-float ImguiAndroidInput::funScroll() {
-    nowScrollX = ImGui::GetScrollX();
-    nowScrollY = ImGui::GetScrollY();
-    runScroll  = true;
-    if (io->MouseDown[0]) {
-        if (nowScrollX > 0.0f || nowScrollX < ImGui::GetScrollMaxX()) {
-            ImGui::SetScrollX(ImGui::GetScrollX() - io->MouseDelta.x);
-        }
-//        ImGui::SetScrollX(ImGui::GetScrollX() - io->MouseDelta.x);
-//        ImGui::SetScrollY(ImGui::GetScrollY() - io->MouseDelta.y);
-        if (nowScrollY > 0.0f || nowScrollY < ImGui::GetScrollMaxY()) {
-            ImGui::SetScrollY(ImGui::GetScrollY() - io->MouseDelta.y);
-        }
-//		TOUCH_TIME = io->MouseDownDuration[0];
-        upio = false;
-    } else {
-        if (!upio) {
-            if (TOUCH_TIME > 300) {
-                SetScrollX = 0;
-                SetScrollY = 0;
-                Scrollio   = false;
-                runScroll  = false;
-            }
-            Seed_up    = abs(SetScrollX) / (TOUCH_TIME);
-//			LOGE("SetScrollX=%f",SetScrollX);
-            ScrollX    = SetScrollX / (TOUCH_TIME / 1000 * (float) fps);
-            SetScrollX *= Seed_up * f;
-            ScrollXMAX = SetScrollX;
-//			LOGE("SetScrollX=%f,Seed_up=%f,time%f",SetScrollX,Seed_up,TOUCH_TIME);
-            Seed_up    = abs(SetScrollY) / (TOUCH_TIME);
-//			LOGE("SetScrollX=%f",SetScrollY);
-            ScrollY    = SetScrollY / (TOUCH_TIME / 1000 * (float) fps);
-            SetScrollY *= Seed_up * f;
-            ScrollYMAX = SetScrollY;
-//			LOGE("SetScrollY=%f,Seed_up=%f,time%f",SetScrollY,Seed_up,TOUCH_TIME);
-            upio       = true;
-        }
-        ScrollXRatio = (SetScrollX / ScrollXMAX);
-        ScrollYRatio = (SetScrollY / ScrollYMAX);
-        if (nowScrollX > 0.0f && nowScrollX < ImGui::GetScrollMaxX()) {
-            ImGui::SetScrollX(nowScrollX - ScrollX * ScrollXRatio);
-        } else {
-            ScrollX = 0.0f;
-        }
-        if (nowScrollY > 0.0f && nowScrollY < ImGui::GetScrollMaxY()) {
-            ImGui::SetScrollY(nowScrollY - ScrollY * ScrollYRatio);
-        } else {
-            ScrollY = 0.0f;
-        }
-        SetScrollX -= (ScrollX * ScrollXRatio);
-        SetScrollY -= (ScrollY * ScrollYRatio);
-        if (ScrollX * ScrollXRatio >= -0.9f && ScrollX * ScrollXRatio <= 0.9f && ScrollY * ScrollYRatio >= -0.9f && ScrollY * ScrollYRatio <= 0.9f) {
-            SetScrollX = 0;
-            SetScrollY = 0;
-            Scrollio   = false;
-            runScroll  = false;
-        }
-//						LOGE("当前Window.ScrollXRatio=%f,.ScrollYRatio=%f,SetScroll.x%f,SetScroll.y%f,ScrollX=%f,ScrollY%f",ScrollXRatio,ScrollYRatio,SetScrollX,SetScrollY,ScrollX,ScrollY);
-    }
-    return nowScrollX;
+void ImguiAndroidInput::setImguiContext(ImGuiContext* g) {
+    g_ = g;
 }
 
 void ImguiAndroidInput::setMaxFPS(int MAX_FPS) {
-    this->max_fps = MAX_FPS;
-//	LOGE("设置FPS=%d",MAX_FPS);
+    max_fps = MAX_FPS;
 }
 
-
-void ImguiAndroidInput::StartLockWheelingWindow(ImGuiWindow *window) {
-    if (g->WheelingWindow == window) {
-        return;
-    }
-    g->WheelingWindow            = window;
-    g->WheelingWindowRefMousePos = g->IO.MousePos;
-    //g->WheelingWindowTimer       = 2.0f;
+// ---------- 输入法控制 ----------
+bool ImguiAndroidInput::openInput() {
+    if (!jni_.openInput || !g_window) return false;
+    JNIEnv* env = nullptr;
+    bool shouldDetach = false;
+    if (!getJniEnv(&env, &shouldDetach)) return false;
+    jboolean ret = env->CallStaticBooleanMethod(jni_.pJclass, jni_.openInput);
+    checkJniException(env);
+    cleanupJniEnv(env, shouldDetach);
+    return ret == JNI_TRUE;
 }
 
+bool ImguiAndroidInput::closeInput() {
+    if (!jni_.closeInput) return false;
+    JNIEnv* env = nullptr;
+    bool shouldDetach = false;
+    if (!getJniEnv(&env, &shouldDetach)) return false;
+    jboolean ret = env->CallStaticBooleanMethod(jni_.pJclass, jni_.closeInput);
+    checkJniException(env);
+    cleanupJniEnv(env, shouldDetach);
+    return ret == JNI_TRUE;
+}
 
-float ImguiAndroidInput::funScroll(ImGuiWindow *Window) {
-    if (!Window) {
-        return 0.0f;
-    }
-    StartLockWheelingWindow(Window);
-    nowScrollX = Window->Scroll.x;
-    nowScrollY = Window->Scroll.y;
-    runScroll  = true;
-    if (isMouseMove) {
-        ImGui::SetScrollX(Window, Window->Scroll.x - io->MouseDelta.x);
-        ImGui::SetScrollY(Window, Window->Scroll.y - io->MouseDelta.y);
-//		TOUCH_TIME = io->MouseDownDuration[0];
-        upio = false;
-    } else {
-        if (!upio) {
-            if (TOUCH_TIME > 300) {
-                SetScrollX = 0;
-                SetScrollY = 0;
-                Scrollio   = false;
-                runScroll  = false;
+// ---------- Toast / IO 设置 ----------
+void ImguiAndroidInput::toast(std::string str) const {
+    if (!jni_.show) return;
+    JNIEnv* env = nullptr;
+    bool shouldDetach = false;
+    if (!getJniEnv(&env, &shouldDetach)) return;
+    jstring jstr = env->NewStringUTF(str.c_str());
+    env->CallStaticVoidMethod(jni_.pJclass, jni_.show, jstr);
+    env->DeleteLocalRef(jstr);
+    checkJniException(env);
+    cleanupJniEnv(env, shouldDetach);
+}
+
+void ImguiAndroidInput::ioset(jint pos, jint v) const {
+    if (!jni_.io) return;
+    JNIEnv* env = nullptr;
+    bool shouldDetach = false;
+    if (!getJniEnv(&env, &shouldDetach)) return;
+    jstring jstr = env->NewStringUTF("psio");
+    env->CallStaticVoidMethod(jni_.pJclass, jni_.io, jstr, pos, v);
+    env->DeleteLocalRef(jstr);
+    checkJniException(env);
+    cleanupJniEnv(env, shouldDetach);
+}
+
+void ImguiAndroidInput::isLongTouch(int x, int y) {
+    if (!jni_.isLongTouch) return;
+    JNIEnv* env = nullptr;
+    bool shouldDetach = false;
+    if (!getJniEnv(&env, &shouldDetach)) return;
+    env->CallStaticVoidMethod(jni_.pJclass, jni_.isLongTouch, x, y);
+    checkJniException(env);
+    cleanupJniEnv(env, shouldDetach);
+}
+
+// ---------- JNI 初始化 ----------
+void ImguiAndroidInput::funMshowinit(jclass thiz, JNIEnv* env) {
+    if (jni_.show != nullptr) return;
+    env->GetJavaVM(&jni_.jvm);
+    jni_.pJclass = (jclass)env->NewGlobalRef(thiz);
+    jni_.show = env->GetStaticMethodID(jni_.pJclass, "mShow", "(Ljava/lang/String;)V");
+    jni_.io = env->GetStaticMethodID(jni_.pJclass, "mIO", "(Ljava/lang/String;II)V");
+    jni_.openInput = env->GetStaticMethodID(jni_.pJclass, "openInput", "()Z");
+    jni_.closeInput = env->GetStaticMethodID(jni_.pJclass, "closeInput", "()Z");
+    jni_.isLongTouch = env->GetStaticMethodID(jni_.pJclass, "isLongTouch", "(II)V");
+}
+
+// ---------- 长按检测线程 ----------
+void ImguiAndroidInput::startLongPressDetection() {
+    if (longPressActive_) return;
+    longPressActive_ = true;
+    loopRun = true;
+    longPressThread_ = std::thread([this]() {
+        while (longPressActive_ && loopRun) {
+            // 注意：islooptimestart 是成员变量，不是函数
+            if (touch_.touchTimer.islooptimestart) {
+                if (touch_.touchTimer.getlooptime() > 150000000 && !touch_.isMouseMove && io_ && io_->WantTextInput) {
+                    ioset(3, 0);
+                    longPressActive_ = false;
+                    loopRun = false;
+                    break;
+                }
+                if (touch_.isMouseMove || !io_ || !io_->WantTextInput || !io_->MouseDown[0]) {
+                    loopRun = false;
+                    break;
+                }
             }
-            Seed_up    = abs(SetScrollX) / (TOUCH_TIME);
-//			LOGE("SetScrollX=%f",SetScrollX);
-            ScrollX    = SetScrollX / (TOUCH_TIME / 1000 * (float) fps);
-            SetScrollX *= Seed_up * f;
-            ScrollXMAX = SetScrollX;
-//			LOGE("SetScrollX=%f,Seed_up=%f,time%f",SetScrollX,Seed_up,TOUCH_TIME);
-            Seed_up    = abs(SetScrollY) / (TOUCH_TIME);
-//			LOGE("SetScrollX=%f",SetScrollY);
-            ScrollY    = SetScrollY / (TOUCH_TIME / 1000 * (float) fps);
-            SetScrollY *= Seed_up * f;
-            ScrollYMAX = SetScrollY;
-//			LOGE("SetScrollY=%f,Seed_up=%f,time%f",SetScrollY,Seed_up,TOUCH_TIME);
-            upio       = true;
+            usleep(10000);
         }
-        ScrollXRatio = (SetScrollX / ScrollXMAX);
-        ScrollYRatio = (SetScrollY / ScrollYMAX);
+        longPressActive_ = false;
+    });
+}
 
-        if (nowScrollX > 0.0f && nowScrollX < Window->ScrollMax.x) {
-            ImGui::SetScrollX(Window, nowScrollX - ScrollX * ScrollXRatio);
-        } else {
-            ScrollX = 0.0f;
-        }
-        if (nowScrollY > 0.0f && nowScrollY < Window->ScrollMax.y) {
-            ImGui::SetScrollY(Window, nowScrollY - ScrollY * ScrollYRatio);
-        } else {
-            ScrollY = 0.0f;
-        }
-        SetScrollX -= (ScrollX * ScrollXRatio);
-        SetScrollY -= (ScrollY * ScrollYRatio);
-        if (ScrollX * ScrollXRatio >= -0.9f && ScrollX * ScrollXRatio <= 0.9f && ScrollY * ScrollYRatio >= -0.9f && ScrollY * ScrollYRatio <= 0.9f) {
-            SetScrollX = 0;
-            SetScrollY = 0;
-            Scrollio   = false;
-            runScroll  = false;
-        }
-//						LOGE("当前Window.ScrollXRatio=%f,.ScrollYRatio=%f,SetScroll.x%f,SetScroll.y%f,ScrollX=%f,ScrollY%f",ScrollXRatio,ScrollYRatio,SetScrollX,SetScrollY,ScrollX,ScrollY);
+void ImguiAndroidInput::stopLongPressDetection() {
+    longPressActive_ = false;
+    loopRun = false;
+    if (longPressThread_.joinable()) {
+        longPressThread_.join();
     }
-    return nowScrollX;
 }
 
-void ImguiAndroidInput::setImguiContext(ImGuiContext *g_) {
-    this->g = g_;
+// ---------- 滚动惯性辅助 ----------
+void ImguiAndroidInput::resetScrollInertia() {
+    touch_.setScrollX = touch_.setScrollY = 0.0f;
+    touch_.scrollVelocityX = touch_.scrollVelocityY = 0.0f;
+    Scrollio = false;
+    runScroll = false;
 }
 
-void ImguiAndroidInput::setwin(ImGuiWindow *g_window_) {
-    this->g_window = g_window_;
+void ImguiAndroidInput::updateScrollInertia(ImGuiWindow* window) {
+    if (!window) window = g_window;
+    if (!window) return;
+
+    float nowX = window->Scroll.x;
+    float nowY = window->Scroll.y;
+    float maxX = window->ScrollMax.x;
+    float maxY = window->ScrollMax.y;
+
+    if (!upio) {
+        if (touch_.touchDuration > 0.3f) {
+            resetScrollInertia();
+            return;
+        }
+        float dt = touch_.touchDuration / 1000.0f;
+        if (dt > 0.0f) {
+            touch_.scrollVelocityX = touch_.setScrollX / dt;
+            touch_.scrollVelocityY = touch_.setScrollY / dt;
+        }
+        upio = true;
+        runScroll = true;
+        Scrollio = true;
+    }
+
+    touch_.scrollVelocityX *= touch_.friction;
+    touch_.scrollVelocityY *= touch_.friction;
+
+    float deltaX = touch_.scrollVelocityX / (float)std::max(fps, 1);
+    float deltaY = touch_.scrollVelocityY / (float)std::max(fps, 1);
+
+    float newX = nowX - deltaX;
+    float newY = nowY - deltaY;
+
+    if (newX < 0.0f) newX = 0.0f;
+    if (newX > maxX) newX = maxX;
+    if (newY < 0.0f) newY = 0.0f;
+    if (newY > maxY) newY = maxY;
+
+    ImGui::SetScrollX(window, newX);
+    ImGui::SetScrollY(window, newY);
+
+    if (fabs(touch_.scrollVelocityX) < 5.0f && fabs(touch_.scrollVelocityY) < 5.0f) {
+        resetScrollInertia();
+    }
 }
 
+// ---------- 触摸事件处理（核心）----------
+bool ImguiAndroidInput::InputTouchEvent(int event_action, float x, float y) {
+    if (!io_) return false;
+
+    // 无窗口时的安全处理
+    if (!g_window) {
+        switch (event_action) {
+            case eTouchEvent::TOUCH_DOWN:
+                io_->AddMousePosEvent(x, y);
+                io_->AddMouseButtonEvent(0, true);
+                break;
+            case eTouchEvent::TOUCH_UP:
+                io_->AddMouseButtonEvent(0, false);
+                break;
+            case eTouchEvent::TOUCH_MOVE:
+                io_->AddMousePosEvent(x, y);
+                break;
+            default: break;
+        }
+        return io_->WantCaptureMouse;
+    }
+
+    // 输入法自动管理
+    if (io_->WantTextInput) {
+        if (!Inputio && event_action != eTouchEvent::TOUCH_OUTSIDE) {
+            Inputio = openInput();
+        }
+    } else {
+        if (Inputio) {
+            Inputio = closeInput();
+        }
+    }
+
+    if (ItemHovered) Activeio = true;
+
+    switch (event_action) {
+        case eTouchEvent::TOUCH_OUTSIDE:
+            io_->AddMouseButtonEvent(0, false);
+            touch_.moveWindow = false;
+            Activeio = false;
+            stopLongPressDetection();
+            if (Inputio) Inputio = closeInput();
+            break;
+
+        case eTouchEvent::TOUCH_DOWN:
+            touch_.downX = x;
+            touch_.downY = y;
+            io_->AddMousePosEvent(x, y);
+            io_->AddMouseButtonEvent(0, true);
+            Activeio = ItemHovered;
+            touch_.isMouseMove = false;
+            touch_.setScrollX = touch_.setScrollY = 0.0f;
+            touch_.touchDuration = 0.0f;
+            upio = false;
+            runScroll = false;
+            Scrollio = false;
+            touch_.touchTimer.start();
+            touch_.touchTimer.looptimestart();
+            startLongPressDetection();
+            if (y <= g_window->TitleBarHeight()) {
+                touch_.moveWindow = true;
+            }
+            break;
+
+        case eTouchEvent::TOUCH_UP:
+            io_->AddMouseButtonEvent(0, false);
+            touch_.setScrollX = x - touch_.downX;
+            touch_.setScrollY = y - touch_.downY;
+            touch_.touchDuration = touch_.touchTimer.stop(1);
+            touch_.moveWindow = false;
+            Activeio = false;
+            stopLongPressDetection();
+            if (!touch_.isMouseMove) {
+                updateScrollInertia();
+            }
+            break;
+
+        case eTouchEvent::TOUCH_MOVE:
+            io_->AddMousePosEvent(x, y);
+            stopLongPressDetection();
+            if (!touch_.isMouseMove) {
+                float dx = fabs(x - touch_.downX);
+                float dy = fabs(y - touch_.downY);
+                if (dx > 3.0f || dy > 3.0f) {
+                    touch_.isMouseMove = true;
+                }
+            }
+            break;
+    }
+
+    return io_->WantCaptureMouse;
+}
+
+// ---------- 滚动 API ----------
+float ImguiAndroidInput::funScroll() {
+    if (!g_window) return 0.0f;
+    if (g_) g_->WheelingWindow = g_window;
+    if (touch_.isMouseMove && io_->MouseDown[0]) {
+        ImGui::SetScrollX(g_window, g_window->Scroll.x - io_->MouseDelta.x);
+        ImGui::SetScrollY(g_window, g_window->Scroll.y - io_->MouseDelta.y);
+        upio = false;
+        runScroll = true;
+    } else {
+        if (runScroll) {
+            updateScrollInertia(g_window);
+        }
+    }
+    return g_window->Scroll.x;
+}
+
+float ImguiAndroidInput::funScroll(ImGuiWindow* window) {
+    if (!window) return 0.0f;
+    if (g_) {
+        g_->WheelingWindow = window;
+        g_->WheelingWindowRefMousePos = io_->MousePos;
+    }
+    if (touch_.isMouseMove && io_->MouseDown[0]) {
+        ImGui::SetScrollX(window, window->Scroll.x - io_->MouseDelta.x);
+        ImGui::SetScrollY(window, window->Scroll.y - io_->MouseDelta.y);
+        upio = false;
+        runScroll = true;
+    } else {
+        if (runScroll) {
+            updateScrollInertia(window);
+        }
+    }
+    return window->Scroll.x;
+}

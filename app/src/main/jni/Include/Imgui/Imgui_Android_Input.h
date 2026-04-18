@@ -1,141 +1,142 @@
-//
-// Created by Administrator on 2022/2/7.
-//
-
 #ifndef FIND_ROODS_IMGUI_ANDROID_INPUT_H
 #define FIND_ROODS_IMGUI_ANDROID_INPUT_H
+
 #include <mutex>
+#include <condition_variable>
+#include <thread>
+#include <atomic>
 #include "timer.h"
 #include "imgui.h"
 #include "imgui_internal.h"
 #include <jni.h>
 #include "log.h"
 #include <unistd.h>
-using namespace std;
-class ImguiAndroidInput{
-	//java层io控制
-	typedef struct ClassInfo {
-		JavaVM *jvm;
-		jobject obj;   //保存java对象
-		jclass pJclass;   //保存java对象
-		jclass  AssGLSL;
-		jclass   GLFont;
-		jmethodID show; //保存methodID
-		jmethodID io; //保存methodID
-        jmethodID openInput;
-        jmethodID closeInput;
-		jmethodID isLongTouch;
-		jmethodID getmac;
-	}ClassInfo;
-	ClassInfo gClassInfo = {0};
-	
-	
-	
-	
-	
-	//触摸操作
-	enum eTouchEvent {
-		TOUCH_DOWN,
-		TOUCH_UP,
-		TOUCH_MOVE,
-		TOUCH_CANCEL,
-		TOUCH_OUTSIDE
-	};
 
-	bool isMouseMove;
-	timer TOUCH_TIMER;
-	float DOWN_x;
-	float DOWN_y;
-	bool moveio;
-	float SetScrollX;
-	float SetScrollY;
-	float ScrollXMAX;
-	float ScrollYMAX;
-	float TOUCH_TIME;
-
-	float nowScrollX;
-	float nowScrollY;
-	float Seed_up;
-
-	float ScrollXRatio;
-	float ScrollYRatio;
-	
-	//字符串输入输出内部函数
-	enum InputAction {
-		Action_DOWN,
-		Action_UP
-	};
-	static inline int ActiveInputsw;
-	static inline std::condition_variable cond;
-	static inline char *Copybuf;
-	std::mutex Copylk;
-	static inline const char *Pastebuf;
-	std::mutex Pastelk;
-	static inline int SelectSize;
-	std::mutex Selectlk;
-	std::mutex Cutlk;
-	ImGuiIO* io;
-	ImGuiContext *g = nullptr;
-	unsigned int touchTime = 0;
-	static inline void Copy(ImGuiInputTextCallbackData *CallbackData);
-	static inline void Paste(ImGuiInputTextCallbackData *CallbackData);
-	static inline void SelectAll(ImGuiInputTextCallbackData *CallbackData);
-	static inline void Cut(ImGuiInputTextCallbackData *CallbackData);
-	void StartLockWheelingWindow(ImGuiWindow* window);
+class ImguiAndroidInput {
 public:
-	//初始化
-	ImGuiWindow *g_window = nullptr;
-	ImguiAndroidInput(){};
-	void initImguiIo(ImGuiIO* io);
-	void setwin(ImGuiWindow *g_window_);
-	void setImguiContext(ImGuiContext *g_);
-	void toast(string str) const;
-	void ioset(jint pos,jint v) const;
-	bool openInput();
-	bool closeInput();
-	void isLongTouch(int x,int y);
-	bool loopRun = false;
-	void longTouchLoop();
-	void funMshowinit(jclass thiz, JNIEnv *env);
-	void setMaxFPS(int MAX_FPS);
-	
-	//字符串输入输出公共函数
-	static int inputCallback(ImGuiInputTextCallbackData *CallbackData);
-	string JNI_Cut();
-	int JNI_SelectAll();
-	void JNI_Paste(string data);
-	string JNI_Copy();
-	void addUTF8(const char * in_data);
-	void InputKey(int action,int code);
-	
-	bool Inputio;
-	bool Scrollio;
-	bool Activeio;
-	float ScrollX;
-	float ScrollY;
-	float f;
-	bool InputTouchEvent(int event_get_action,float x,float y);
-	float funScroll();
+    ImguiAndroidInput();
+    ~ImguiAndroidInput();
+
+    // 公共 API（完全不变）
+    void initImguiIo(ImGuiIO* io);
+    void setwin(ImGuiWindow* g_window_);
+    void setImguiContext(ImGuiContext* g_);
+    void toast(std::string str) const;
+    void ioset(jint pos, jint v) const;
+    bool openInput();
+    bool closeInput();
+    void isLongTouch(int x, int y);
+    void funMshowinit(jclass thiz, JNIEnv* env);
+    void setMaxFPS(int MAX_FPS);
+    static int inputCallback(ImGuiInputTextCallbackData* CallbackData);
+    std::string JNI_Cut();
+    int JNI_SelectAll();
+    void JNI_Paste(std::string data);
+    std::string JNI_Copy();
+    void addUTF8(const char* in_data);
+    void InputKey(int action, int code);
+    bool InputTouchEvent(int event_get_action, float x, float y);
+    float funScroll();
     float funScroll(ImGuiWindow* Window);
-	bool runScroll = false;
-	bool upio = false;
-	int fps;
-	int max_fps = 0;
-	//bool oldio   = false;
-	//bool oldiow  = false;
-	bool winio;
-	bool fullwinio;
-	float winWidth;
-	float winHeight;
-	float oldwinWidth;
-	float oldwinHeight;
-	bool ItemActive;
-	bool ItemHovered;
-	bool ItemFocused;
-	bool ItemEdited;
-	bool ItemScrollio;
 
+    // 公开成员变量（保持兼容）
+    ImGuiWindow* g_window;
+    bool loopRun;
+    bool Inputio;
+    bool Scrollio;
+    bool Activeio;
+    float ScrollX;
+    float ScrollY;
+    float f;
+    int fps;
+    int max_fps;
+    bool winio;
+    bool fullwinio;
+    float winWidth;
+    float winHeight;
+    float oldwinWidth;
+    float oldwinHeight;
+    bool ItemActive;
+    bool ItemHovered;
+    bool ItemFocused;
+    bool ItemEdited;
+    bool ItemScrollio;
+    bool upio;
+    bool runScroll;
 
+private:
+    // 触摸事件类型
+    enum eTouchEvent {
+        TOUCH_DOWN,
+        TOUCH_UP,
+        TOUCH_MOVE,
+        TOUCH_CANCEL,
+        TOUCH_OUTSIDE
+    };
+
+    // 输入动作
+    enum InputAction {
+        Action_DOWN,
+        Action_UP
+    };
+
+    // JNI 相关信息
+    struct JniContext {
+        JavaVM* jvm = nullptr;
+        jobject obj = nullptr;
+        jclass pJclass = nullptr;
+        jmethodID show = nullptr;
+        jmethodID io = nullptr;
+        jmethodID openInput = nullptr;
+        jmethodID closeInput = nullptr;
+        jmethodID isLongTouch = nullptr;
+    } jni_;
+
+    // 文本输入回调状态管理
+    struct InputState {
+        std::mutex mtx;
+        std::condition_variable cv;
+        int activeAction = -1;      // -1: idle, 0:copy, 1:paste, 2:selectAll, 3:cut
+        bool done = false;
+        char* copyBuffer = nullptr;
+        const char* pasteBuffer = nullptr;
+        int selectSize = 0;
+    };
+    static InputState s_inputState; // 静态成员，跨实例共享
+
+    // 触摸/滚动状态
+    struct TouchState {
+        bool isMouseMove = false;
+        timer touchTimer;
+        float downX = 0.0f, downY = 0.0f;
+        float setScrollX = 0.0f, setScrollY = 0.0f;
+        float scrollXMax = 0.0f, scrollYMax = 0.0f;
+        float touchDuration = 0.0f;
+        float scrollVelocityX = 0.0f, scrollVelocityY = 0.0f;
+        float friction = 0.95f;     // 惯性衰减系数
+        bool moveWindow = false;
+    } touch_;
+
+    ImGuiIO* io_ = nullptr;
+    ImGuiContext* g_ = nullptr;
+
+    std::atomic<bool> longPressActive_{false};
+    std::thread longPressThread_;
+
+    // 私有辅助函数
+    bool getJniEnv(JNIEnv** env, bool* shouldDetach) const;
+    void cleanupJniEnv(JNIEnv* env, bool shouldDetach) const;
+    void checkJniException(JNIEnv* env) const;
+    void startLongPressDetection();
+    void stopLongPressDetection();
+    void resetScrollInertia();
+    void updateScrollInertia(ImGuiWindow* window = nullptr);
+    
+    // 静态回调辅助
+    static void CopyCallback(ImGuiInputTextCallbackData* data);
+    static void PasteCallback(ImGuiInputTextCallbackData* data);
+    static void SelectAllCallback(ImGuiInputTextCallbackData* data);
+    static void CutCallback(ImGuiInputTextCallbackData* data);
 };
 
-#endif //FIND_ROODS_IMGUI_ANDROID_INPUT_H
+#endif // FIND_ROODS_IMGUI_ANDROID_INPUT_H
